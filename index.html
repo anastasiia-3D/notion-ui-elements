@@ -11,6 +11,70 @@
     <h1>Из чего состоит сайт: словарь элементов</h1>
 
     <section>
+      <h2>Кнопка</h2>
+      <div class="cards">
+        <article class="card">
+          <div class="demo button-demo">
+            <div class="demo-banner">☝ Примеры ниже интерактивные. Попробуй нажать на кнопки.</div>
+            <div class="button-stage">
+              <span class="demo-label">Действия</span>
+              <button class="sample-button primary" id="orderButton">Оформить заказ</button>
+              <button class="sample-button yellow-button" id="draftButton">Сохранить черновик</button>
+              <button class="sample-button outline-button" id="cancelButton">Отмена</button>
+              <p class="button-state" id="buttonState">Сейчас: главная кнопка одна</p>
+            </div>
+          </div>
+          <h3>Кнопка</h3>
+          <p>Запускает действие: отправить форму, сохранить или перейти к оплате. Обычно на экране одна главная кнопка, а остальные менее заметны.</p>
+          <p>У кнопки есть состояния: наведение, нажатие, неактивное и загрузка.</p>
+          <p class="code-note">В коде: <code>&lt;button&gt;</code></p>
+        </article>
+        <article class="card">
+          <div class="demo loading-demo">
+            <div class="button-stage">
+              <span class="demo-label">Действия</span>
+              <button class="sample-button primary" id="submitButton">Отправить заявку</button>
+              <p class="button-state" id="submitState">Сейчас: кнопка готова к нажатию</p>
+            </div>
+          </div>
+          <h3>Кнопка: с загрузкой</h3>
+          <p>Пока идёт отправка, кнопка показывает состояние загрузки и не даёт нажать второй раз.</p>
+          <p class="code-note">В коде: <code>&lt;button&gt;</code> + логика загрузки</p>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <h2>Чекбокс и переключатель</h2>
+      <div class="cards">
+        <article class="card">
+          <div class="demo choice-demo">
+            <span class="demo-label">Действия</span>
+            <label class="check-line"><input type="checkbox" id="termsCheck"> Согласна с условиями</label>
+            <button class="sample-button disabled-button" id="payButton" disabled>Перейти к оплате</button>
+            <p class="choice-caption">Сейчас: кнопка</p>
+            <p class="choice-state" id="checkState">выключена, пока нет галочки</p>
+          </div>
+          <h3>Кнопка: неактивная</h3>
+          <p>Кнопка ждёт, пока выполнено условие, например, поставлена галочка.</p>
+          <p class="code-note">В коде: <code>&lt;button&gt;</code></p>
+        </article>
+        <article class="card">
+          <div class="demo choice-demo switch-demo">
+            <span class="demo-label">Действия</span>
+            <label class="switch-line"><input type="checkbox" id="notificationsSwitch" checked><span class="switch-ui"></span> Уведомления</label>
+            <label class="switch-line"><input type="checkbox" id="darkSwitch"><span class="switch-ui"></span> Тёмная тема</label>
+            <p class="choice-caption">Сейчас: уведомления</p>
+            <p class="choice-state" id="switchState">включены, тёмная тема выключена</p>
+          </div>
+          <h3>Переключатель (свитчер)</h3>
+          <p>Тумблер с двумя состояниями: включено и выключено. Отличается от чекбокса тем, что срабатывает сразу: отдельная кнопка «Сохранить» не нужна. Подходит для настроек вроде «присылать уведомления» или «тёмная тема».</p>
+          <p class="code-note">В коде: <code>role="switch"</code></p>
+        </article>
+      </div>
+    </section>
+
+    <section>
       <h2>Действия</h2>
       <div class="cards">
         <article class="card">
