@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Из чего состоит сайт: словарь элементов</title>
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <main class="page">
+    <h1>Из чего состоит сайт: словарь элементов</h1>
+
+    <section>
+      <h2>Действия</h2>
+      <div class="cards">
+        <article class="card">
+          <div class="demo menu-demo">
+            <button class="dots" id="menuButton" aria-label="Открыть меню">•••</button>
+            <div class="menu" id="menu" hidden>
+              <button>Переименовать</button>
+              <button>Скопировать</button>
+              <button class="danger">Удалить</button>
+            </div>
+          </div>
+          <h3>Меню «три точки»</h3>
+          <p>Иконка из трёх точек, за которой спрятаны второстепенные действия: переименовать, скопировать, удалить. Так разгружают интерфейс — на виду остаётся только главное. Опасные действия внутри такого меню обычно выделяют красным и ставят последними</p>
+          <p class="code-note">в коде: <code>&lt;button&gt; + &lt;menu&gt;</code></p>
+        </article>
+        <article class="card">
+          <div class="demo copy-demo">
+            <span class="promo">SALE25</span>
+            <button class="copy-button" id="copyButton">Копировать</button>
+          </div>
+          <h3>Кнопка «Копировать»</h3>
+          <p>Копирует значение — промокод, ссылку, реквизиты — в буфер обмена одним нажатием, чтобы человек не выделял текст вручную. Важная деталь: после клика кнопка должна подтвердить, что всё получилось — сменить подпись на „Скопировано“ или показать галочку</p>
+          <p class="code-note">в коде: <code>navigator.clipboard</code></p>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <h2>Текст и контент</h2>
+      <div class="cards">
+        <article class="card">
+          <div class="demo browser-demo">
+            <div class="browser-bar">kava.school/dostavka</div>
+            <div class="browser-content">
+              <h4>Доставка и оплата</h4>
+              <h5>Способы доставки</h5>
+              <p>Доставка по Украине и за её пределы.</p>
+              <h5>Оплата заказа</h5>
+              <p>Оплатить заказ можно удобным способом.</p>
+            </div>
+          </div>
+          <h3>Заголовки и абзацы</h3>
+          <p>Название страницы или раздела и обычный текст под ним. Заголовки идут по уровням: главный на странице один, остальные вложены в него, это важно и для читателя, и для поиска в Google. Размер здесь следствие уровня, а не наоборот</p>
+          <p class="code-note">в коде: <code>&lt;h1&gt;…&lt;h6&gt;, &lt;p&gt;</code></p>
+        </article>
+        <article class="card">
+          <div class="demo links-demo">
+            <a href="#link-example">условия доставки</a>
+            <a href="#link-example">оплата заказа</a>
+            <a href="#link-example">контакты</a>
+            <p>Сейчас: наведите или нажмите на ссылку</p>
+          </div>
+          <h3>Ссылка</h3>
+          <p>Кликабельный текст, который ведёт на другую страницу или к нужному месту этой же. Ссылку всегда видно отдельно от обычного текста, цветом и подчёркиванием, а подписывать её лучше по смыслу: „условия доставки“, а не „читать здесь“</p>
+          <p class="code-note">в коде: <code>&lt;a href&gt;</code></p>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <h2>Текст</h2>
+      <div class="cards">
+        <article class="card">
+          <div class="demo badge-demo">
+            <div class="cart">🛒 <span>бейдж-счётчик в шапке</span></div>
+            <div class="products">
+              <div>Футболка <span class="badge red">Новинка</span></div>
+              <div>Худи <span class="badge yellow">-20%</span></div>
+              <div>Кепка <span class="badge green">Хит</span></div>
+            </div>
+            <p>Сейчас: бейдж выделяет один товар среди похожих</p>
+          </div>
+          <h3>Бейдж, он же метка</h3>
+          <p>Маленькая плашка или кружок с коротким словом или числом: „Новинка“, „−20%“, „3“. Нужен, чтобы выделить один объект среди похожих, если бейджи повесить на всё, они перестают работать</p>
+          <p class="code-note">в коде: <code>badge</code></p>
+        </article>
+        <article class="card">
+          <div class="demo avatar-demo">
+            <strong>Участники проекта</strong>
+            <div class="avatars">
+              <span class="avatar online">АК</span>
+              <span class="avatar blue">МС</span>
+              <span class="avatar">☺</span>
+              <span class="avatar more">+5</span>
+            </div>
+            <p><strong>Анна Коваль</strong><br>куратор · онлайн</p>
+            <p>Сейчас: наведите на кружок — это и есть аватар</p>
+          </div>
+          <h3>Аватар</h3>
+          <p>Кружок с фотографией, инициалами или иконкой, так показывают человека: автора отзыва, участника чата, себя в профиле. Если фото нет, подставляют инициалы, а не пустоту</p>
+          <p class="code-note">в коде: <code>avatar</code></p>
+        </article>
+      </div>
+    </section>
+  </main>
+  <script src="assets/app.js"></script>
+</body>
+</html>
