@@ -15,7 +15,7 @@
       <div class="cards">
         <article class="card">
           <div class="demo menu-demo">
-            <button class="dots" id="menuButton" aria-label="Открыть меню">•••</button>
+            <div class="demo-menu-head"><span class="file-icon">▤</span><button class="dots" id="menuButton" aria-label="Открыть меню">•••</button></div>
             <div class="menu" id="menu" hidden>
               <button>Переименовать</button>
               <button>Скопировать</button>
@@ -28,7 +28,7 @@
         </article>
         <article class="card">
           <div class="demo copy-demo">
-            <span class="promo">SALE25</span>
+            <div class="promo-wrap"><span class="promo">SALE25</span></div>
             <button class="copy-button" id="copyButton">Копировать</button>
           </div>
           <h3>Кнопка «Копировать»</h3>
@@ -43,13 +43,13 @@
       <div class="cards">
         <article class="card">
           <div class="demo browser-demo">
-            <div class="browser-bar">kava.school/dostavka</div>
+            <div class="browser-bar"><span>●</span><span>kava.school/dostavka</span><span>•••</span></div>
             <div class="browser-content">
               <h4>Доставка и оплата</h4>
-              <h5>Способы доставки</h5>
-              <p>Доставка по Украине и за её пределы.</p>
-              <h5>Оплата заказа</h5>
-              <p>Оплатить заказ можно удобным способом.</p>
+              <div class="sample-heading">Способы доставки</div>
+              <p>Доставка по Украине и за её пределы</p>
+              <div class="sample-heading">Оплата заказа</div>
+              <p>Выберите удобный способ оплаты</p>
             </div>
           </div>
           <h3>Заголовки и абзацы</h3>
@@ -75,11 +75,11 @@
       <div class="cards">
         <article class="card">
           <div class="demo badge-demo">
-            <div class="cart">🛒 <span>бейдж-счётчик в шапке</span></div>
+            <div class="cart"><span class="cart-icon">🛒</span><span>бейдж-счётчик в шапке</span></div>
             <div class="products">
-              <div>Футболка <span class="badge red">Новинка</span></div>
-              <div>Худи <span class="badge yellow">-20%</span></div>
-              <div>Кепка <span class="badge green">Хит</span></div>
+              <div class="product">Футболка <span class="badge red">Новинка</span></div>
+              <div class="product">Худи <span class="badge yellow">-20%</span></div>
+              <div class="product">Кепка <span class="badge green">Хит</span></div>
             </div>
             <p>Сейчас: бейдж выделяет один товар среди похожих</p>
           </div>
@@ -93,10 +93,10 @@
             <div class="avatars">
               <span class="avatar online">АК</span>
               <span class="avatar blue">МС</span>
-              <span class="avatar">☺</span>
+              <span class="avatar smile">☺</span>
               <span class="avatar more">+5</span>
             </div>
-            <p><strong>Анна Коваль</strong><br>куратор · онлайн</p>
+            <p class="person"><strong>Анна Коваль</strong><br>куратор · онлайн</p>
             <p>Сейчас: наведите на кружок — это и есть аватар</p>
           </div>
           <h3>Аватар</h3>
