@@ -220,3 +220,24 @@ button { font: inherit; cursor: pointer; border: 0; border-radius: 6px; padding:
   transform: translate(-50%, -50%) !important;
   z-index: 3;
 }
+
+
+/* Remove unintended white backing panels from the checkbox and switch demos */
+.choice-demo .check-line,
+.choice-demo .switch-line,
+.choice-demo .choice-caption {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+.choice-demo .check-line input {
+  background-color: transparent;
+}
+.choice-demo .switch-line input {
+  display: none;
+}
+.choice-demo .switch-line .switch-ui {
+  background-color: #d5d0c7;
+}
+.choice-demo .switch-line input:checked + .switch-ui {
+  background-color: var(--blue);
+}
