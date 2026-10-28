@@ -59,11 +59,24 @@ darkSwitch?.addEventListener('change', updateSwitchState);
 
 // Product cards add items to the demo cart.
 const cartCount = document.getElementById('cartCount');
+const cartIcon = document.querySelector('.badge-demo .cart-icon');
 let cartItems = 0;
+let cartQuantityBadge = null;
+if (cartIcon) {
+  cartQuantityBadge = document.createElement('span');
+  cartQuantityBadge.className = 'cart-quantity-badge';
+  cartQuantityBadge.setAttribute('aria-label', 'Количество товаров в корзине');
+  cartQuantityBadge.hidden = true;
+  cartIcon.appendChild(cartQuantityBadge);
+}
 document.querySelectorAll('.badge-demo .product[data-product]').forEach((product) => {
   const addToCart = () => {
     cartItems += 1;
     if (cartCount) cartCount.textContent = `Корзина: ${cartItems} ${cartItems === 1 ? 'товар' : cartItems < 5 ? 'товара' : 'товаров'}`;
+    if (cartQuantityBadge) {
+      cartQuantityBadge.textContent = cartItems;
+      cartQuantityBadge.hidden = false;
+    }
     const name = product.dataset.product;
     const status = document.querySelector('.badge-demo .demo-status strong');
     if (status) status.textContent = `${name} добавлен(а) в корзину`;
