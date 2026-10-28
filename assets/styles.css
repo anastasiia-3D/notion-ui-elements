@@ -681,3 +681,34 @@ button { font: inherit; cursor: pointer; border: 0; border-radius: 6px; padding:
   .topic-dropdown > summary::after { right: 16px; }
   .topic-dropdown-content { padding: 4px 12px 18px; }
 }
+
+
+/* Interactive product cards and hoverable fictional avatars */
+.badge-demo .product[data-product] {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  min-height: 82px;
+  flex: 1 1 100px;
+  transition: border-color .15s ease, transform .15s ease, box-shadow .15s ease;
+}
+.badge-demo .product[data-product]:hover,
+.badge-demo .product[data-product]:focus-visible {
+  border-color: #a33a32;
+  box-shadow: 0 3px 10px rgba(58,44,40,.1);
+  transform: translateY(-2px);
+  outline: none;
+}
+.badge-demo .product-name { align-self: center; }
+.avatar-demo .avatars .avatar[data-name] {
+  cursor: pointer;
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.avatar-demo .avatars .avatar[data-name]:hover,
+.avatar-demo .avatars .avatar[data-name]:focus-visible {
+  transform: translateY(-3px);
+  box-shadow: 0 0 0 3px #f1d8d4;
+  outline: none;
+}
