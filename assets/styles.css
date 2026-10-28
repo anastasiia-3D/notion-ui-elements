@@ -635,3 +635,49 @@ button { font: inherit; cursor: pointer; border: 0; border-radius: 6px; padding:
   .avatar-demo .avatar-panel { margin-left: 4px; margin-right: 4px; }
   .badge-demo .demo-status, .avatar-demo .demo-status { flex-wrap: wrap; }
 }
+
+
+/* Collapsible topic group */
+.topic-dropdown {
+  margin-top: 24px;
+  border: 1px solid #e5ded7;
+  border-radius: 16px;
+  background: #fffdfb;
+  overflow: hidden;
+}
+.topic-dropdown > summary {
+  position: relative;
+  cursor: pointer;
+  list-style: none;
+  padding: 20px 56px 20px 22px;
+  color: #3A2C28;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.35;
+  background: #fff6bd;
+  transition: background .18s ease;
+}
+.topic-dropdown > summary::-webkit-details-marker { display: none; }
+.topic-dropdown > summary::after {
+  content: "+";
+  position: absolute;
+  right: 22px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 26px;
+  line-height: 1;
+  font-weight: 400;
+}
+.topic-dropdown[open] > summary::after { content: "−"; }
+.topic-dropdown > summary:hover { background: #fff0a0; }
+.topic-dropdown-content {
+  padding: 8px 20px 24px;
+}
+.topic-dropdown-content > section { margin-top: 24px; }
+.topic-dropdown-content > section:first-child { margin-top: 16px; }
+.topic-dropdown-content > .prompt-note { margin-top: 24px; }
+@media (max-width: 600px) {
+  .topic-dropdown > summary { padding: 17px 48px 17px 16px; font-size: 17px; }
+  .topic-dropdown > summary::after { right: 16px; }
+  .topic-dropdown-content { padding: 4px 12px 18px; }
+}
