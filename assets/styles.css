@@ -1281,3 +1281,9 @@ button:disabled { opacity: .52; cursor: not-allowed; }
 .swipe-row.open > div { transform:translateX(-90px); }
 .swipe-row .swipe-action { z-index:0; }
 .swipe-row > div { z-index:1; position:relative; }
+
+/* Pull-to-refresh works with mouse drag as well as touch. */
+.pull-refresh { cursor:grab; user-select:none; transition:transform .16s ease; }
+.pull-refresh:active,.pull-refresh.pulling { cursor:grabbing; }
+.pull-refresh.refreshing { cursor:progress; }
+.pull-refresh.refreshing > p:first-child { color:#315FB8; font-weight:700; }
