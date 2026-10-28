@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Из чего состоит сайт: словарь элементов</title>
-  <link rel="stylesheet" href="assets/styles.css?v=forms-dropdown-1">
+  <link rel="stylesheet" href="assets/styles.css?v=ukraine-examples-1">
 </head>
 <body>
   <main class="page">
@@ -215,8 +215,8 @@
               <div class="demo form-demo">
                 <span class="demo-label">Формы</span>
                 <div class="form-fields">
-                  <label for="demoEmail">Почта</label><input id="demoEmail" type="email" placeholder="anna@mail.ru" autocomplete="off">
-                  <label for="demoPhone">Телефон</label><input id="demoPhone" type="tel" placeholder="+7 (999) 000-00-00" autocomplete="off">
+                  <label for="demoEmail">Почта</label><input id="demoEmail" type="email" placeholder="anna@ukr.net" autocomplete="off">
+                  <label for="demoPhone">Телефон</label><input id="demoPhone" type="tel" placeholder="+380 (67) 000-00-00" autocomplete="off">
                   <p class="form-error" id="contactError" aria-live="polite"></p>
                 </div>
                 <div class="demo-status">Сейчас: <strong id="contactStatus">поля пустые, ошибок нет</strong></div>
@@ -254,11 +254,11 @@
                 <span class="demo-label">Формы</span>
                 <div class="select-panel">
                   <strong>Оформление доставки</strong>
-                  <label for="citySelect">Город</label><select id="citySelect"><option>Москва</option><option>Санкт-Петербург</option><option>Казань</option><option>Дублин</option></select>
-                  <label for="pickupSelect">Пункт выдачи</label><select id="pickupSelect"><option>Пушкина, 12</option><option>Ленина, 8</option><option>Центральная, 4</option></select>
+                  <label for="citySelect">Город</label><select id="citySelect"><option>Киев</option><option>Львов</option><option>Одесса</option><option>Днепр</option></select>
+                  <label for="pickupSelect">Пункт выдачи</label><select id="pickupSelect"><option>ул. Крещатик, 22</option><option>ул. Дерибасовская, 10</option><option>просп. Свободы, 15</option></select>
                   <label for="deliveryTime">Время доставки</label><select id="deliveryTime"><option>Сегодня до 18:00</option><option>Завтра с 9:00 до 12:00</option><option>Завтра с 12:00 до 18:00</option></select>
                 </div>
-                <div class="demo-status">Сейчас: <strong id="deliveryStatus">Москва, Пушкина, 12, сегодня до 18:00</strong></div>
+                <div class="demo-status">Сейчас: <strong id="deliveryStatus">Киев, ул. Крещатик, 22, сегодня до 18:00</strong></div>
               </div>
               <h3>Выпадающий список</h3>
               <p>Поле, которое раскрывает список вариантов. Берут, когда вариантов много и все известны заранее — город, тариф, способ доставки. Если вариантов два-три, лучше показать их сразу радиокнопками: меньше лишних кликов.</p>
@@ -268,11 +268,11 @@
               <div class="demo form-demo">
                 <span class="demo-label">Формы</span>
                 <div class="option-panel"><strong>Добавки к пище</strong>
-                  <label class="option-line"><input type="checkbox" class="topping" data-price="3" checked> <span>Двойной сыр</span><small>+$3</small></label>
-                  <label class="option-line"><input type="checkbox" class="topping" data-price="2"> <span>Грибы</span><small>+$2</small></label>
-                  <label class="option-line"><input type="checkbox" class="topping" data-price="4"> <span>Пепперони</span><small>+$4</small></label>
-                  <label class="option-line"><input type="checkbox" class="topping" data-price="1"> <span>Соус барбекю</span><small>+$1</small></label>
-                  <div class="total-line">Итого <strong id="toppingTotal">$12</strong></div>
+                  <label class="option-line"><input type="checkbox" class="topping" data-price="3" checked> <span>Двойной сыр</span><small>+3 ₴</small></label>
+                  <label class="option-line"><input type="checkbox" class="topping" data-price="2"> <span>Грибы</span><small>+2 ₴</small></label>
+                  <label class="option-line"><input type="checkbox" class="topping" data-price="4"> <span>Пепперони</span><small>+4 ₴</small></label>
+                  <label class="option-line"><input type="checkbox" class="topping" data-price="1"> <span>Соус барбекю</span><small>+1 ₴</small></label>
+                  <div class="total-line">Итого <strong id="toppingTotal">12 ₴</strong></div>
                 </div>
                 <div class="demo-status">Сейчас: <strong id="toppingStatus">1 дополнение</strong></div>
               </div>
@@ -284,10 +284,10 @@
               <div class="demo form-demo">
                 <span class="demo-label">Формы</span>
                 <div class="option-panel"><strong>Способ доставки</strong>
-                  <label class="radio-option selected"><input type="radio" name="shipMethod" value="Курьером" data-price="5" data-time="завтра до 18:00" checked><span><b>Курьером</b><small>завтра до 18:00</small></span><strong>$5</strong></label>
+                  <label class="radio-option selected"><input type="radio" name="shipMethod" value="Курьером" data-price="50" data-time="завтра до 18:00" checked><span><b>Курьером</b><small>завтра до 18:00</small></span><strong>50 ₴</strong></label>
                   <label class="radio-option"><input type="radio" name="shipMethod" value="Самовывоз" data-price="0" data-time="сегодня после 15:00"><span><b>Самовывоз</b><small>сегодня после 15:00</small></span><strong>бесплатно</strong></label>
-                  <label class="radio-option"><input type="radio" name="shipMethod" value="Почтой" data-price="3" data-time="3–5 дней"><span><b>Почтой</b><small>3–5 дней</small></span><strong>$3</strong></label>
-                  <div class="total-line">К оплате <strong id="shippingTotal">$74</strong></div>
+                  <label class="radio-option"><input type="radio" name="shipMethod" value="Почтой" data-price="30" data-time="3–5 дней"><span><b>Почтой</b><small>3–5 дней</small></span><strong>30 ₴</strong></label>
+                  <div class="total-line">К оплате <strong id="shippingTotal">740 ₴</strong></div>
                 </div>
                 <div class="demo-status">Сейчас: <strong id="shippingStatus">курьером, завтра до 18:00</strong></div>
               </div>
@@ -298,7 +298,7 @@
             <article class="card">
               <div class="demo form-demo range-demo">
                 <span class="demo-label">Формы</span>
-                <label for="priceRange">Цена: до <strong id="priceValue">$250</strong></label>
+                <label for="priceRange">Цена: до <strong id="priceValue">250 ₴</strong></label>
                 <input id="priceRange" type="range" min="50" max="500" step="10" value="250">
               </div>
               <h3>Ползунок</h3>
@@ -404,6 +404,6 @@
     </details>
 
   </main>
-  <script src="assets/app.js?v=forms-interactions-1"></script>
+  <script src="assets/app.js?v=ukraine-examples-1"></script>
 </body>
 </html>
