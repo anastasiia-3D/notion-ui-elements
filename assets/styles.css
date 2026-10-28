@@ -1839,3 +1839,41 @@ body .minimap-demo .minimap-viewport {
   .minimap-demo .minimap-main { max-width: calc(100% - 75px); gap: 5px; }
   .minimap-demo .minimap-main > span { min-width: 48px; height: 48px; padding: 0 6px; font-size: 12px; }
 }
+
+
+/* Share demo: keep the main action truly centered in the canvas.
+   Pin the status row to the bottom so it cannot push the button off-center. */
+.shop-demo:has(#shareButton) {
+  display: block;
+  min-height: 255px;
+  box-sizing: border-box;
+}
+.shop-demo:has(#shareButton) #shareButton {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  z-index: 1;
+}
+.shop-demo:has(#shareButton) #shareOptions {
+  position: absolute;
+  left: 50%;
+  top: calc(50% + 34px);
+  transform: translateX(-50%);
+  margin: 0;
+  z-index: 2;
+}
+.shop-demo:has(#shareButton) .demo-status {
+  position: absolute;
+  left: 50%;
+  bottom: 22px;
+  transform: translateX(-50%);
+  width: max-content;
+  max-width: calc(100% - 24px);
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  justify-content: center;
+  flex-wrap: wrap;
+}
