@@ -241,3 +241,24 @@ button { font: inherit; cursor: pointer; border: 0; border-radius: 6px; padding:
 .choice-demo .switch-line input:checked + .switch-ui {
   background-color: var(--blue);
 }
+
+
+/* Fix the white rectangular overlays visible in the selection-control demos */
+.choice-demo *:not(.demo-label):not(.disabled-button):not(.choice-state):not(.switch-ui):not(input) {
+  background-color: transparent !important;
+  background-image: none !important;
+}
+.choice-demo .check-line,
+.choice-demo .switch-line {
+  display: flex;
+  width: fit-content;
+  max-width: 100%;
+  padding: 0;
+  border: 0;
+}
+.choice-demo .disabled-button {
+  background-color: #c68e89 !important;
+}
+.choice-demo .choice-state {
+  background-color: #fff !important;
+}
