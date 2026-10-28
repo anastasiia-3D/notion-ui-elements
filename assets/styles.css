@@ -521,8 +521,35 @@ button { font: inherit; cursor: pointer; border: 0; border-radius: 6px; padding:
   font-size: 12px;
 }
 .badge-demo .cart-icon {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   font-size: 21px;
   filter: grayscale(1);
+}
+.badge-demo .cart-quantity-badge {
+  position: absolute;
+  top: -7px;
+  right: -10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 16px;
+  height: 16px;
+  padding: 0 4px;
+  border: 2px solid #fbf8f3;
+  border-radius: 999px;
+  background: #2f6fed;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 800;
+  line-height: 1;
+  filter: none;
+  box-sizing: content-box;
+}
+.badge-demo .cart-quantity-badge[hidden] {
+  display: none;
 }
 .badge-demo .products {
   display: grid;
