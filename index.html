@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Из чего состоит сайт: словарь элементов</title>
-  <link rel="stylesheet" href="assets/styles.css?v=status-feedback-dropdown-2">
+  <link rel="stylesheet" href="assets/styles.css?v=mobile-patterns-dropdown-1">
 </head>
 <body>
   <main class="page">
@@ -813,7 +813,134 @@
       </div>
     </details>
 
+
+    <details class="topic-dropdown mobile-patterns-dropdown">
+      <summary>Мобильные паттерны</summary>
+      <div class="topic-dropdown-content">
+        <section class="forms-intro mobile-intro">
+          <p>На телефоне свои привычки: половина действий делается не кликом, а движением пальца. Эти приёмы стоит называть по именам — так их проще заказать и у дизайнера, и у ИИ.</p>
+          <div class="forms-tip">☝️ <strong>Примеры ниже живые — их можно потогать прямо здесь.</strong></div>
+        </section>
+        <section class="mobile-patterns-section">
+          <div class="cards">
+            <article class="card">
+              <div class="demo mobile-demo">
+                <span class="demo-label">Мобильные</span>
+                <div class="phone-frame bottom-nav-phone">
+                  <div class="phone-status">9:41 <span>▰</span></div>
+                  <div class="phone-lines"><i></i><i></i></div><div class="phone-hero"></div>
+                  <div class="bottom-nav" role="tablist" aria-label="Основная навигация">
+                    <button type="button" class="active" data-nav="Главная"><span>⌂</span>Главная</button>
+                    <button type="button" data-nav="Поиск"><span>⌕</span>Поиск</button>
+                    <button type="button" data-nav="Избранное"><span>♡</span>Избранное</button>
+                    <button type="button" data-nav="Ещё"><span>☰</span>Ещё</button>
+                  </div>
+                </div>
+                <div class="demo-status">Сейчас: открыт раздел <strong id="bottomNavStatus">«Главная»</strong></div>
+              </div>
+              <h3>Нижняя навигация</h3>
+              <p>Панель внизу экрана с 3–5 иконками главных разделов — её держат на виду всегда, потому что внизу до кнопок достаёт большой палец. Активный раздел подсвечен, подписи под иконками лучше оставлять: по одним картинкам люди угадывают неверно.</p>
+              <p class="code-note">в коде: <code>bottom navigation</code></p>
+            </article>
+            <article class="card">
+              <div class="demo mobile-demo">
+                <span class="demo-label">Мобильные</span>
+                <div class="phone-frame sheet-phone">
+                  <div class="phone-status">9:41 <span>▰</span></div><div class="phone-lines"><i></i><i></i></div>
+                  <button type="button" class="brand-primary sheet-open" id="sheetOpen">Фильтры</button>
+                  <div class="bottom-sheet-backdrop" id="sheetBackdrop" hidden></div>
+                  <div class="bottom-sheet" id="bottomSheet" hidden>
+                    <div class="sheet-handle"></div><strong>Фильтры</strong>
+                    <label>Размер <select id="sizeFilter"><option>Любой</option><option>S</option><option>M</option><option>L</option><option>XL</option></select></label>
+                    <label>Цвет <select id="colorFilter"><option>Любой</option><option>Синий</option><option>Зелёный</option><option>Жёлтый</option></select></label>
+                    <button type="button" class="brand-primary" id="applyFilters">Показать товары</button>
+                    <button type="button" class="brand-outline" id="sheetClose">Закрыть</button>
+                  </div>
+                </div>
+                <div class="demo-status">Сейчас: <strong id="sheetStatus">панель закрыта</strong></div>
+              </div>
+              <h3>Шторка снизу (bottom sheet)</h3>
+              <p>Панель, которая выезжает снизу поверх контента: фильтры, настройки, выбор действия. Заменяет на телефоне обычное модальное окно, потому что пальцем удобнее дотянуться до низа экрана. Закрывается кнопкой или нажатием на затемнённый фон.</p>
+              <p class="code-note">в коде: <code>bottom sheet</code></p>
+            </article>
+            <article class="card">
+              <div class="demo mobile-demo">
+                <span class="demo-label">Мобильные</span>
+                <div class="swipe-row" id="swipeRow">
+                  <div><strong>Ольга</strong><p>Готово, спасибо!</p></div>
+                  <button type="button" class="swipe-action" id="swipeArchive">В архив</button>
+                </div>
+                <p class="gesture-hint">Потяните строку влево, чтобы открыть действие</p>
+                <div class="demo-status">Сейчас: <strong id="swipeStatus">строку можно смахнуть</strong></div>
+              </div>
+              <h3>Свайп для действий</h3>
+              <p>Движение пальцем по строке списка открывает действие: письмо уходит в архив, товар — из корзины. Экономит место, но действие нужно подписывать и обязательно давать отмену, иначе человек удалит что-то случайно.</p>
+              <p class="code-note">в коде: <code>swipe actions</code></p>
+            </article>
+            <article class="card">
+              <div class="demo mobile-demo">
+                <span class="demo-label">Мобильные</span>
+                <div class="pull-refresh" id="pullRefresh">
+                  <p>↓ Потяните, чтобы обновить</p><div class="refresh-skeleton"></div><div class="refresh-skeleton"></div><div class="refresh-skeleton"></div><div class="refresh-skeleton"></div>
+                  <p class="pull-hint">Потяните список вниз</p>
+                </div>
+                <div class="demo-status">Сейчас: <strong id="refreshStatus">список готов к обновлению</strong></div>
+              </div>
+              <h3>Потяни, чтобы обновить</h3>
+              <p>Список тянут вниз в самом верху — появляется значок, и содержимое обновляется. Привычный жест для лент новостей, почты, сообщений. Пока данные грузятся, индикатор должен крутиться, иначе непонятно, сработало ли.</p>
+              <p class="code-note">в коде: <code>pull to refresh</code></p>
+            </article>
+            <article class="card">
+              <div class="demo mobile-demo">
+                <span class="demo-label">Мобильные</span>
+                <button type="button" class="long-press-card" id="longPressCard">Отличная работа!</button>
+                <p class="gesture-hint">Нажмите на сообщение и удерживайте полсекунды</p>
+                <div class="demo-status">Сейчас: <strong id="longPressStatus">удерживайте карточку</strong></div>
+              </div>
+              <h3>Долгое нажатие</h3>
+              <p>Удержание пальцем около полсекунды открывает дополнительные действия или реакции. Спрятанный приём: о нём мало кто догадывается сам, поэтому главные действия так прятать нельзя — только вторичные.</p>
+              <p class="code-note">в коде: <code>long press</code></p>
+            </article>
+            <article class="card">
+              <div class="demo mobile-demo">
+                <span class="demo-label">Мобильные</span>
+                <div class="swipe-card-stack" id="swipeCardStack"><div class="swipe-card-back"></div><div class="swipe-card" id="swipeCard"><strong id="swipeCardTitle">Вариант 1</strong></div></div>
+                <div class="swipe-card-actions"><button type="button" class="brand-outline" id="cardSkip">× Мимо</button><button type="button" class="brand-primary" id="cardLike">♥ Нравится</button></div>
+                <div class="demo-status">Сейчас: <strong id="swipeCardStatus">выберите вариант</strong></div>
+              </div>
+              <h3>Карточки-свайпы</h3>
+              <p>Стопка карточек, где решение принимают смахиванием влево или вправо. Подходит для быстрого выбора по одному варианту за раз — подборки, сортировка идей. Обязательно оставляйте кнопки рядом: не все смахивают.</p>
+              <p class="code-note">в коде: <code>swipe cards</code></p>
+            </article>
+            <article class="card">
+              <div class="demo mobile-demo">
+                <span class="demo-label">Мобильные</span>
+                <div class="pinch-stage" id="pinchStage"><div class="pinch-photo" id="pinchPhoto">Фото</div></div>
+                <div class="pinch-controls"><button type="button" id="zoomOut" aria-label="Уменьшить">−</button><button type="button" id="zoomIn" aria-label="Увеличить">+</button><button type="button" class="brand-outline" id="zoomReset">Сбросить</button></div>
+                <p class="gesture-hint">На телефоне то же делают сведением и разведением двух пальцев</p>
+                <div class="demo-status">Сейчас: масштаб <strong id="zoomStatus">100%</strong></div>
+              </div>
+              <h3>Масштаб двумя пальцами</h3>
+              <p>Сведение и разведение пальцев уменьшает и увеличивает изображение. Ждут на любом фото товара, карте и скриншоте — если масштаб не работает, это воспринимается как поломка. На компьютере тот же смысл несут кнопки «плюс» и «минус».</p>
+              <p class="code-note">в коде: <code>pinch to zoom</code></p>
+            </article>
+            <article class="card">
+              <div class="demo mobile-demo splash-demo">
+                <span class="demo-label">Мобильные</span>
+                <div class="splash-phone" id="splashPhone"><span class="phone-status">9:41 ▰</span><strong>ЛАВКА</strong><i></i><small id="splashMessage">Загружаем приложение…</small></div>
+                <button type="button" class="brand-primary" id="splashReplay">Показать снова</button>
+                <div class="demo-status">Сейчас: <strong id="splashStatus">заставка при запуске</strong></div>
+              </div>
+              <h3>Заставка при запуске</h3>
+              <p>Первый экран приложения с логотипом, пока оно загружается. Задача — занять паузу и сразу показать бренд, поэтому держат её короткой: пара секунд максимум, иначе раздражает.</p>
+              <p class="code-note">в коде: <code>splash screen</code></p>
+            </article>
+          </div>
+        </section>
+      </div>
+    </details>
+
   </main>
-  <script src="assets/app.js?v=status-feedback-interactions-2"></script>
+  <script src="assets/app.js?v=mobile-patterns-interactions-1"></script>
 </body>
 </html>
