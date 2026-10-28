@@ -150,3 +150,14 @@ button { font: inherit; cursor: pointer; border: 0; border-radius: 6px; padding:
   align-self: auto !important;
 }
 /* The first section intentionally has no standalone "Действия" heading. */
+
+/* Match the annotated menu demo: remove leading icon and move ellipsis left */
+.menu-demo .demo-menu-head {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 28px;
+}
+.menu-demo .dots {
+  margin-left: 33%;
+}
