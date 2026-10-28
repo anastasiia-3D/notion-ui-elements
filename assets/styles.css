@@ -95,3 +95,17 @@ button { font: inherit; cursor: pointer; border: 0; border-radius: 6px; padding:
 .demo-label { display: inline-flex; position: static; align-self: flex-start; }
 .switch-line:hover .switch-ui { box-shadow: 0 0 0 3px #4169B233; }
 .switch-line input:focus-visible + .switch-ui { outline: 3px solid var(--yellow); outline-offset: 3px; }
+
+/* Align earlier cards with the taller checkbox/switch card structure */
+.menu-demo, .copy-demo, .browser-demo, .links-demo {
+  min-height: 284px;
+  padding: 15px;
+}
+.menu-demo .demo-menu-head { margin-top: 28px; }
+.copy-demo { display: flex; align-items: center; justify-content: center; gap: 14px; padding-top: 38px; }
+.browser-demo { padding: 0; }
+.browser-demo > .demo-label { position: absolute; z-index: 1; top: 12px; left: 12px; }
+.browser-demo .browser-bar { margin-top: 36px; }
+.links-demo { padding-top: 48px; }
+.links-demo > .demo-label { position: absolute; top: 12px; left: 12px; }
+.menu-demo > .demo-label, .copy-demo > .demo-label { position: absolute; top: 12px; left: 12px; }
