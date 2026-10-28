@@ -210,20 +210,13 @@ button { font: inherit; cursor: pointer; border: 0; border-radius: 6px; padding:
   pointer-events: auto;
 }
 
-/* Final robust centering: position the ellipsis relative to the full menu demo */
-.demo.menu-demo { position: relative; }
-.demo.menu-demo .demo-menu-head {
-  position: static !important;
-  inset: auto !important;
-  display: block !important;
-  margin: 0 !important;
-}
-.demo.menu-demo .demo-menu-head .dots {
+/* Match the reference screenshot: center the three-dot button in the full demo panel */
+.demo.menu-demo #menuButton {
   position: absolute !important;
   left: 50% !important;
   top: 50% !important;
   right: auto !important;
   margin: 0 !important;
   transform: translate(-50%, -50%) !important;
-  z-index: 2;
+  z-index: 3;
 }
