@@ -877,3 +877,23 @@ replaySplash();
  $('timerReset')?.addEventListener('click',()=>{if(timer)clearInterval(timer);timer=null;seconds=300;renderTimer();if($('timerStart'))$('timerStart').textContent='Старт';if($('timerStatus'))$('timerStatus').textContent='таймер сброшен';});
  updateCart();updateFilters();
 })();
+
+/* Mini-map is a compact overview of the movable canvas. Drag it to reposition the view indicator. */
+{
+ const mini=document.querySelector('#boardCanvas .canvas-minimap');
+ const view=mini?.querySelector('.canvas-minimap-viewport');
+ let miniDrag=false;
+ mini?.addEventListener('pointerdown',e=>{miniDrag=true;mini.setPointerCapture?.(e.pointerId);updateMini(e);});
+ mini?.addEventListener('pointermove',e=>{if(miniDrag)updateMini(e);});
+ const stopMini=()=>miniDrag=false;
+ mini?.addEventListener('pointerup',stopMini);mini?.addEventListener('pointercancel',stopMini);
+ function updateMini(e){
+  if(!mini||!view)return;
+  const r=mini.getBoundingClientRect();
+  const x=Math.max(0,Math.min(r.width-view.offsetWidth,e.clientX-r.left-view.offsetWidth/2));
+  const y=Math.max(0,Math.min(r.height-view.offsetHeight,e.clientY-r.top-view.offsetHeight/2));
+  view.style.left=x+'px';view.style.top=y+'px';
+  const status=document.querySelector('#canvasStatus');
+  if(status)status.textContent='область просмотра на мини-карте перемещена';
+ }
+}
