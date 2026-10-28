@@ -138,3 +138,15 @@ button { font: inherit; cursor: pointer; border: 0; border-radius: 6px; padding:
 .copy-demo > .demo-label {
   left: 12px !important;
 }
+
+/* Final alignment override for the copy-card category pill */
+.demo.copy-demo { position: relative; }
+.demo.copy-demo > .demo-label {
+  position: absolute !important;
+  left: 12px !important;
+  right: auto !important;
+  top: 12px !important;
+  margin: 0 !important;
+  align-self: auto !important;
+}
+/* The first section intentionally has no standalone "Действия" heading. */
