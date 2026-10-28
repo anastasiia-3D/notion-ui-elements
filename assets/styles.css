@@ -1574,3 +1574,40 @@ button:disabled { opacity: .52; cursor: not-allowed; }
   justify-content:center;
 }
 .shop-social-board-dropdown #shareButton { margin-inline:auto; }
+
+
+/* Center the Share demo controls and status message consistently. */
+.shop-social-board-dropdown .demo:has(#shareButton) {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.shop-social-board-dropdown #shareButton {
+  display: block;
+  margin: 0 auto;
+  align-self: center;
+}
+.shop-social-board-dropdown #shareOptions {
+  display: flex;
+  width: max-content;
+  max-width: calc(100% - 20px);
+  margin: 10px auto 0;
+  align-self: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+}
+.shop-social-board-dropdown #shareOptions[hidden] {
+  display: none !important;
+}
+.shop-social-board-dropdown #shareStatus {
+  text-align: center;
+}
+.shop-social-board-dropdown .demo:has(#shareButton) .demo-status {
+  align-self: center;
+  width: max-content;
+  max-width: 100%;
+  margin-inline: auto;
+  text-align: center;
+  box-sizing: border-box;
+}
