@@ -773,3 +773,117 @@ button:disabled { opacity: .52; cursor: not-allowed; }
 @media (prefers-reduced-motion: reduce) {
   button, .sample-button, .copy-button, .dots, .menu button { transition: none; }
 }
+
+
+/* Forms dropdown, preserving reference order and card layout */
+.forms-dropdown { margin-top: 18px; }
+.forms-intro { margin: 0 0 22px !important; }
+.forms-intro h2 { margin-bottom: 12px; }
+.forms-tip {
+  margin: 18px 0 0;
+  padding: 14px 18px;
+  border-radius: 13px;
+  background: #FFF0A8;
+  color: #49352B;
+  line-height: 1.5;
+}
+.forms-grid-section .cards { align-items: stretch; gap: 18px; }
+.forms-grid-section .card { padding: 0; overflow: hidden; border: 1px solid #E2D8CA; box-shadow: 0 5px 18px rgba(73,53,43,.06); }
+.forms-grid-section .card > h3,
+.forms-grid-section .card > p { margin-left: 26px; margin-right: 26px; }
+.forms-grid-section .card > h3 { margin-top: 20px; }
+.forms-grid-section .card > p:last-child { margin-bottom: 24px; }
+.form-demo {
+  min-height: 260px;
+  margin: 0;
+  border: 0;
+  border-bottom: 1px solid #E2D8CA;
+  border-radius: 0;
+  padding: 24px 26px;
+  background-color: #FCFAF6;
+  background-image: radial-gradient(#D8CDBE .8px, transparent .8px);
+  background-size: 12px 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 12px;
+}
+.form-demo .demo-label { position: absolute; top: 14px; left: 16px; }
+.form-fields { width: min(100%, 270px); margin: 30px auto 0; display: flex; flex-direction: column; gap: 7px; }
+.form-fields label, .select-panel label, .form-demo > label { font-size: 12px; color: #5D5149; }
+.form-demo input:not([type=checkbox]):not([type=radio]):not([type=range]):not([type=color]):not([type=file]),
+.form-demo textarea, .form-demo select {
+  width: 100%; min-width: 0; border: 1px solid #E2D8CA; background: #fff; color: #49352B;
+  border-radius: 12px; padding: 12px 13px; font: inherit; outline: none;
+}
+.form-demo input:focus, .form-demo textarea:focus, .form-demo select:focus { border-color: #315FB8 !important; box-shadow: 0 0 0 3px #315FB822; }
+.form-demo input::placeholder, .form-demo textarea::placeholder { color: #A9A29B; }
+.form-demo textarea { min-height: 92px; resize: vertical; }
+.form-demo small { font-size: 11px; color: #92877D; }
+.form-demo .demo-status { margin: auto auto 0; text-align: center; max-width: 100%; font-size: 11px; background: transparent; }
+.form-demo .demo-status strong { display: inline-block; padding: 7px 11px; border: 1px solid #E2D8CA; background: #fff; border-radius: 99px; color: #49352B; }
+.form-error { color: #C33A2F; font-size: 11px; min-height: 13px; margin: 0; }
+.search-field { display: flex; align-items: center; gap: 9px; background: #fff; border: 1px solid #E2D8CA; border-radius: 12px; padding: 0 10px; margin: 26px 0 8px; }
+.search-field input { border: 0 !important; box-shadow: none !important; padding-left: 0 !important; }
+.search-field button { background: transparent; color: #49352B; padding: 4px 8px; font-size: 20px; }
+.select-demo { align-items: center; }
+.select-panel, .option-panel { width: min(100%, 340px); margin: 25px auto 4px; padding: 17px; border-radius: 16px; border: 1px solid #E2D8CA; background: #fff; }
+.select-panel { display: flex; flex-direction: column; gap: 7px; }
+.select-panel > strong, .option-panel > strong { font-size: 13px; margin-bottom: 3px; }
+.select-panel select { padding: 10px 12px; margin-bottom: 5px; }
+.option-panel { margin-top: 26px; }
+.option-line { display: flex; align-items: center; gap: 10px; padding: 7px 0; font-size: 12px; cursor: pointer; }
+.option-line input { accent-color: #315FB8; width: 17px; height: 17px; }
+.option-line span { flex: 1; }
+.option-line small { font-size: 11px; color: #92877D; }
+.total-line { display: flex; align-items: center; justify-content: space-between; border-top: 1px solid #E8E0D7; padding-top: 12px; margin-top: 5px; font-size: 12px; }
+.total-line strong { font-size: 18px; }
+.radio-option { display: flex; align-items: center; gap: 10px; padding: 12px; border: 1px solid #E2D8CA; border-radius: 12px; margin-top: 8px; cursor: pointer; }
+.radio-option.selected { border-color: #C33A2F; background: #FBF2EF; }
+.radio-option input { accent-color: #315FB8; }
+.radio-option span { flex: 1; display: flex; flex-direction: column; gap: 2px; font-size: 12px; }
+.radio-option > strong { font-size: 12px; }
+.range-demo { justify-content: center; }
+.range-demo > label { margin: 42px auto 4px; }
+.form-demo input[type=range] { width: 100%; accent-color: #315FB8; cursor: pointer; }
+.calendar-widget { background: #fff; border: 1px solid #E2D8CA; border-radius: 16px; padding: 12px; width: min(100%, 350px); margin: 20px auto 0; }
+.calendar-head { display: flex; justify-content: space-between; align-items: center; gap: 8px; font-size: 12px; }
+.calendar-head button { background: transparent; color: #49352B; padding: 2px 8px; font-size: 20px; }
+.calendar-weekdays, .calendar-days { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 3px; text-align: center; }
+.calendar-weekdays { margin: 12px 0 5px; color: #8C8178; font-size: 10px; }
+.calendar-days button { padding: 7px 0; background: transparent; color: #49352B; border-radius: 8px; font-size: 11px; }
+.calendar-days button:disabled { color: #C9C2BB; opacity: .5; }
+.calendar-days button.selected { background: #315FB8; color: #fff; }
+.calendar-days button.in-range { background: #DDE8FB; color: #244A99; }
+.quick-dates { display: flex; justify-content: center; gap: 6px; margin-top: 23px; flex-wrap: wrap; }
+.quick-dates button { border: 1px solid #E2D8CA; background: #fff; color: #49352B; border-radius: 99px; padding: 8px 11px; font-size: 11px; }
+.file-drop { display: flex; justify-content: center; align-items: center; min-height: 82px; border: 1px dashed #D9C7AE; border-radius: 13px; background: #FFFCF7; margin: 35px 0 0; text-align: center; cursor: pointer; font-size: 12px; }
+.file-drop input { position: absolute; width: 1px; height: 1px; opacity: 0; }
+.file-drop.dragging { border-color: #315FB8; background: #E3EAFB; }
+.file-name { text-align: center; font-size: 11px; color: #6F6258; overflow-wrap: anywhere; }
+.otp-label { margin: 32px 0 0 5px; }
+.otp-inputs { display: flex; justify-content: center; gap: 8px; }
+.otp-inputs input { width: 48px !important; height: 52px; text-align: center; font-size: 20px !important; padding: 8px !important; }
+.otp-status { text-align: center; font-size: 11px; color: #6F6258; }
+.quantity-control { display: flex; align-items: center; justify-content: center; gap: 12px; margin: 42px 0 12px; flex-wrap: wrap; }
+.quantity-control button { background: #fff; border: 1px solid #E2D8CA; width: 38px; height: 38px; padding: 0; font-size: 20px; }
+.quantity-control span { color: #92877D; font-size: 11px; }
+.tag-box { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; background: #fff; border: 1px solid #E2D8CA; border-radius: 12px; padding: 8px; margin-top: 5px; }
+.tag-chip { display: inline-flex; align-items: center; gap: 6px; padding: 6px 9px; background: #F2C94C; border-radius: 99px; font-size: 11px; }
+.tag-chip button { background: transparent; padding: 0 2px; color: #49352B; }
+.tag-box input { flex: 1 1 100px; width: 100px !important; border: 0 !important; box-shadow: none !important; padding: 8px 4px !important; }
+.swatches { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; margin: 30px 0 4px; }
+.swatches button { width: 32px; height: 32px; padding: 0; border-radius: 50%; background: var(--swatch); border: 2px solid #fff; box-shadow: 0 0 0 1px #D9C7AE; }
+.swatches button.active { box-shadow: 0 0 0 3px #F2C94C; }
+.color-demo input#swatchHex { margin-bottom: 0; }
+.color-preview { border-radius: 99px; background: #315FB8; color: white; text-align: center; padding: 10px; font-size: 11px; font-weight: bold; }
+.color-picker-demo input[type=color] { width: 100%; height: 105px; border: 0; padding: 0; background: transparent; margin-top: 24px; cursor: pointer; }
+.picker-output { display: flex; align-items: center; gap: 10px; }
+.picker-output > span { width: 34px; height: 34px; border-radius: 9px; background: #8C1F1F; border: 1px solid #D9C7AE; flex: 0 0 34px; }
+.picker-output input { flex: 1; min-width: 0; }
+.bottom-tip { margin: 26px 0 0; }
+@media (max-width: 700px) {
+  .forms-grid-section .card > h3, .forms-grid-section .card > p { margin-left: 18px; margin-right: 18px; }
+  .form-demo { padding: 22px 15px; }
+  .otp-inputs input { width: 42px !important; }
+}
