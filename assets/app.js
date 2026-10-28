@@ -700,12 +700,39 @@ document.getElementById('zoomReset')?.addEventListener('click',()=>{zoomLevel=1;
 pinchStage?.addEventListener('touchstart',event=>{if(event.touches.length===2){const dx=event.touches[0].clientX-event.touches[1].clientX,dy=event.touches[0].clientY-event.touches[1].clientY;pinchDistance=Math.hypot(dx,dy);}},{passive:true});
 pinchStage?.addEventListener('touchmove',event=>{if(event.touches.length===2&&pinchDistance){const dx=event.touches[0].clientX-event.touches[1].clientX,dy=event.touches[0].clientY-event.touches[1].clientY;const distance=Math.hypot(dx,dy);zoomLevel=Math.max(.5,Math.min(2.5,zoomLevel+(distance-pinchDistance)/250));pinchDistance=distance;renderZoom();}},{passive:true});
 pinchStage?.addEventListener('touchend',()=>{pinchDistance=0;},{passive:true});
-document.getElementById('splashReplay')?.addEventListener('click',()=>{
- const phone=document.getElementById('splashPhone'),message=document.getElementById('splashMessage'),status=document.getElementById('splashStatus');
- if(phone){phone.classList.remove('replaying');void phone.offsetWidth;phone.classList.add('replaying');}
- if(message)message.textContent='Загружаем приложение…';if(status)status.textContent='заставка повторяется…';
- setTimeout(()=>{if(message)message.textContent='Готово к работе';if(status)status.textContent='приложение загружено';},1600);
-});
+const splashPhone=document.getElementById('splashPhone');
+const splashMessage=document.getElementById('splashMessage');
+const splashStatus=document.getElementById('splashStatus');
+const splashProgress=document.getElementById('splashProgress');
+const splashProgressFill=document.getElementById('splashProgressFill');
+let splashTimer=null;
+function setSplashProgress(value){
+ const pct=Math.max(0,Math.min(100,value));
+ if(splashProgressFill)splashProgressFill.style.width=pct+'%';
+ if(splashProgress)splashProgress.setAttribute('aria-valuenow',String(Math.round(pct)));
+}
+function replaySplash(){
+ if(splashTimer)clearInterval(splashTimer);
+ if(splashPhone){splashPhone.classList.remove('ready','loading','replaying');void splashPhone.offsetWidth;splashPhone.classList.add('replaying','loading');}
+ if(splashMessage)splashMessage.textContent='Загружаем приложение…';
+ if(splashStatus)splashStatus.textContent='загрузка';
+ setSplashProgress(0);
+ let progress=0;
+ splashTimer=setInterval(()=>{
+  progress=Math.min(100,progress+Math.floor(Math.random()*10)+5);
+  setSplashProgress(progress);
+  if(progress>=100){
+   clearInterval(splashTimer);splashTimer=null;
+   if(splashPhone)splashPhone.classList.remove('loading');
+   if(splashPhone)splashPhone.classList.add('ready');
+   if(splashMessage)splashMessage.textContent='Готово к работе';
+   if(splashStatus)splashStatus.textContent='готов к работе';
+   setSplashProgress(100);
+  }
+ },180);
+}
+document.getElementById('splashReplay')?.addEventListener('click',replaySplash);
+replaySplash();
 
 
 /* Shop, social buttons and online-board demos */
