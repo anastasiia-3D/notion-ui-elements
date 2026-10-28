@@ -601,3 +601,84 @@ document.getElementById('homeButton')?.addEventListener('click',()=>{
 document.getElementById('searchButton')?.addEventListener('click',()=>{
  const status=document.getElementById('errorNavigationStatus');if(status)status.textContent='В реальном проекте здесь откроется поиск по сайту.';
 });
+
+
+// Mobile pattern demos
+document.querySelectorAll('.bottom-nav [data-nav]').forEach(button=>button.addEventListener('click',()=>{
+ document.querySelectorAll('.bottom-nav [data-nav]').forEach(other=>other.classList.toggle('active',other===button));
+ const status=document.getElementById('bottomNavStatus');if(status)status.textContent='«'+button.dataset.nav+'»';
+}));
+const bottomSheet=document.getElementById('bottomSheet'),sheetBackdrop=document.getElementById('sheetBackdrop');
+function setSheet(open){
+ if(bottomSheet)bottomSheet.hidden=!open;if(sheetBackdrop)sheetBackdrop.hidden=!open;
+ const status=document.getElementById('sheetStatus');if(status)status.textContent=open?'панель открыта':'панель закрыта';
+}
+document.getElementById('sheetOpen')?.addEventListener('click',()=>setSheet(true));
+document.getElementById('sheetClose')?.addEventListener('click',()=>setSheet(false));
+sheetBackdrop?.addEventListener('click',()=>setSheet(false));
+document.getElementById('applyFilters')?.addEventListener('click',()=>{
+ const size=document.getElementById('sizeFilter')?.value||'Любой',color=document.getElementById('colorFilter')?.value||'Любой';
+ const status=document.getElementById('sheetStatus');if(status)status.textContent='фильтр: '+size+', '+color;
+ setSheet(false);
+});
+const swipeRow=document.getElementById('swipeRow');
+let swipeStartX=0;
+swipeRow?.addEventListener('touchstart',event=>{swipeStartX=event.changedTouches[0].clientX;},{passive:true});
+swipeRow?.addEventListener('touchend',event=>{
+ const delta=event.changedTouches[0].clientX-swipeStartX;
+ if(delta<-35)swipeRow.classList.add('open');if(delta>35)swipeRow.classList.remove('open');
+},{passive:true});
+swipeRow?.addEventListener('click',event=>{if(event.target.closest('#swipeArchive'))return;swipeRow.classList.toggle('open');});
+document.getElementById('swipeArchive')?.addEventListener('click',()=>{
+ const status=document.getElementById('swipeStatus');if(status)status.textContent='строка перемещена в архив';
+ if(swipeRow){swipeRow.classList.remove('open');const content=swipeRow.querySelector('div');if(content)content.innerHTML='<strong>Ольга</strong><p>Перемещено в архив ✓</p>';}
+});
+const pullRefresh=document.getElementById('pullRefresh');
+let refreshStartY=0,refreshBusy=false;
+pullRefresh?.addEventListener('touchstart',event=>{refreshStartY=event.changedTouches[0].clientY;},{passive:true});
+pullRefresh?.addEventListener('touchend',event=>{
+ if(event.changedTouches[0].clientY-refreshStartY>45)doRefresh();
+},{passive:true});
+pullRefresh?.addEventListener('click',doRefresh);
+function doRefresh(){
+ if(refreshBusy)return;refreshBusy=true;pullRefresh?.classList.add('refreshing');
+ const status=document.getElementById('refreshStatus');if(status)status.textContent='обновляем…';
+ setTimeout(()=>{pullRefresh?.classList.remove('refreshing');if(status)status.textContent='обновлено только что';refreshBusy=false;},1200);
+}
+const longPressCard=document.getElementById('longPressCard');
+let longPressTimer=null,longPressed=false;
+function startLongPress(){longPressed=false;longPressCard?.classList.add('pressed');longPressTimer=setTimeout(()=>{longPressed=true;const status=document.getElementById('longPressStatus');if(status)status.textContent='реакции: ♥  👍  😂';if(longPressCard)longPressCard.textContent='♥  👍  😂';},550);}
+function endLongPress(){clearTimeout(longPressTimer);longPressCard?.classList.remove('pressed');}
+longPressCard?.addEventListener('pointerdown',startLongPress);
+['pointerup','pointerleave','pointercancel'].forEach(type=>longPressCard?.addEventListener(type,endLongPress));
+longPressCard?.addEventListener('click',()=>{if(!longPressed){const status=document.getElementById('longPressStatus');if(status)status.textContent='короткое нажатие: сообщение открыто';}});
+const swipeTitles=['Вариант 1','Вариант 2','Вариант 3','Все варианты просмотрены'];
+let swipeCardIndex=0;
+function moveSwipeCard(decision){
+ const title=document.getElementById('swipeCardTitle'),status=document.getElementById('swipeCardStatus'),card=document.getElementById('swipeCard');
+ if(card){card.style.transform=decision==='like'?'translateX(90px) rotate(8deg)':'translateX(-90px) rotate(-8deg)';card.style.opacity='.25';}
+ swipeCardIndex++;
+ setTimeout(()=>{
+  if(card){card.style.transform='';card.style.opacity='1';}
+  if(title)title.textContent=swipeTitles[Math.min(swipeCardIndex,swipeTitles.length-1)];
+  if(status)status.textContent=swipeCardIndex>=3?'все варианты просмотрены':(decision==='like'?'вам понравился вариант':'вариант пропущен');
+  if(swipeCardIndex>=3){const stack=document.getElementById('swipeCardStack');if(stack)stack.style.opacity='.6';}
+ },200);
+}
+document.getElementById('cardSkip')?.addEventListener('click',()=>moveSwipeCard('skip'));
+document.getElementById('cardLike')?.addEventListener('click',()=>moveSwipeCard('like'));
+const pinchPhoto=document.getElementById('pinchPhoto'),pinchStage=document.getElementById('pinchStage');
+let zoomLevel=1,pinchDistance=0;
+function renderZoom(){if(pinchPhoto)pinchPhoto.style.transform='scale('+zoomLevel+')';if(pinchStage)pinchStage.classList.toggle('zoomed',zoomLevel>1);const status=document.getElementById('zoomStatus');if(status)status.textContent=Math.round(zoomLevel*100)+'%';}
+document.getElementById('zoomIn')?.addEventListener('click',()=>{zoomLevel=Math.min(2.5,zoomLevel+.25);renderZoom();});
+document.getElementById('zoomOut')?.addEventListener('click',()=>{zoomLevel=Math.max(.5,zoomLevel-.25);renderZoom();});
+document.getElementById('zoomReset')?.addEventListener('click',()=>{zoomLevel=1;renderZoom();});
+pinchStage?.addEventListener('touchstart',event=>{if(event.touches.length===2){const dx=event.touches[0].clientX-event.touches[1].clientX,dy=event.touches[0].clientY-event.touches[1].clientY;pinchDistance=Math.hypot(dx,dy);}},{passive:true});
+pinchStage?.addEventListener('touchmove',event=>{if(event.touches.length===2&&pinchDistance){const dx=event.touches[0].clientX-event.touches[1].clientX,dy=event.touches[0].clientY-event.touches[1].clientY;const distance=Math.hypot(dx,dy);zoomLevel=Math.max(.5,Math.min(2.5,zoomLevel+(distance-pinchDistance)/250));pinchDistance=distance;renderZoom();}},{passive:true});
+pinchStage?.addEventListener('touchend',()=>{pinchDistance=0;},{passive:true});
+document.getElementById('splashReplay')?.addEventListener('click',()=>{
+ const phone=document.getElementById('splashPhone'),message=document.getElementById('splashMessage'),status=document.getElementById('splashStatus');
+ if(phone){phone.classList.remove('replaying');void phone.offsetWidth;phone.classList.add('replaying');}
+ if(message)message.textContent='Загружаем приложение…';if(status)status.textContent='заставка повторяется…';
+ setTimeout(()=>{if(message)message.textContent='Готово к работе';if(status)status.textContent='приложение загружено';},1600);
+});
