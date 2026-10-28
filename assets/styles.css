@@ -1877,3 +1877,68 @@ body .minimap-demo .minimap-viewport {
   justify-content: center;
   flex-wrap: wrap;
 }
+
+
+/* Comment marker: speech-bubble pin, not a square badge. */
+#commentPin {
+  width: 22px;
+  height: 22px;
+  border-radius: 50% 50% 50% 8px;
+  background: #8C1F1F;
+  color: #fff;
+  box-shadow: 0 1px 2px #49352B18;
+  transform: rotate(-45deg);
+}
+#commentPin::first-letter {
+  transform: rotate(45deg);
+}
+#commentPin {
+  font-size: 0;
+}
+#commentPin::after {
+  content: "1";
+  display: grid;
+  place-items: center;
+  position: absolute;
+  inset: 0;
+  font-size: 12px;
+  font-weight: 700;
+  transform: rotate(45deg);
+}
+
+/* Calmer palette for the shop/social/boards section: blue and green lead,
+   red is reserved for the comment marker and rare emphasis. */
+.topic-dropdown > summary {
+  background: #F5F0E8;
+  border-bottom: 1px solid #D9C7AE;
+}
+.topic-dropdown > summary:hover { background: #EAE2D5; }
+.shop-demo .brand-primary {
+  border-color: #315FB8;
+  background: #315FB8;
+  color: #fff;
+}
+.shop-demo .brand-primary:hover {
+  border-color: #244A99;
+  background: #244A99;
+}
+.shop-demo .brand-outline {
+  border-color: #6BA97C;
+  color: #2F6B4F;
+}
+.shop-demo .brand-outline:hover {
+  background: #EAF3EC;
+}
+.cursor-two { background: #6BA97C; }
+.connector-board span { color: #315FB8; }
+.frame-preview b { color: #315FB8; }
+
+/* The closing prompt strip should span the available content width. */
+.section-callout.bottom-callout {
+  display: block;
+  width: 100%;
+  max-width: none;
+  box-sizing: border-box;
+  margin-left: 0;
+  margin-right: 0;
+}
