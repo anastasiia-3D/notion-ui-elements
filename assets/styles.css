@@ -1287,3 +1287,6 @@ button:disabled { opacity: .52; cursor: not-allowed; }
 .pull-refresh:active,.pull-refresh.pulling { cursor:grabbing; }
 .pull-refresh.refreshing { cursor:progress; }
 .pull-refresh.refreshing > p:first-child { color:#315FB8; font-weight:700; }
+
+/* Swipe cards should visibly fly out of the stack on decision. */
+.swipe-card { transition: transform .32s cubic-bezier(.2,.75,.25,1), opacity .28s ease; }
