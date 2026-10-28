@@ -818,15 +818,26 @@ replaySplash();
   else {window.open('mailto:?subject='+encodeURIComponent('Посмотри эту страницу')+'&body='+encodeURIComponent(location.href),'_blank');msg='открыто письмо';}
   if($('shareStatus'))$('shareStatus').textContent=msg;
  }));
- const canvas=$('boardCanvas');let pan=null;
- canvas?.addEventListener('pointerdown',e=>{
-  if(e.target.closest('.sticky-note'))return;pan={x:e.clientX,y:e.clientY,left:canvas.scrollLeft,top:canvas.scrollTop};canvas.setPointerCapture?.(e.pointerId);canvas.classList.add('panning');
- });
- canvas?.addEventListener('pointermove',e=>{if(!pan)return;canvas.scrollLeft=pan.left-(e.clientX-pan.x);canvas.scrollTop=pan.top-(e.clientY-pan.y);});
- ['pointerup','pointercancel','pointerleave'].forEach(type=>canvas?.addEventListener(type,()=>{pan=null;canvas?.classList.remove('panning');}));
- document.querySelectorAll('.sticky-note[draggable="true"]').forEach(note=>{
-  note.addEventListener('dragstart',e=>{e.dataTransfer?.setData('text/plain',note.textContent);note.classList.add('dragging');});
-  note.addEventListener('dragend',()=>note.classList.remove('dragging'));
+ const canvas=$('boardCanvas');
+ canvas?.querySelectorAll('.sticky-note[draggable="true"]').forEach(note=>{
+  let drag=null;
+  note.addEventListener('pointerdown',e=>{
+   if(e.button!==0 && e.pointerType==='mouse')return;
+   const canvasRect=canvas.getBoundingClientRect(),noteRect=note.getBoundingClientRect();
+   drag={x:e.clientX,y:e.clientY,left:note.offsetLeft,top:note.offsetTop};
+   note.classList.add('dragging');note.setPointerCapture?.(e.pointerId);
+   e.preventDefault();
+  });
+  note.addEventListener('pointermove',e=>{
+   if(!drag)return;
+   const maxX=Math.max(0,canvas.clientWidth-note.offsetWidth),maxY=Math.max(0,canvas.clientHeight-note.offsetHeight);
+   const left=Math.max(0,Math.min(maxX,drag.left+e.clientX-drag.x));
+   const top=Math.max(0,Math.min(maxY,drag.top+e.clientY-drag.y));
+   note.style.left=left+'px';note.style.top=top+'px';
+   const status=$('canvasStatus');if(status)status.textContent='карточка перемещается по холсту';
+  });
+  const stop=()=>{if(!drag)return;drag=null;note.classList.remove('dragging');const status=$('canvasStatus');if(status)status.textContent='карточку можно захватить и переместить';};
+  note.addEventListener('pointerup',stop);note.addEventListener('pointercancel',stop);
  });
  document.querySelectorAll('.selection-box').forEach(box=>{
   box.addEventListener('click',()=>{box.classList.toggle('resizing');if($('selectionStatus'))$('selectionStatus').textContent=box.classList.contains('resizing')?'потяните за уголки рамки':'объект выбран';});
