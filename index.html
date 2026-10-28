@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Из чего состоит сайт: словарь элементов</title>
-  <link rel="stylesheet" href="assets/styles.css?v=layout-fix-2">
+  <link rel="stylesheet" href="assets/styles.css?v=text-content-reference-1">
 </head>
 <body>
   <main class="page">
@@ -109,15 +109,27 @@
       <div class="cards">
         <article class="card">
           <div class="demo browser-demo">
-            <span class="demo-label">Действия</span>
-            <div class="browser-bar"><span>●</span><span>kava.school/dostavka</span><span>•••</span></div>
-            <div class="browser-content">
-              <h4>Доставка и оплата</h4>
-              <div class="sample-heading">Способы доставки</div>
-              <p>Доставка по Украине и за её пределы</p>
-              <div class="sample-heading">Оплата заказа</div>
-              <p>Выберите удобный способ оплаты</p>
+            <span class="demo-label">Текст</span>
+            <div class="browser-window">
+              <div class="browser-bar"><span class="browser-dots">● ● ●</span><span>kava.school/dostavka</span></div>
+              <div class="browser-content">
+                <h4>Доставка и оплата</h4>
+                <div class="sample-heading">Как мы доставляем</div>
+                <p>Курьер привозит заказ в день оформления, если он сделан до 14:00.</p>
+                <p><strong>Если меня нет дома</strong></p>
+                <p>Курьер перезвонит и оставит заказ в пункте выдачи рядом.</p>
+                <div class="sample-heading">Способы оплаты</div>
+                <p>Картой на сайте или наличными курьеру.</p>
+              </div>
             </div>
+            <div class="heading-levels">
+              <strong>УРОВНИ</strong>
+              <p><b>H1 · Доставка и оплата</b></p>
+              <p>H2 · Как мы доставляем</p>
+              <p>H3 · Если меня нет дома</p>
+              <p>H2 · Способы оплаты</p>
+            </div>
+            <div class="demo-status">Сейчас: <strong>один H1 на странице, остальные вложены в него</strong></div>
           </div>
           <h3>Заголовки и абзацы</h3>
           <p>Название страницы или раздела и обычный текст под ним. Заголовки идут по уровням: главный на странице один, остальные вложены в него, это важно и для читателя, и для поиска в Google. Размер здесь следствие уровня, а не наоборот</p>
@@ -125,11 +137,13 @@
         </article>
         <article class="card">
           <div class="demo links-demo">
-            <span class="demo-label">Текст и контент</span>
-            <a href="#link-example">условия доставки</a>
-            <a href="#link-example">оплата заказа</a>
-            <a href="#link-example">контакты</a>
-            <p>Сейчас: наведите или нажмите на ссылку</p>
+            <span class="demo-label">Текст</span>
+            <div class="link-copy">
+              <p>Сроки и стоимость указаны <a href="#delivery">в разделе доставки</a>.</p>
+              <p>Правила возврата можно посмотреть <a href="#returns">на сайте закона ↗</a>.</p>
+              <p>Остались вопросы? <a href="#faq">Перейти к частым вопросам ↓</a></p>
+            </div>
+            <div class="demo-status">Сейчас: <strong>наведите или нажмите на ссылку</strong></div>
           </div>
           <h3>Ссылка</h3>
           <p>Кликабельный текст, который ведёт на другую страницу или к нужному месту этой же. Ссылку всегда видно отдельно от обычного текста, цветом и подчёркиванием, а подписывать её лучше по смыслу: „условия доставки“, а не „читать здесь“</p>
