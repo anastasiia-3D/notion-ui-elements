@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Из чего состоит сайт: словарь элементов</title>
-  <link rel="stylesheet" href="assets/styles.css?v=text-content-reference-1">
+  <link rel="stylesheet" href="assets/styles.css?v=badge-avatar-reference-1">
 </head>
 <body>
   <main class="page">
@@ -157,36 +157,44 @@
       <div class="cards">
         <article class="card">
           <div class="demo badge-demo">
+            <span class="demo-label">Текст</span>
             <div class="cart"><span class="cart-icon">🛒</span><span>бейдж-счётчик в шапке</span></div>
             <div class="products">
-              <div class="product">Футболка <span class="badge red">Новинка</span></div>
-              <div class="product">Худи <span class="badge yellow">-20%</span></div>
-              <div class="product">Кепка <span class="badge green">Хит</span></div>
+              <div class="product"><span class="badge yellow">Новинка</span><span class="product-name">Футболка</span></div>
+              <div class="product"><span class="badge red">-20%</span><span class="product-name">Худи</span></div>
+              <div class="product"><span class="badge pale">Хит</span><span class="product-name">Кепка</span></div>
             </div>
-            <p>Сейчас: бейдж выделяет один товар среди похожих</p>
+            <div class="demo-status">Сейчас: <strong>бейдж выделяет один товар среди похожих</strong></div>
           </div>
           <h3>Бейдж, он же метка</h3>
-          <p>Маленькая плашка или кружок с коротким словом или числом: „Новинка“, „−20%“, „3“. Нужен, чтобы выделить один объект среди похожих, если бейджи повесить на всё, они перестают работать</p>
+          <p>Маленькая плашка или кружок с коротким словом или числом: «Новинка», «−20%», «3». Нужен, чтобы выделить один объект среди похожих, если бейджи повесить на всё, они перестают работать.</p>
           <p class="code-note">в коде: <code>badge</code></p>
         </article>
         <article class="card">
           <div class="demo avatar-demo">
-            <strong>Участники проекта</strong>
-            <div class="avatars">
-              <span class="avatar online">АК</span>
-              <span class="avatar blue">МС</span>
-              <span class="avatar smile">☺</span>
-              <span class="avatar more">+5</span>
+            <span class="demo-label">Текст</span>
+            <div class="avatar-panel">
+              <strong class="participants-title">Участники проекта</strong>
+              <div class="avatars">
+                <span class="avatar online">АК</span>
+                <span class="avatar yellow">МС</span>
+                <span class="avatar smile">☺</span>
+                <span class="avatar more">+5</span>
+              </div>
+              <div class="person-row">
+                <span class="avatar small online">АК</span>
+                <p class="person"><strong>Анна Коваль</strong><span>куратор · онлайн</span></p>
+              </div>
             </div>
-            <p class="person"><strong>Анна Коваль</strong><br>куратор · онлайн</p>
-            <p>Сейчас: наведите на кружок — это и есть аватар</p>
+            <div class="demo-status">Сейчас: <strong>наведите на кружок — это и есть аватар</strong></div>
           </div>
           <h3>Аватар</h3>
-          <p>Кружок с фотографией, инициалами или иконкой, так показывают человека: автора отзыва, участника чата, себя в профиле. Если фото нет, подставляют инициалы, а не пустоту</p>
+          <p>Кружок с фотографией, инициалами или иконкой, так показывают человека: автора отзыва, участника чата, себя в профиле. Если фото нет, подставляют инициалы, а не пустоту.</p>
           <p class="code-note">в коде: <code>avatar</code></p>
         </article>
       </div>
     </section>
+    <aside class="prompt-note">Берите эти слова прямо в запрос к Claude: «кнопка главная и контурная рядом», «бейдж −20% на карточке», «меню из трёх точек с действиями: переименовать, удалить».</aside>
   </main>
   <script src="assets/app.js"></script>
 </body>
