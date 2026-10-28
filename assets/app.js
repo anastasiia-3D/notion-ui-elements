@@ -298,3 +298,114 @@ function setPickerColor(value) {
 }
 colorPicker?.addEventListener('input',()=>setPickerColor(colorPicker.value));
 pickerHex?.addEventListener('input',()=>setPickerColor(pickerHex.value));
+
+
+// Navigation dropdown interactions: tabs, breadcrumbs, pagination, checkout stepper and menus.
+const tabContent = {
+  'Описание':'Хлопковая футболка плотностью 180 г/м².',
+  'Отзывы':'Покупатели отмечают мягкий хлопок и удобную посадку. Средняя оценка: 4,8 из 5.',
+  'Доставка':'Доставка по Украине курьером или в отделение. Срок обычно 1–3 рабочих дня.'
+};
+document.querySelectorAll('.tabs-widget [data-tab]').forEach(btn=>btn.addEventListener('click',()=>{
+  document.querySelectorAll('.tabs-widget [data-tab]').forEach(b=>{b.classList.toggle('active',b===btn);b.setAttribute('aria-selected',b===btn?'true':'false');});
+  const copy=document.getElementById('tabCopy'),status=document.getElementById('tabStatus');
+  if(copy) copy.textContent=tabContent[btn.dataset.tab]||'';
+  if(status) status.textContent='«'+btn.dataset.tab+'»';
+}));
+const crumbStatus=document.getElementById('crumbStatus'), crumbCurrent=document.getElementById('crumbCurrent');
+document.querySelectorAll('.breadcrumbs [data-crumb]').forEach(btn=>btn.addEventListener('click',()=>{
+  const name=btn.dataset.crumb;
+  if(crumbStatus) crumbStatus.textContent='«'+name+'»';
+  if(crumbCurrent) crumbCurrent.textContent=name;
+  const domain=document.getElementById('crumbDomain');
+  if(domain) domain.textContent='lavka.example/'+({Главная:'',Каталог:'catalog',Обувь:'catalog/shoes'}[name]||'');
+}));
+let currentPage=1;
+const pageProducts=document.getElementById('pageProducts');
+const pageStatus=document.getElementById('pageStatus');
+const pageItems=[
+ ['Кроссовки бежевые','Футболка базовая','Худи oversize'],
+ ['Рюкзак городской','Кепка хлопковая','Носки в рубчик'],
+ ['Куртка лёгкая','Сумка через плечо','Шарф мягкий']
+];
+function renderProducts(){
+  if(pageProducts) pageProducts.innerHTML=pageItems[currentPage-1].map((name,i)=>'<div>'+(i+1+(currentPage-1)*3)+' <span>'+name+'</span></div>').join('');
+  document.querySelectorAll('.pagination-controls [data-page]').forEach(btn=>{
+    const n=btn.dataset.page==='next'?3:btn.dataset.page==='-1'?1:Number(btn.dataset.page);
+    btn.classList.toggle('active',n===currentPage && btn.dataset.page!=='next' && btn.dataset.page!=='-1');
+  });
+  if(pageStatus) pageStatus.textContent=currentPage+' из 3';
+  const status=pageStatus?.parentElement;
+  if(status) status.lastChild.textContent=', товары '+((currentPage-1)*3+1)+'–'+(currentPage*3);
+}
+document.querySelectorAll('.pagination-controls [data-page]').forEach(btn=>btn.addEventListener('click',()=>{
+  if(btn.dataset.page==='next') currentPage=Math.min(3,currentPage+1);
+  else if(btn.dataset.page==='-1') currentPage=Math.max(1,currentPage-1);
+  else currentPage=Number(btn.dataset.page);
+  renderProducts();
+}));
+let currentStep=2;
+const stepNames={1:'корзина',2:'доставка',3:'оплата'};
+const stepDescriptions={
+  1:'В корзине 3 товара. Проверьте количество и перейдите к оформлению.',
+  2:'Курьером завтра до 18:00 по адресу: ул. Крещатик, 22.',
+  3:'Выберите удобный способ оплаты: картой онлайн или при получении.'
+};
+function renderStep(){
+ document.querySelectorAll('.stepper-steps [data-step]').forEach(btn=>{
+   const n=Number(btn.dataset.step); btn.classList.toggle('active',n===currentStep); btn.classList.toggle('done',n<currentStep);
+ });
+ const desc=document.getElementById('stepDescription'),status=document.getElementById('stepStatus'),back=document.getElementById('stepBack'),next=document.getElementById('stepNext');
+ if(desc) desc.textContent=stepDescriptions[currentStep];
+ if(status) status.textContent=currentStep+' из 3 — '+stepNames[currentStep];
+ if(back) back.disabled=currentStep===1;
+ if(next) next.textContent=currentStep===3?'Готово':'Далее';
+}
+document.querySelectorAll('.stepper-steps [data-step]').forEach(btn=>btn.addEventListener('click',()=>{currentStep=Number(btn.dataset.step);renderStep();}));
+document.getElementById('stepBack')?.addEventListener('click',()=>{currentStep=Math.max(1,currentStep-1);renderStep();});
+document.getElementById('stepNext')?.addEventListener('click',()=>{currentStep=currentStep===3?1:currentStep+1;renderStep();});
+
+const hamburgerToggle=document.getElementById('hamburgerToggle'), hamburgerPanel=document.getElementById('hamburgerPanel'), hamburgerStatus=document.getElementById('hamburgerStatus');
+hamburgerToggle?.addEventListener('click',()=>{
+ const opened=hamburgerToggle.getAttribute('aria-expanded')!=='true';
+ hamburgerToggle.setAttribute('aria-expanded',String(opened));
+ hamburgerToggle.textContent=opened?'×':'☰';
+ hamburgerToggle.setAttribute('aria-label',opened?'Закрыть меню':'Открыть меню');
+ if(hamburgerPanel) hamburgerPanel.hidden=!opened;
+ if(hamburgerStatus) hamburgerStatus.textContent=opened?'меню открыто':'меню закрыто';
+});
+document.querySelectorAll('.site-header-demo nav button, .footer-demo button, #hamburgerPanel button').forEach(btn=>btn.addEventListener('click',()=>{
+  const label=btn.textContent.trim();
+  const status=btn.closest('.nav-demo')?.querySelector('.demo-status strong');
+  if(status) status.textContent='выбрано: '+label;
+}));
+document.querySelectorAll('.sidebar-demo button').forEach(btn=>btn.addEventListener('click',()=>{
+ document.querySelectorAll('.sidebar-demo button').forEach(b=>b.classList.toggle('active',b===btn));
+ const name=btn.textContent.replace(/[⌂▤◉⚙]/g,'').replace(/\d+/g,'').trim();
+ const cur=document.getElementById('sidebarCurrent'),stat=document.getElementById('sidebarStatus');
+ if(cur) cur.textContent=name;if(stat) stat.textContent='«'+name+'»';
+}));
+document.querySelectorAll('.nested-layout [data-folder]').forEach(btn=>btn.addEventListener('click',()=>{
+ const children=btn.parentElement.querySelector('.folder-children');
+ if(children){children.hidden=!children.hidden;btn.textContent=(children.hidden?'▸ ':'▾ ')+btn.dataset.folder;}
+ else {const cur=document.getElementById('folderCurrent'),stat=document.getElementById('folderStatus');if(cur)cur.textContent=btn.dataset.folder;if(stat)stat.textContent='открыт раздел «'+btn.dataset.folder+'»';}
+}));
+document.querySelectorAll('.nested-layout [data-folder-child]').forEach(btn=>btn.addEventListener('click',()=>{
+ document.querySelectorAll('.nested-layout [data-folder-child]').forEach(b=>b.classList.toggle('active',b===btn));
+ const cur=document.getElementById('folderCurrent'),stat=document.getElementById('folderStatus');
+ if(cur)cur.textContent=btn.dataset.folderChild;if(stat)stat.textContent='открыт раздел «'+btn.dataset.folderChild+'»';
+}));
+const scrollTopDemo=document.querySelector('.scroll-top-demo'), scrollTopButton=document.getElementById('scrollTopDemo');
+scrollTopDemo?.addEventListener('scroll',()=>scrollTopButton?.classList.toggle('visible',scrollTopDemo.scrollTop>20));
+scrollTopButton?.addEventListener('click',()=>scrollTopDemo?.scrollTo({top:0,behavior:'smooth'}));
+const tocCopyByTitle={
+ 'С чего начать':'Сначала решите, где будете ездить: по городу, по лесу или по трассе. От этого зависит всё остальное.',
+ 'Размер рамы':'Подберите размер рамы под рост и посадку, чтобы поездки были удобными.',
+ 'Колёса':'Диаметр колёс влияет на накат, устойчивость и манёвренность.',
+ 'Тормоза':'Выбирайте тормоза с учётом маршрутов, погоды и обслуживания.'
+};
+document.querySelectorAll('.toc-widget [data-toc]').forEach(btn=>btn.addEventListener('click',()=>{
+ document.querySelectorAll('.toc-widget [data-toc]').forEach(b=>b.classList.toggle('active',b===btn));
+ const name=btn.dataset.toc,cur=document.getElementById('tocCurrent'),copy=document.getElementById('tocCopy'),status=document.getElementById('tocStatus');
+ if(cur)cur.textContent=name;if(copy)copy.textContent=tocCopyByTitle[name]||'';if(status)status.textContent='«'+name+'»';
+}));
