@@ -634,16 +634,40 @@ document.getElementById('swipeArchive')?.addEventListener('click',()=>{
  if(swipeRow){swipeRow.classList.remove('open');const content=swipeRow.querySelector('div');if(content)content.innerHTML='<strong>Ольга</strong><p>Перемещено в архив ✓</p>';}
 });
 const pullRefresh=document.getElementById('pullRefresh');
-let refreshStartY=0,refreshBusy=false;
-pullRefresh?.addEventListener('touchstart',event=>{refreshStartY=event.changedTouches[0].clientY;},{passive:true});
-pullRefresh?.addEventListener('touchend',event=>{
- if(event.changedTouches[0].clientY-refreshStartY>45)doRefresh();
-},{passive:true});
-pullRefresh?.addEventListener('click',doRefresh);
+let refreshStartY=0,refreshStartX=0,refreshBusy=false,pointerDragging=false;
+function startPull(y,x){
+ if(refreshBusy)return;
+ refreshStartY=y;refreshStartX=x;pointerDragging=true;
+ pullRefresh?.classList.add('pulling');
+}
+function movePull(y,x){
+ if(!pointerDragging||!pullRefresh)return;
+ const deltaY=Math.max(0,Math.min(70,y-refreshStartY));
+ const deltaX=Math.abs(x-refreshStartX);
+ if(deltaY>0&&deltaX<Math.max(25,deltaY))pullRefresh.style.transform='translateY('+deltaY+'px)';
+}
+function endPull(y){
+ if(!pointerDragging)return;
+ const distance=y-refreshStartY;pointerDragging=false;
+ if(pullRefresh){pullRefresh.style.transform='';pullRefresh.classList.remove('pulling');}
+ if(distance>38)doRefresh();
+}
+pullRefresh?.addEventListener('pointerdown',event=>{
+ if(event.pointerType==='mouse'&&event.button!==0)return;
+ startPull(event.clientY,event.clientX);
+});
+pullRefresh?.addEventListener('pointermove',event=>movePull(event.clientY,event.clientX));
+pullRefresh?.addEventListener('pointerup',event=>endPull(event.clientY));
+pullRefresh?.addEventListener('pointercancel',()=>{pointerDragging=false;if(pullRefresh){pullRefresh.style.transform='';pullRefresh.classList.remove('pulling');}});
+pullRefresh?.addEventListener('touchstart',event=>startPull(event.changedTouches[0].clientY,event.changedTouches[0].clientX),{passive:true});
+pullRefresh?.addEventListener('touchmove',event=>movePull(event.changedTouches[0].clientY,event.changedTouches[0].clientX),{passive:true});
+pullRefresh?.addEventListener('touchend',event=>endPull(event.changedTouches[0].clientY),{passive:true});
 function doRefresh(){
  if(refreshBusy)return;refreshBusy=true;pullRefresh?.classList.add('refreshing');
  const status=document.getElementById('refreshStatus');if(status)status.textContent='обновляем…';
- setTimeout(()=>{pullRefresh?.classList.remove('refreshing');if(status)status.textContent='обновлено только что';refreshBusy=false;},1200);
+ const hint=pullRefresh?.querySelector(':scope > p');
+ if(hint)hint.textContent='⟳ Обновляем список…';
+ setTimeout(()=>{pullRefresh?.classList.remove('refreshing');if(status)status.textContent='обновлено только что';if(hint)hint.textContent='✓ Список обновлён';refreshBusy=false;},1200);
 }
 const longPressCard=document.getElementById('longPressCard');
 let longPressTimer=null,longPressed=false;
