@@ -146,10 +146,10 @@ function updateDelivery() { const out = document.getElementById('deliveryStatus'
 const toppings = Array.from(document.querySelectorAll('.topping'));
 function updateToppings() {
   const chosen = toppings.filter(el => el.checked);
-  const total = 9 + chosen.reduce((sum, el) => sum + Number(el.dataset.price || 0), 0);
+  const total = 90 + chosen.reduce((sum, el) => sum + Number(el.dataset.price || 0), 0);
   const out = document.getElementById('toppingTotal');
   const status = document.getElementById('toppingStatus');
-  if (out) out.textContent = '$' + total;
+  if (out) out.textContent = total + ' ₴';
   if (status) status.textContent = chosen.length + (chosen.length === 1 ? ' дополнение' : chosen.length > 1 && chosen.length < 5 ? ' дополнения' : ' дополнений');
 }
 toppings.forEach(el => el.addEventListener('change', updateToppings));
@@ -158,16 +158,16 @@ function updateShipping() {
   const chosen = shippingOptions.find(el => el.checked);
   shippingOptions.forEach(el => el.closest('.radio-option')?.classList.toggle('selected', el.checked));
   const price = chosen ? Number(chosen.dataset.price) : 0;
-  const total = 69 + price;
+  const total = 690 + price;
   const totalEl = document.getElementById('shippingTotal');
   const status = document.getElementById('shippingStatus');
-  if (totalEl) totalEl.textContent = '$' + total;
+  if (totalEl) totalEl.textContent = total + ' ₴';
   if (status && chosen) status.textContent = chosen.value.toLowerCase() + ', ' + chosen.dataset.time;
 }
 shippingOptions.forEach(el => el.addEventListener('change', updateShipping));
 
 const priceRange = document.getElementById('priceRange');
-priceRange?.addEventListener('input', () => { const out = document.getElementById('priceValue'); if (out) out.textContent = '$' + priceRange.value; });
+priceRange?.addEventListener('input', () => { const out = document.getElementById('priceValue'); if (out) out.textContent = priceRange.value + ' ₴'; });
 
 const calendarMonthNames = ['январь','февраль','март','апрель','май','июнь','июль','август','сентябрь','октябрь','ноябрь','декабрь'];
 function dateKey(date) { return date.getFullYear() + '-' + String(date.getMonth()+1).padStart(2,'0') + '-' + String(date.getDate()).padStart(2,'0'); }
