@@ -1298,3 +1298,31 @@ button:disabled { opacity: .52; cursor: not-allowed; }
 .pinch-controls button { display:inline-flex; align-items:center; justify-content:center; line-height:1; padding:0; box-sizing:border-box; }
 .pinch-controls .brand-outline { padding:8px 12px; }
 .gesture-hint { width:100%; text-align:center; }
+
+/* Animated loading indicator on the app splash screen. */
+.splash-phone > i {
+  position:relative;
+  width:88px;
+  height:4px;
+  overflow:hidden;
+  border-radius:99px;
+  background:#FFFFFF55;
+}
+.splash-phone > i::after {
+  content:"";
+  position:absolute;
+  inset:0;
+  width:34%;
+  border-radius:inherit;
+  background:#FFF078;
+  animation:splashLoading 1.35s ease-in-out infinite;
+}
+@keyframes splashLoading {
+  0% { transform:translateX(-110%); width:34%; }
+  50% { transform:translateX(100%); width:58%; }
+  100% { transform:translateX(260%); width:34%; }
+}
+.splash-phone.replaying > i::after { animation-duration:.65s; }
+@media(prefers-reduced-motion:reduce) {
+  .splash-phone > i::after { animation:none; width:100%; }
+}
