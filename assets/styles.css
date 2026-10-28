@@ -262,3 +262,37 @@ button { font: inherit; cursor: pointer; border: 0; border-radius: 6px; padding:
 .choice-demo .choice-state {
   background-color: #fff !important;
 }
+
+
+/* Match the user's reference: keep the payment button centered and switches on one row */
+.choice-demo .disabled-button {
+  display: block;
+  width: 72%;
+  margin-left: auto;
+  margin-right: auto;
+  align-self: auto;
+}
+.switch-demo {
+  position: relative;
+}
+.switch-demo .switch-line {
+  position: absolute;
+  top: 57px;
+  margin: 0;
+  width: auto;
+  max-width: none;
+  white-space: nowrap;
+}
+.switch-demo .switch-line:nth-of-type(1) {
+  left: 14%;
+}
+.switch-demo .switch-line:nth-of-type(2) {
+  left: 54%;
+}
+.switch-demo .choice-caption {
+  margin-top: 102px;
+}
+@media (max-width: 700px) {
+  .switch-demo .switch-line:nth-of-type(1) { left: 8%; }
+  .switch-demo .switch-line:nth-of-type(2) { left: 52%; }
+}
