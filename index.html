@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Из чего состоит сайт: словарь элементов</title>
-  <link rel="stylesheet" href="assets/styles.css?v=cream-palette-hover-1">
+  <link rel="stylesheet" href="assets/styles.css?v=forms-dropdown-1">
 </head>
 <body>
   <main class="page">
@@ -201,7 +201,210 @@
 
       </div>
     </details>
+
+    <details class="topic-dropdown forms-dropdown">
+      <summary>Поля ввода и формы</summary>
+      <div class="topic-dropdown-content">
+        <section class="forms-intro">
+          <h2>Поля ввода и формы</h2>
+          <p>Всё, через что человек вводит данные. Для каждого поля важно сразу решить: подпись, подсказка и что показывать при ошибке.</p>
+          <div class="forms-tip">☝️ <strong>Примеры ниже живые — их можно потогать прямо здесь.</strong></div>
+        </section>
+        <section class="forms-grid-section">
+          <div class="cards">
+            <article class="card">
+              <div class="demo form-demo">
+                <span class="demo-label">Формы</span>
+                <div class="form-fields">
+                  <label for="demoEmail">Почта</label><input id="demoEmail" type="email" placeholder="anna@mail.ru" autocomplete="off">
+                  <label for="demoPhone">Телефон</label><input id="demoPhone" type="tel" placeholder="+7 (999) 000-00-00" autocomplete="off">
+                  <p class="form-error" id="contactError" aria-live="polite"></p>
+                </div>
+                <div class="demo-status">Сейчас: <strong id="contactStatus">поля пустые, ошибок нет</strong></div>
+              </div>
+              <h3>Поле ввода</h3>
+              <p>Строка для ввода текста, почты или телефона. У поля всегда три части: подпись сверху, подсказка о формате и место под сообщение об ошибке. Попробуйте ввести неполный номер и уйти из поля, чтобы увидеть ошибку.</p>
+              <p class="code-note">в коде: <code>&lt;input type="text"&gt;</code></p>
+            </article>
+            <article class="card">
+              <div class="demo form-demo">
+                <span class="demo-label">Формы</span>
+                <div class="form-fields">
+                  <label for="orderComment">Комментарий к заказу</label>
+                  <textarea id="orderComment" maxlength="120" placeholder="Например: позвонить за час"></textarea>
+                  <small>Необязательно. Курьер увидит этот текст.</small>
+                </div>
+                <div class="demo-status">Сейчас: осталось <strong id="commentCount">120 символов</strong></div>
+              </div>
+              <h3>Поле ввода: подсказка и счётчик</h3>
+              <p>Подсказка под полем объясняет формат, счётчик показывает остаток символов.</p>
+              <p class="code-note">в коде: <code>&lt;textarea&gt;</code></p>
+            </article>
+            <article class="card">
+              <div class="demo form-demo">
+                <span class="demo-label">Формы</span>
+                <div class="search-field"><span>⌕</span><input id="catalogSearch" type="search" placeholder="Поиск по каталогу"><button id="clearSearch" type="button" aria-label="Очистить поиск">×</button></div>
+                <div class="demo-status">Сейчас: <strong id="searchStatus">запрос пустой</strong></div>
+              </div>
+              <h3>Поле ввода: поиск</h3>
+              <p>С иконкой лупы и крестиком, чтобы быстро очистить запрос.</p>
+              <p class="code-note">в коде: <code>&lt;input type="search"&gt;</code></p>
+            </article>
+            <article class="card">
+              <div class="demo form-demo select-demo">
+                <span class="demo-label">Формы</span>
+                <div class="select-panel">
+                  <strong>Оформление доставки</strong>
+                  <label for="citySelect">Город</label><select id="citySelect"><option>Москва</option><option>Санкт-Петербург</option><option>Казань</option><option>Дублин</option></select>
+                  <label for="pickupSelect">Пункт выдачи</label><select id="pickupSelect"><option>Пушкина, 12</option><option>Ленина, 8</option><option>Центральная, 4</option></select>
+                  <label for="deliveryTime">Время доставки</label><select id="deliveryTime"><option>Сегодня до 18:00</option><option>Завтра с 9:00 до 12:00</option><option>Завтра с 12:00 до 18:00</option></select>
+                </div>
+                <div class="demo-status">Сейчас: <strong id="deliveryStatus">Москва, Пушкина, 12, сегодня до 18:00</strong></div>
+              </div>
+              <h3>Выпадающий список</h3>
+              <p>Поле, которое раскрывает список вариантов. Берут, когда вариантов много и все известны заранее — город, тариф, способ доставки. Если вариантов два-три, лучше показать их сразу радиокнопками: меньше лишних кликов.</p>
+              <p class="code-note">в коде: <code>&lt;select&gt; + &lt;option&gt;</code></p>
+            </article>
+            <article class="card">
+              <div class="demo form-demo">
+                <span class="demo-label">Формы</span>
+                <div class="option-panel"><strong>Добавки к пище</strong>
+                  <label class="option-line"><input type="checkbox" class="topping" data-price="3" checked> <span>Двойной сыр</span><small>+$3</small></label>
+                  <label class="option-line"><input type="checkbox" class="topping" data-price="2"> <span>Грибы</span><small>+$2</small></label>
+                  <label class="option-line"><input type="checkbox" class="topping" data-price="4"> <span>Пепперони</span><small>+$4</small></label>
+                  <label class="option-line"><input type="checkbox" class="topping" data-price="1"> <span>Соус барбекю</span><small>+$1</small></label>
+                  <div class="total-line">Итого <strong id="toppingTotal">$12</strong></div>
+                </div>
+                <div class="demo-status">Сейчас: <strong id="toppingStatus">1 дополнение</strong></div>
+              </div>
+              <h3>Чекбокс</h3>
+              <p>Квадратик, которым отмечают пункт: можно выбрать сразу несколько или ни одного. Классический пример — согласие с условиями перед отправкой формы и фильтры в каталоге. Подпись рядом тоже должна быть кликабельной.</p>
+              <p class="code-note">в коде: <code>&lt;input type="checkbox"&gt;</code></p>
+            </article>
+            <article class="card">
+              <div class="demo form-demo">
+                <span class="demo-label">Формы</span>
+                <div class="option-panel"><strong>Способ доставки</strong>
+                  <label class="radio-option selected"><input type="radio" name="shipMethod" value="Курьером" data-price="5" data-time="завтра до 18:00" checked><span><b>Курьером</b><small>завтра до 18:00</small></span><strong>$5</strong></label>
+                  <label class="radio-option"><input type="radio" name="shipMethod" value="Самовывоз" data-price="0" data-time="сегодня после 15:00"><span><b>Самовывоз</b><small>сегодня после 15:00</small></span><strong>бесплатно</strong></label>
+                  <label class="radio-option"><input type="radio" name="shipMethod" value="Почтой" data-price="3" data-time="3–5 дней"><span><b>Почтой</b><small>3–5 дней</small></span><strong>$3</strong></label>
+                  <div class="total-line">К оплате <strong id="shippingTotal">$74</strong></div>
+                </div>
+                <div class="demo-status">Сейчас: <strong id="shippingStatus">курьером, завтра до 18:00</strong></div>
+              </div>
+              <h3>Радиокнопка</h3>
+              <p>Кружок для выбора строго одного варианта из нескольких: отметили другой — прежний снялся сам. Используют, когда все варианты важно показать сразу, например способ доставки с ценой. Один вариант обычно выбран по умолчанию.</p>
+              <p class="code-note">в коде: <code>&lt;input type="radio"&gt;</code></p>
+            </article>
+            <article class="card">
+              <div class="demo form-demo range-demo">
+                <span class="demo-label">Формы</span>
+                <label for="priceRange">Цена: до <strong id="priceValue">$250</strong></label>
+                <input id="priceRange" type="range" min="50" max="500" step="10" value="250">
+              </div>
+              <h3>Ползунок</h3>
+              <p>Бегунок по шкале — им выбирают значение или диапазон, чаще всего цену в фильтре каталога. Рядом обязательно показывают выбранное число, иначе человек не понимает, что именно он выставил. Потяните бегунок в примере — сумма меняется.</p>
+              <p class="code-note">в коде: <code>&lt;input type="range"&gt;</code></p>
+            </article>
+            <article class="card">
+              <div class="demo form-demo">
+                <span class="demo-label">Формы</span>
+                <div class="calendar-widget"><div class="calendar-head"><button type="button" data-month="-1" aria-label="Предыдущий месяц">‹</button><strong id="calendarTitle">октябрь 2026</strong><button type="button" data-month="1" aria-label="Следующий месяц">›</button></div><div class="calendar-weekdays"><span>пн</span><span>вт</span><span>ср</span><span>чт</span><span>пт</span><span>сб</span><span>вс</span></div><div class="calendar-days" id="calendarDays"></div></div>
+                <div class="demo-status">Сейчас: <strong id="dateStatus">дата не выбрана</strong></div>
+              </div>
+              <h3>Выбор даты</h3>
+              <p>Календарь для выбора даты или периода — записи, доставки, бронирования. Полезно сразу закрывать недоступные дни: прошедшие даты, выходные, занятые слоты. Для периода нужны два поля: «с» и «по».</p>
+              <p class="code-note">в коде: <code>&lt;input type="date"&gt;</code></p>
+            </article>
+            <article class="card">
+              <div class="demo form-demo">
+                <span class="demo-label">Формы</span>
+                <div class="calendar-widget"><div class="calendar-head"><button type="button" data-month="-1" aria-label="Предыдущий месяц">‹</button><strong id="rangeCalendarTitle">октябрь 2026</strong><button type="button" data-month="1" aria-label="Следующий месяц">›</button></div><div class="calendar-weekdays"><span>пн</span><span>вт</span><span>ср</span><span>чт</span><span>пт</span><span>сб</span><span>вс</span></div><div class="calendar-days" id="rangeCalendarDays"></div></div>
+                <div class="demo-status">Сейчас: <strong id="dateRangeStatus">выберите первый день</strong></div>
+              </div>
+              <h3>Выбор даты: период «с — по»</h3>
+              <p>Первым нажатием выбирают начало, вторым конец — дни между ними подсвечиваются.</p>
+              <p class="code-note">в коде: <code>&lt;input type="date"&gt;</code></p>
+            </article>
+            <article class="card">
+              <div class="demo form-demo">
+                <span class="demo-label">Формы</span>
+                <div class="quick-dates"><button type="button" data-quick="0">Сегодня</button><button type="button" data-quick="1">Завтра</button><button type="button" data-quick="7">Через неделю</button></div>
+                <div class="calendar-widget"><div class="calendar-head"><button type="button" data-month="-1" aria-label="Предыдущий месяц">‹</button><strong id="quickCalendarTitle">октябрь 2026</strong><button type="button" data-month="1" aria-label="Следующий месяц">›</button></div><div class="calendar-weekdays"><span>пн</span><span>вт</span><span>ср</span><span>чт</span><span>пт</span><span>сб</span><span>вс</span></div><div class="calendar-days" id="quickCalendarDays"></div></div>
+                <div class="demo-status">Сейчас: <strong id="quickDateStatus">дата не выбрана</strong></div>
+              </div>
+              <h3>Выбор даты: быстрые варианты</h3>
+              <p>Частые даты вынесены в кнопки над календарём, чтобы не искать их в сетке.</p>
+              <p class="code-note">в коде: <code>&lt;input type="date"&gt;</code></p>
+            </article>
+            <article class="card">
+              <div class="demo form-demo">
+                <span class="demo-label">Формы</span>
+                <label class="file-drop" for="fileInput">Перетащите файл сюда или нажмите<input id="fileInput" type="file" accept="image/*,.pdf,.doc,.docx"></label>
+                <p class="file-name" id="fileName">Файл не выбран</p>
+              </div>
+              <h3>Загрузка файла</h3>
+              <p>Кнопка выбора файла или область, куда файл перетаскивают мышью. Рядом пишут, какие форматы и какой вес допустимы, а после выбора показывают имя файла и возможность его убрать. Для фото обычно добавляют маленькое превью.</p>
+              <p class="code-note">в коде: <code>&lt;input type="file"&gt;</code></p>
+            </article>
+            <article class="card">
+              <div class="demo form-demo">
+                <span class="demo-label">Формы</span>
+                <label class="otp-label" for="otp1">Код из СМС</label><div class="otp-inputs"><input id="otp1" inputmode="numeric" maxlength="1" aria-label="Цифра 1"><input inputmode="numeric" maxlength="1" aria-label="Цифра 2"><input inputmode="numeric" maxlength="1" aria-label="Цифра 3"><input inputmode="numeric" maxlength="1" aria-label="Цифра 4"></div><p class="otp-status" id="otpStatus">Введите 4 цифры</p>
+              </div>
+              <h3>Поле для кода из СМС</h3>
+              <p>Несколько отдельных ячеек под одноразовый код из СМС или письма: курсор сам перескакивает в следующую ячейку, а вставка всего кода разом заполняет все поля. Рядом обычно живёт таймер и ссылка «Отправить код снова».</p>
+              <p class="code-note">в коде: <code>autocomplete="one-time-code"</code></p>
+            </article>
+            <article class="card">
+              <div class="demo form-demo">
+                <span class="demo-label">Формы</span>
+                <div class="quantity-control"><button type="button" id="quantityMinus">−</button><strong id="quantityValue">2</strong><button type="button" id="quantityPlus">+</button><span>В наличии 5 шт.</span></div>
+                <div class="demo-status">Сейчас: <strong id="quantityStatus">2 шт.</strong></div>
+              </div>
+              <h3>Счётчик количества</h3>
+              <p>Поле с кнопками «плюс» и «минус» — почти всегда количество товара в корзине. Важно задать границы: минимум один, максимум по остатку на складе, и гасить кнопку, когда предел достигнут. Число должно оставаться доступным для ввода руками.</p>
+              <p class="code-note">в коде: <code>&lt;input type="number"&gt;</code></p>
+            </article>
+            <article class="card">
+              <div class="demo form-demo">
+                <span class="demo-label">Формы</span>
+                <label for="tagInput">Навыки</label><small>— введите слово и нажмите Enter</small><div class="tag-box" id="tagBox"><span class="tag-chip">Figma <button type="button" aria-label="Удалить Figma">×</button></span><span class="tag-chip">Tilda <button type="button" aria-label="Удалить Tilda">×</button></span><input id="tagInput" placeholder="Добавить..."></div>
+              </div>
+              <h3>Поле с тегами</h3>
+              <p>Поле, в котором введённые слова превращаются в отдельные плашки по Enter или запятой, и каждую можно удалить крестиком. Так вводят интересы, навыки, ключевые слова, получателей письма. Введите слово в примере и нажмите Enter.</p>
+              <p class="code-note">в коде: <code>tag input</code></p>
+            </article>
+            <article class="card">
+              <div class="demo form-demo color-demo">
+                <span class="demo-label">Формы</span>
+                <div class="swatches"><button type="button" data-color="#811A19" style="--swatch:#811A19" aria-label="Бордовый"></button><button type="button" data-color="#40552F" style="--swatch:#40552F" aria-label="Зелёный"></button><button type="button" data-color="#244C64" style="--swatch:#244C64" aria-label="Синий"></button><button type="button" data-color="#C84A0A" style="--swatch:#C84A0A" aria-label="Оранжевый"></button><button type="button" data-color="#49352B" style="--swatch:#49352B" aria-label="Коричневый"></button><button type="button" data-color="#F2C94C" style="--swatch:#F2C94C" aria-label="Жёлтый"></button></div>
+                <label for="swatchHex">Код цвета</label><input id="swatchHex" value="#315FB8" maxlength="7">
+                <div class="color-preview" id="swatchPreview">Так будет выглядеть кнопка</div><div class="demo-status">Сейчас: <strong id="swatchStatus">#315FB8</strong></div>
+              </div>
+              <h3>Выбор цвета</h3>
+              <p>Палитра для выбора цвета или поле для ввода HEX-кода вида #811A19. Встречается в конструкторах и настройках оформления, а в магазинах цвет товара чаще показывают готовыми кружочками-образцами, а не палитрой.</p>
+              <p class="code-note">в коде: <code>&lt;input type="color"&gt;</code></p>
+            </article>
+            <article class="card">
+              <div class="demo form-demo color-picker-demo">
+                <span class="demo-label">Формы</span>
+                <input type="color" id="colorPicker" value="#8c1f1f">
+                <input type="range" id="colorShade" min="0" max="100" value="65" aria-label="Оттенок">
+                <div class="picker-output"><span id="pickerSwatch"></span><input id="pickerHex" value="#8C1F1F" maxlength="7"></div>
+                <div class="demo-status">Сейчас: <strong id="pickerStatus">#8c1f1f</strong></div>
+              </div>
+              <h3>Выбор цвета: пипетка</h3>
+              <p>Любой цвет: квадрат насыщенности и полоса оттенка, код считается сам.</p>
+              <p class="code-note">в коде: <code>&lt;input type="color"&gt;</code></p>
+            </article>
+          </div>
+        </section>
+        <aside class="forms-tip bottom-tip">Формулируйте форму целиком: «форма записи: имя, телефон с маской, выбор даты и чекбокс согласия; кнопка неактивна, пока поля не заполнены».</aside>
+      </div>
+    </details>
+
   </main>
-  <script src="assets/app.js?v=cart-avatar-interactions-3"></script>
+  <script src="assets/app.js?v=forms-interactions-1"></script>
 </body>
 </html>
