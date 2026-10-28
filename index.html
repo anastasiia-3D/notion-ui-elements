@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Из чего состоит сайт: словарь элементов</title>
-  <link rel="stylesheet" href="assets/styles.css?v=structure-dropdown-2">
+  <link rel="stylesheet" href="assets/styles.css?v=status-feedback-dropdown-1">
 </head>
 <body>
   <main class="page">
@@ -676,7 +676,144 @@
       </div>
     </details>
 
+
+    <details class="topic-dropdown status-feedback-dropdown">
+      <summary>Статусы, уведомления и обратная связь</summary>
+      <div class="topic-dropdown-content">
+        <section class="forms-intro status-intro">
+          <p>Сайт обязан отвечать на действия: сохранилось, грузится, не получилось. Эти состояния чаще всего забывают заказать, и сайт кажется «мёртвым».</p>
+          <div class="forms-tip">☝️ <strong>Примеры ниже живые — их можно потогать прямо здесь.</strong></div>
+        </section>
+        <section class="status-grid-section">
+          <div class="cards">
+            <article class="card">
+              <div class="demo status-demo">
+                <span class="demo-label">Статусы</span>
+                <button type="button" class="brand-primary" id="toastTrigger">Сохранить</button>
+                <div class="toast-message" id="toastMessage" role="status" aria-live="polite" hidden>Сохранено</div>
+              </div>
+              <h3>Тост (уведомление)</h3>
+              <p>Короткое сообщение в углу или снизу экрана, которое само исчезает через несколько секунд: «Сохранено», «Фото загружено». Подтверждает, что действие прошло, и не перекрывает страницу. Для ошибок, которые нужно прочитать внимательно, лучше взять баннер — тост пропадает слишком быстро.</p>
+              <p class="code-note">в коде: <code>role="status"</code></p>
+            </article>
+            <article class="card">
+              <div class="demo status-demo">
+                <span class="demo-label">Статусы</span>
+                <div class="progress-line"><div id="progressFill"></div></div><span class="progress-percent" id="progressPercent">48%</span>
+                <div class="skeleton-stack"><div></div><div></div><div></div></div>
+                <button type="button" class="brand-outline" id="loadingToggle">Показать загрузку</button>
+              </div>
+              <h3>Индикаторы загрузки</h3>
+              <p>Всё, что показывает «сайт занят»: полоска прогресса, крутящийся значок или серые заглушки-скелетоны на месте будущего текста и картинок. Нужны на каждой загрузке — без них человек думает, что сайт сломался, и уходит.</p>
+              <p class="code-note">в коде: <code>&lt;progress&gt;</code>, skeleton</p>
+            </article>
+            <article class="card">
+              <div class="demo status-demo">
+                <span class="demo-label">Статусы</span>
+                <div class="tooltip-settings">
+                  <strong>Настройки рассылки</strong>
+                  <label>Имя отправителя <button type="button" class="help-dot" aria-label="Подсказка об имени отправителя" data-tooltip="Это имя увидит получатель письма.">?</button><input id="senderName" value="Марина из Лавки"></label>
+                  <label>UTM-метка <button type="button" class="help-dot" aria-label="Подсказка об UTM-метке" data-tooltip="Метка помогает понять, откуда пришёл переход.">?</button><input id="utmSource" value="utm_source=email"></label>
+                  <div class="tooltip-popup" id="tooltipPopup" role="status" hidden></div>
+                </div>
+                <div class="demo-status">Сейчас: <strong>наведите курсор на знак вопроса или нажмите</strong></div>
+              </div>
+              <h3>Тултип (подсказка)</h3>
+              <p>Маленькая подсказка, которая появляется при наведении курсора или фокусе — объясняет иконку или непонятное поле. Внутри только короткая фраза. Важно: на телефоне наведения нет, поэтому туда прячут лишь необязательные пояснения.</p>
+              <p class="code-note">в коде: <code>tooltip</code></p>
+            </article>
+            <article class="card">
+              <div class="demo status-demo">
+                <span class="demo-label">Статусы</span>
+                <div class="alert-stack">
+                  <div class="alert-box info-alert" role="status"><strong>Подтвердите почту.</strong> Без этого не придут чеки.</div>
+                  <div class="alert-box warning-alert" role="alert"><strong>Срок действия карты истекает через 5 дней.</strong> Обновите данные в профиле.</div>
+                  <div class="alert-box error-alert" role="alert"><strong>Оплата не прошла.</strong> Попробуйте другую карту. <button type="button" id="retryPayment">Повторить</button><span id="paymentStatus" aria-live="polite"></span></div>
+                </div>
+                <div class="demo-status">Сейчас: <strong>три плашки: информация, предупреждение и ошибка</strong></div>
+              </div>
+              <h3>Баннер-предупреждение</h3>
+              <p>Цветная плашка с важным сообщением, которая остаётся на странице: информация, успех, предупреждение, ошибка. Цвет работает вместе с иконкой и текстом, а не вместо них. Внутри часто есть действие — «Повторить», «Заполнить профиль».</p>
+              <p class="code-note">в коде: <code>role="alert"</code></p>
+            </article>
+            <article class="card">
+              <div class="demo status-demo cookie-demo">
+                <span class="demo-label">Статусы</span>
+                <div class="phone-cookie">
+                  <div class="phone-mini-status">9:41 ▰</div><strong>Новости</strong><div class="skeleton-block"></div>
+                  <div class="cookie-banner" id="cookieBanner">🍪 Мы используем cookies для работы сайта и аналитики.<div><button type="button" class="brand-outline" id="cookieReject">Отклонить</button><button type="button" class="brand-primary" id="cookieAccept">Принять</button></div></div>
+                </div>
+                <div class="demo-status">Сейчас: <strong id="cookieStatus">плашка держит внимание, пока нет ответа</strong></div>
+              </div>
+              <h3>Баннер-предупреждение: плашка про cookies</h3>
+              <p>Закреплена внизу экрана и не пропадает, пока не нажмёте одну из кнопок.</p>
+              <p class="code-note">в коде: <code>role="alert"</code></p>
+            </article>
+            <article class="card">
+              <div class="demo status-demo">
+                <span class="demo-label">Статусы</span>
+                <div class="browser-mock empty-browser"><div class="browser-bar"><span>● ● ●</span><div>lavka.example/cart</div></div><div class="empty-state"><span>🛒</span><strong>В корзине пусто</strong><p>Загляните в каталог — там есть что выбрать.</p><button type="button" class="brand-primary" id="catalogButton">В каталог</button><small id="emptyCartStatus"></small></div></div>
+                <div class="demo-status">Сейчас: <strong>корзина пуста — показываем, что делать дальше</strong></div>
+              </div>
+              <h3>Пустое состояние</h3>
+              <p>Что показать, когда данных нет: корзина пуста, по фильтру ничего не нашлось, список ещё не заполнен. Пустой экран без объяснений выглядит как поломка, поэтому всегда есть короткая фраза и кнопка следующего шага — «Перейти в каталог», «Сбросить фильтры».</p>
+              <p class="code-note">в коде: <code>empty state</code></p>
+            </article>
+          </div>
+        </section>
+        <section class="status-other">
+          <h3>Остальные состояния</h3>
+          <div class="cards">
+            <article class="card">
+              <div class="demo status-demo">
+                <span class="demo-label">Статусы</span>
+                <button type="button" class="notification-bell" id="notificationBell" aria-label="Открыть уведомления">🔔<span>2</span></button>
+                <span class="notification-hint">Нажмите на колокольчик</span>
+                <div class="notification-panel" id="notificationPanel" hidden><strong>Уведомления</strong><p>Новый комментарий к заказу</p><p>Заказ передан курьеру</p><button type="button" class="brand-outline" id="clearNotifications">Отметить прочитанными</button></div>
+                <div class="demo-status">Сейчас: <strong id="notificationStatus">2 непрочитанных уведомления</strong></div>
+              </div>
+              <h3>Центр уведомлений</h3>
+              <p>Колокольчик в шапке со счётчиком непрочитанного и списком событий. В отличие от тоста, сообщения здесь не исчезают, к ним можно вернуться. Счётчик обнуляется, когда список открыли.</p>
+              <p class="code-note">в коде: <code>notifications</code></p>
+            </article>
+            <article class="card">
+              <div class="demo status-demo">
+                <span class="demo-label">Статусы</span>
+                <div class="tour-preview"><div class="skeleton-line"></div><div class="skeleton-block"></div><div class="tour-card" id="tourCard"><strong id="tourStep">1 из 3</strong><p id="tourCopy">Здесь появляются новые уроки</p><div><button type="button" class="brand-primary" id="tourNext">Далее</button><button type="button" class="brand-outline" id="tourClose">Закрыть</button></div></div></div>
+                <div class="demo-status">Сейчас: <strong id="tourStatus">обучающий тур, шаг 1 из 3</strong></div>
+              </div>
+              <h3>Обучающий тур</h3>
+              <p>Цепочка подсказок, которая ведёт новичка по интерфейсу: «1 из 3», «Далее». Коротким его и держат — три-четыре шага, с возможностью закрыть на любом. Показывают один раз, а не при каждом входе.</p>
+              <p class="code-note">в коде: <code>product tour</code></p>
+            </article>
+            <article class="card">
+              <div class="demo status-demo">
+                <span class="demo-label">Статусы</span>
+                <div class="offline-alert" role="status"><strong>Нет соединения.</strong> Показываем сохранённую версию.</div>
+                <button type="button" class="brand-primary" id="offlineRetry">Повторить</button>
+                <div class="demo-status">Сейчас: <strong id="offlineStatus">нет соединения, данные сохранены</strong></div>
+              </div>
+              <h3>Нет соединения</h3>
+              <p>Состояние, когда пропал интернет: что показать и что разрешить делать офлайн. Хорошее решение — показать сохранённые данные с честной пометкой и кнопкой «Повторить», а не пустой белый экран.</p>
+              <p class="code-note">в коде: <code>offline state</code></p>
+            </article>
+            <article class="card">
+              <div class="demo status-demo">
+                <span class="demo-label">Статусы</span>
+                <div class="browser-mock error-browser"><div class="browser-bar"><span>● ● ●</span><div>lavka.example/catalog</div></div><div class="error-page"><strong>404</strong><p>Такой страницы нет. Возможно, ссылка устарела или в адресе опечатка.</p><button type="button" class="brand-primary" id="homeButton">На главную</button><button type="button" class="brand-outline" id="searchButton">Поиск по сайту</button><div id="errorNavigationStatus" aria-live="polite"></div></div></div>
+                <div class="demo-status">Сейчас: <strong>адрес не найден — страница объясняет и предлагает выход</strong></div>
+              </div>
+              <h3>Страница ошибки 404</h3>
+              <p>Страница по несуществующему адресу. Её задача — не извиниться, а вернуть человека в работу: объяснить простыми словами и дать ссылку на главную или поиск.</p>
+              <p class="code-note">в коде: <code>404 page</code></p>
+            </article>
+          </div>
+        </section>
+        <aside class="forms-tip status-bottom-tip">Просите их у ИИ явно: «добавь пустое состояние корзины, тост после отправки формы, скелетон во время загрузки и страницу 404».</aside>
+      </div>
+    </details>
+
   </main>
-  <script src="assets/app.js?v=structure-interactions-2"></script>
+  <script src="assets/app.js?v=status-feedback-interactions-1"></script>
 </body>
 </html>
