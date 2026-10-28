@@ -1511,3 +1511,27 @@ button:disabled { opacity: .52; cursor: not-allowed; }
 .canvas-minimap-notes i { display:block; width:13px; height:10px; border-radius:2px; background:#FFF078; font-size:0; }
 .canvas-minimap-notes i:last-child { background:#D9E9FF; }
 .canvas-minimap-viewport { position:absolute; left:23px; top:12px; width:21px; height:15px; border:1px solid #8C1F1F; border-radius:2px; background:#8C1F1F0A; pointer-events:none; }
+
+/* Simulated multiplayer presence: independent, smooth cursor paths across the shared board. */
+.collab-board { overflow:hidden; }
+.collab-cursor { will-change:transform; transition:box-shadow .18s ease, filter .18s ease; }
+.collab-cursor:hover, .collab-cursor:focus-visible { z-index:4; filter:brightness(1.08); box-shadow:0 3px 10px #49352B30; outline:2px solid #FFF078; outline-offset:2px; }
+.collab-board .cursor-one { animation:collabMoveOne 8s ease-in-out infinite alternate; }
+.collab-board .cursor-two { animation:collabMoveTwo 9s ease-in-out infinite alternate; }
+@keyframes collabMoveOne {
+  0% { left:8%; top:18%; }
+  28% { left:52%; top:15%; }
+  56% { left:65%; top:62%; }
+  78% { left:26%; top:68%; }
+  100% { left:12%; top:38%; }
+}
+@keyframes collabMoveTwo {
+  0% { left:70%; top:18%; }
+  25% { left:35%; top:64%; }
+  52% { left:12%; top:52%; }
+  76% { left:58%; top:22%; }
+  100% { left:72%; top:60%; }
+}
+@media (prefers-reduced-motion: reduce) {
+ .collab-board .cursor-one, .collab-board .cursor-two { animation:none; }
+}
