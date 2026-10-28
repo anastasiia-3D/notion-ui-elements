@@ -526,3 +526,78 @@ function renderTimeline(){
 }
 document.getElementById('timelineNext')?.addEventListener('click',()=>{timelineStep=Math.min(timelineLabels.length,timelineStep+1);renderTimeline();});
 document.getElementById('timelineReset')?.addEventListener('click',()=>{timelineStep=1;renderTimeline();});
+
+
+// Status, notifications and feedback demo interactions.
+let toastTimer;
+const toastTrigger=document.getElementById('toastTrigger');
+toastTrigger?.addEventListener('click',()=>{
+ const toast=document.getElementById('toastMessage');if(!toast)return;
+ toast.hidden=false;toast.textContent='Сохранено';
+ clearTimeout(toastTimer);toastTimer=setTimeout(()=>{toast.hidden=true;},3200);
+});
+let loadingTimer=null,progressValue=48;
+document.getElementById('loadingToggle')?.addEventListener('click',event=>{
+ const fill=document.getElementById('progressFill'),percent=document.getElementById('progressPercent'),skeletons=document.querySelector('.skeleton-stack'),button=event.currentTarget;
+ if(loadingTimer){clearInterval(loadingTimer);loadingTimer=null;button.textContent='Показать загрузку';if(fill)fill.style.width='48%';if(percent)percent.textContent='48%';skeletons?.classList.remove('loading');return;}
+ progressValue=0;button.textContent='Остановить загрузку';skeletons?.classList.add('loading');
+ loadingTimer=setInterval(()=>{
+  progressValue=Math.min(100,progressValue+Math.floor(Math.random()*13)+5);
+  if(fill)fill.style.width=progressValue+'%';if(percent)percent.textContent=progressValue+'%';
+  if(progressValue>=100){clearInterval(loadingTimer);loadingTimer=null;button.textContent='Загрузка завершена';skeletons?.classList.remove('loading');}
+ },350);
+});
+document.querySelectorAll('[data-tooltip]').forEach(button=>{
+ const show=()=>{const popup=document.getElementById('tooltipPopup');if(popup){popup.textContent=button.dataset.tooltip;popup.hidden=false;}};
+ const hide=()=>{const popup=document.getElementById('tooltipPopup');if(popup)popup.hidden=true;};
+ button.addEventListener('mouseenter',show);button.addEventListener('focus',show);
+ button.addEventListener('click',()=>{const popup=document.getElementById('tooltipPopup');if(popup){popup.hidden=!popup.hidden;if(!popup.hidden)popup.textContent=button.dataset.tooltip;}});
+ button.addEventListener('mouseleave',hide);button.addEventListener('blur',hide);
+});
+document.getElementById('retryPayment')?.addEventListener('click',()=>{
+ const status=document.getElementById('paymentStatus');if(status)status.textContent='Проверьте данные карты и попробуйте снова.';
+});
+function dismissCookie(choice){
+ const banner=document.getElementById('cookieBanner'),status=document.getElementById('cookieStatus');
+ if(banner)banner.innerHTML='Вы выбрали: '+choice+'. Спасибо за ответ.';
+ if(status)status.textContent='выбор сохранён: '+choice.toLowerCase();
+}
+document.getElementById('cookieAccept')?.addEventListener('click',()=>dismissCookie('Принять cookies'));
+document.getElementById('cookieReject')?.addEventListener('click',()=>dismissCookie('Отклонить необязательные cookies'));
+document.getElementById('catalogButton')?.addEventListener('click',()=>{
+ const status=document.getElementById('emptyCartStatus');if(status)status.textContent='Каталог готов к открытию в настоящем магазине.';
+});
+const notificationBell=document.getElementById('notificationBell');
+notificationBell?.addEventListener('click',()=>{
+ const panel=document.getElementById('notificationPanel'),status=document.getElementById('notificationStatus'),count=notificationBell.querySelector('span');
+ if(panel){panel.hidden=!panel.hidden;if(!panel.hidden){if(count)count.textContent='0';if(status)status.textContent='список открыт, уведомления отмечены прочитанными';}}
+});
+document.getElementById('clearNotifications')?.addEventListener('click',()=>{
+ const panel=document.getElementById('notificationPanel'),status=document.getElementById('notificationStatus');
+ if(panel)panel.hidden=true;if(status)status.textContent='все уведомления прочитаны';
+});
+const tourCopy=['Здесь появляются новые уроки','Откройте урок, чтобы увидеть материалы и задания','Отслеживайте прогресс и возвращайтесь к обучению'];
+let tourIndex=1;
+function renderTour(){
+ const step=document.getElementById('tourStep'),copy=document.getElementById('tourCopy'),status=document.getElementById('tourStatus'),next=document.getElementById('tourNext');
+ if(step)step.textContent=tourIndex+' из 3';if(copy)copy.textContent=tourCopy[tourIndex-1];if(status)status.textContent='обучающий тур, шаг '+tourIndex+' из 3';
+ if(next)next.textContent=tourIndex===3?'Завершить':'Далее';
+}
+document.getElementById('tourNext')?.addEventListener('click',()=>{
+ if(tourIndex===3){tourIndex=1;const card=document.getElementById('tourCard');if(card)card.hidden=true;const status=document.getElementById('tourStatus');if(status)status.textContent='обучение завершено';}
+ else{tourIndex++;renderTour();}
+});
+document.getElementById('tourClose')?.addEventListener('click',()=>{
+ const card=document.getElementById('tourCard'),status=document.getElementById('tourStatus');if(card)card.hidden=true;if(status)status.textContent='обучающий тур закрыт';
+});
+document.getElementById('offlineRetry')?.addEventListener('click',()=>{
+ const status=document.getElementById('offlineStatus'),button=document.getElementById('offlineRetry');
+ if(status)status.textContent='проверка соединения не удалась в демо-режиме; сохранённые данные доступны';
+ button.textContent='Повторить ещё раз';
+});
+document.getElementById('homeButton')?.addEventListener('click',()=>{
+ const status=document.getElementById('errorNavigationStatus');if(status)status.textContent='В реальном проекте здесь откроется главная страница.';
+});
+document.getElementById('searchButton')?.addEventListener('click',()=>{
+ const status=document.getElementById('errorNavigationStatus');if(status)status.textContent='В реальном проекте здесь откроется поиск по сайту.';
+});
