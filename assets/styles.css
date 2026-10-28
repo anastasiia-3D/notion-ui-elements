@@ -1611,3 +1611,101 @@ button:disabled { opacity: .52; cursor: not-allowed; }
   text-align: center;
   box-sizing: border-box;
 }
+
+
+/* Compact minimap demo rebuilt to match the reference: main cards on the canvas,
+   with a small overview map tucked into the lower-right corner. */
+.shop-social-board-dropdown .minimap-demo {
+  position: relative;
+  height: 160px;
+  min-height: 160px;
+  padding: 15px;
+  overflow: hidden;
+  background-color: #fbf8f3;
+  background-image: radial-gradient(#ddd3c5 0.7px, transparent 0.7px);
+  background-size: 8px 8px;
+}
+.shop-social-board-dropdown .minimap-demo .minimap-main {
+  position: absolute;
+  left: 50%;
+  top: 52%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  gap: 8px;
+  max-width: calc(100% - 95px);
+}
+.shop-social-board-dropdown .minimap-main > span {
+  display: grid;
+  place-items: center;
+  min-width: 62px;
+  height: 56px;
+  padding: 0 10px;
+  border-radius: 5px;
+  background: #fff078;
+  color: #49352b;
+  font-size: 14px;
+  white-space: nowrap;
+}
+.shop-social-board-dropdown .minimap-main > span:last-child {
+  background: #d9e9ff;
+}
+.shop-social-board-dropdown .minimap-demo .board-minimap {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  z-index: 2;
+  width: 80px;
+  height: 47px;
+  padding: 0;
+  border: 1px solid #d8cdbE;
+  border-radius: 9px;
+  background: #fff;
+  box-shadow: 0 2px 7px #49352b14;
+  overflow: hidden;
+}
+.shop-social-board-dropdown .minimap-demo .minimap-content {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  padding: 0;
+}
+.shop-social-board-dropdown .minimap-demo .minimap-content span {
+  display: block;
+  padding: 6px 4px;
+  border-radius: 2px;
+  background: #fff078;
+  font-size: 5px;
+  line-height: 1;
+  white-space: nowrap;
+}
+.shop-social-board-dropdown .minimap-demo .minimap-content span:last-child {
+  background: #d9e9ff;
+}
+.shop-social-board-dropdown .minimap-demo .minimap-viewport {
+  top: 27%;
+  left: 34%;
+  width: 30%;
+  height: 48%;
+  border: 1px solid #315fb8;
+  background: #315fb822;
+  border-radius: 2px;
+  cursor: move;
+  touch-action: none;
+}
+@media (max-width: 650px) {
+  .shop-social-board-dropdown .minimap-demo .minimap-main {
+    max-width: calc(100% - 75px);
+    gap: 5px;
+  }
+  .shop-social-board-dropdown .minimap-main > span {
+    min-width: 48px;
+    height: 48px;
+    padding: 0 6px;
+    font-size: 12px;
+  }
+}
