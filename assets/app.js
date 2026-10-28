@@ -706,3 +706,136 @@ document.getElementById('splashReplay')?.addEventListener('click',()=>{
  if(message)message.textContent='Загружаем приложение…';if(status)status.textContent='заставка повторяется…';
  setTimeout(()=>{if(message)message.textContent='Готово к работе';if(status)status.textContent='приложение загружено';},1600);
 });
+
+
+/* Shop, social buttons and online-board demos */
+(function(){
+ const $=id=>document.getElementById(id);
+ const money=n=>'$'+Math.round(n);
+ function updateCart(){
+  const rows=[...document.querySelectorAll('.cart-product')];
+  let subtotal=0,count=0;
+  rows.forEach(row=>{
+   const check=row.querySelector('.cart-check'),qtyEl=row.querySelector('.qty');
+   const qty=Math.max(1,Number(qtyEl?.textContent||1)),price=Number(row.dataset.price||0);
+   const active=check?.checked&&!row.classList.contains('unavailable');
+   row.classList.toggle('not-selected',!active);
+   if(active){subtotal+=price*qty;count+=qty;}
+  });
+  const discount=subtotal>=80?17:0,delivery=subtotal>=100?0:(subtotal?5:0),total=Math.max(0,subtotal-discount)+delivery;
+  if($('cartSubtotal'))$('cartSubtotal').textContent=money(subtotal);
+  if($('cartDiscount'))$('cartDiscount').textContent='−'+money(discount);
+  if($('cartDelivery'))$('cartDelivery').textContent=delivery?money(delivery):'Бесплатно';
+  if($('cartTotal'))$('cartTotal').textContent=money(total);
+  if($('cartCount'))$('cartCount').textContent=count;
+  if($('cartStatus'))$('cartStatus').textContent=count?'к оплате '+money(total)+' за '+count+' шт.':'корзина пуста';
+  if($('freeDelivery'))$('freeDelivery').textContent=subtotal>=100?'Бесплатная доставка':'До бесплатной доставки '+money(Math.max(0,100-subtotal));
+  if($('cartSelectAll'))$('cartSelectAll').checked=rows.filter(r=>!r.classList.contains('unavailable')).every(r=>r.querySelector('.cart-check')?.checked);
+ }
+ document.querySelectorAll('.cart-product [data-qty]').forEach(btn=>btn.addEventListener('click',()=>{
+  const qty=btn.closest('.quantity-control')?.querySelector('.qty');if(!qty)return;
+  qty.textContent=Math.max(1,Math.min(9,Number(qty.textContent)+Number(btn.dataset.qty)));updateCart();
+ }));
+ document.querySelectorAll('.cart-check').forEach(ch=>ch.addEventListener('change',updateCart));
+ document.querySelectorAll('.remove-product').forEach(btn=>btn.addEventListener('click',()=>{
+  const row=btn.closest('.cart-product');if(!row)return;
+  row.querySelector('.cart-check').checked=false;row.classList.add('not-selected');updateCart();
+  if($('cartStatus'))$('cartStatus').textContent='товар убран из расчёта';
+ }));
+ $('cartSelectAll')?.addEventListener('change',e=>{document.querySelectorAll('.cart-check:not(:disabled)').forEach(ch=>ch.checked=e.target.checked);updateCart();});
+ $('checkoutButton')?.addEventListener('click',()=>{
+  const status=$('checkoutMessage');if(status)status.textContent=document.querySelectorAll('.cart-check:checked:not(:disabled)').length?'Переходим к оформлению заказа…':'Выберите хотя бы один товар.';
+  if($('cartStatus'))$('cartStatus').textContent=status.textContent;
+ });
+ const filters=[...document.querySelectorAll('.catalog-filter')];
+ function updateFilters(){
+  const price=Number($('priceRange')?.value||300),stock=filters.find(x=>x.value==='stock')?.checked,sale=filters.find(x=>x.value==='sale')?.checked,isNew=filters.find(x=>x.value==='new')?.checked;
+  if($('priceValue'))$('priceValue').textContent=money(price);
+  let n=39;if(stock)n-=4;if(sale)n-=sale?8:0;if(isNew)n-=6;n=Math.max(0,Math.min(n,Math.round(price/500*39)));
+  if($('filterResult'))$('filterResult').textContent='Найдено '+n+' товаров';
+ }
+ filters.forEach(x=>x.addEventListener('change',updateFilters));$('priceRange')?.addEventListener('input',updateFilters);
+ document.querySelectorAll('#sizeSelector [data-size]').forEach(btn=>btn.addEventListener('click',()=>{
+  if(btn.disabled)return;document.querySelectorAll('#sizeSelector [data-size]').forEach(b=>b.classList.toggle('selected',b===btn));
+  if($('sizeStatus'))$('sizeStatus').textContent=btn.dataset.size;
+ }));
+ $('applyPromo')?.addEventListener('click',()=>{
+  const code=$('promoCode')?.value.trim().toUpperCase(),valid=code==='SALE25';
+  if($('promoTotal'))$('promoTotal').textContent=valid?'$87.75':'$117';
+  if($('promoMessage')){$('promoMessage').textContent=valid?'Код применён: скидка 25%':'Код не найден. Проверьте написание.';$('promoMessage').classList.toggle('success',valid);$('promoMessage').classList.toggle('error',!valid);}
+ });
+ $('discountAdd')?.addEventListener('click',()=>{
+  if($('discountStatus'))$('discountStatus').textContent='товар добавлен в корзину';
+  $('discountAdd').textContent='Добавлено ✓';
+ });
+ let liked=false;
+ $('likeButton')?.addEventListener('click',()=>{
+  liked=!liked;$('likeButton').setAttribute('aria-pressed',String(liked));$('likeButton').classList.toggle('liked',liked);
+  $('likeCount').textContent=128+(liked?1:0);$('likeButton').firstChild.textContent=liked?'♥ ':'♡ ';
+  if($('likeStatus'))$('likeStatus').textContent=liked?'вам понравилось':'лайк отменён';
+ });
+ document.querySelectorAll('#ratingStars [data-rating]').forEach(btn=>btn.addEventListener('click',()=>{
+  const value=Number(btn.dataset.rating);
+  document.querySelectorAll('#ratingStars [data-rating]').forEach(b=>{b.classList.toggle('chosen',Number(b.dataset.rating)<=value);b.setAttribute('aria-pressed',String(Number(b.dataset.rating)<=value));});
+  if($('ratingChoice'))$('ratingChoice').textContent='ваша оценка: '+value+' из 5';
+  if($('ratingStatus'))$('ratingStatus').textContent='Спасибо за оценку '+value+'/5';
+ }));
+ $('shareButton')?.addEventListener('click',()=>{
+  const box=$('shareOptions');if(box)box.hidden=!box.hidden;
+  if($('shareStatus'))$('shareStatus').textContent=box&&!box.hidden?'выберите способ поделиться':'список закрыт';
+ });
+ document.querySelectorAll('[data-share]').forEach(btn=>btn.addEventListener('click',async()=>{
+  const kind=btn.dataset.share;let msg='';
+  if(kind==='copy'){try{await navigator.clipboard.writeText(location.href);msg='ссылка скопирована';}catch{msg='скопируйте адрес сайта из строки браузера';}}
+  else if(kind==='telegram'){window.open('https://t.me/share/url?url='+encodeURIComponent(location.href),'_blank','noopener');msg='открыт Telegram';}
+  else {window.open('mailto:?subject='+encodeURIComponent('Посмотри эту страницу')+'&body='+encodeURIComponent(location.href),'_blank');msg='открыто письмо';}
+  if($('shareStatus'))$('shareStatus').textContent=msg;
+ }));
+ const canvas=$('boardCanvas');let pan=null;
+ canvas?.addEventListener('pointerdown',e=>{
+  if(e.target.closest('.sticky-note'))return;pan={x:e.clientX,y:e.clientY,left:canvas.scrollLeft,top:canvas.scrollTop};canvas.setPointerCapture?.(e.pointerId);canvas.classList.add('panning');
+ });
+ canvas?.addEventListener('pointermove',e=>{if(!pan)return;canvas.scrollLeft=pan.left-(e.clientX-pan.x);canvas.scrollTop=pan.top-(e.clientY-pan.y);});
+ ['pointerup','pointercancel','pointerleave'].forEach(type=>canvas?.addEventListener(type,()=>{pan=null;canvas?.classList.remove('panning');}));
+ document.querySelectorAll('.sticky-note[draggable="true"]').forEach(note=>{
+  note.addEventListener('dragstart',e=>{e.dataTransfer?.setData('text/plain',note.textContent);note.classList.add('dragging');});
+  note.addEventListener('dragend',()=>note.classList.remove('dragging'));
+ });
+ document.querySelectorAll('.selection-box').forEach(box=>{
+  box.addEventListener('click',()=>{box.classList.toggle('resizing');if($('selectionStatus'))$('selectionStatus').textContent=box.classList.contains('resizing')?'потяните за уголки рамки':'объект выбран';});
+ });
+ let connected=true;
+ ['connectorStart','connectorEnd'].forEach(id=>$(id)?.addEventListener('click',()=>{
+  connected=!connected;if($('connectorArrow'))$('connectorArrow').textContent=connected?'→':'· · ·';
+  if($('connectorStatus'))$('connectorStatus').textContent=connected?'экраны соединены стрелкой':'связь отключена';
+ }));
+ document.querySelectorAll('[data-tool]').forEach(btn=>btn.addEventListener('click',()=>{
+  document.querySelectorAll('[data-tool]').forEach(b=>b.classList.toggle('active',b===btn));
+  if($('toolStatus'))$('toolStatus').textContent=btn.dataset.tool;
+ }));
+ const viewport=$('minimapViewport');let moveMini=false;
+ viewport?.addEventListener('pointerdown',e=>{moveMini=true;viewport.setPointerCapture?.(e.pointerId);});
+ viewport?.addEventListener('pointermove',e=>{if(!moveMini)return;const r=viewport.parentElement.getBoundingClientRect();viewport.style.left=Math.max(0,Math.min(80,(e.clientX-r.left)/r.width*100-10))+'%';viewport.style.top=Math.max(0,Math.min(65,(e.clientY-r.top)/r.height*100-15))+'%';if($('minimapStatus'))$('minimapStatus').textContent='область просмотра перемещена';});
+ ['pointerup','pointercancel'].forEach(type=>viewport?.addEventListener(type,()=>moveMini=false));
+ document.querySelectorAll('.collab-cursor').forEach(btn=>btn.addEventListener('mouseenter',()=>{if($('collabStatus'))$('collabStatus').textContent='на доске сейчас '+btn.textContent;}));
+ let draggedTask=null;
+ document.querySelectorAll('.kanban-board button[draggable="true"]').forEach(task=>{
+  task.addEventListener('dragstart',()=>{draggedTask=task;setTimeout(()=>task.classList.add('dragging'),0);});
+  task.addEventListener('dragend',()=>{task.classList.remove('dragging');draggedTask=null;});
+ });
+ document.querySelectorAll('.kanban-board > div').forEach(col=>{
+  col.addEventListener('dragover',e=>e.preventDefault());
+  col.addEventListener('drop',e=>{e.preventDefault();if(draggedTask){col.appendChild(draggedTask);if($('kanbanStatus'))$('kanbanStatus').textContent='задача перемещена: '+col.querySelector('b')?.textContent;}});
+ });
+ $('commentPin')?.addEventListener('click',()=>{const p=$('commentPopover');if(p)p.hidden=!p.hidden;});
+ $('commentReply')?.addEventListener('click',()=>{if($('commentPopover'))$('commentPopover').innerHTML='<strong>Ирина</strong><p>Ответ: учтём в следующей версии.</p><button type="button" id="commentReply">Ответить</button>';});
+ let seconds=300,timer=null;
+ function renderTimer(){if($('timerDisplay'))$('timerDisplay').textContent=String(Math.floor(seconds/60)).padStart(2,'0')+':'+String(seconds%60).padStart(2,'0');}
+ $('timerStart')?.addEventListener('click',()=>{
+  if(timer){clearInterval(timer);timer=null;$('timerStart').textContent='Продолжить';if($('timerStatus'))$('timerStatus').textContent='пауза';return;}
+  if(seconds<=0)seconds=300;$('timerStart').textContent='Пауза';if($('timerStatus'))$('timerStatus').textContent='идёт отсчёт';
+  timer=setInterval(()=>{seconds=Math.max(0,seconds-1);renderTimer();if(seconds===0){clearInterval(timer);timer=null;$('timerStart').textContent='Старт';if($('timerStatus'))$('timerStatus').textContent='время вышло';}},1000);
+ });
+ $('timerReset')?.addEventListener('click',()=>{if(timer)clearInterval(timer);timer=null;seconds=300;renderTimer();if($('timerStart'))$('timerStart').textContent='Старт';if($('timerStatus'))$('timerStatus').textContent='таймер сброшен';});
+ updateCart();updateFilters();
+})();
