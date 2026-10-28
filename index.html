@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Из чего состоит сайт: словарь элементов</title>
-  <link rel="stylesheet" href="assets/styles.css?v=ukraine-examples-1">
+  <link rel="stylesheet" href="assets/styles.css?v=navigation-dropdown-1">
 </head>
 <body>
   <main class="page">
@@ -403,7 +403,166 @@
       </div>
     </details>
 
+
+    <details class="topic-dropdown navigation-dropdown">
+      <summary>Навигация по сайту</summary>
+      <div class="topic-dropdown-content">
+        <section class="forms-intro navigation-intro">
+          <p>Как человек перемещается по сайту и понимает, где он находится.</p>
+          <div class="forms-tip">☝️ <strong>Примеры ниже живые — их можно потогать прямо здесь.</strong></div>
+        </section>
+        <section class="navigation-grid-section">
+          <div class="cards">
+            <article class="card">
+              <div class="demo nav-demo">
+                <span class="demo-label">Навигация</span>
+                <div class="tabs-widget" role="tablist" aria-label="Информация о товаре">
+                  <button type="button" role="tab" aria-selected="true" class="active" data-tab="Описание">Описание</button>
+                  <button type="button" role="tab" aria-selected="false" data-tab="Отзывы">Отзывы</button>
+                  <button type="button" role="tab" aria-selected="false" data-tab="Доставка">Доставка</button>
+                </div>
+                <p class="tab-copy" id="tabCopy">Хлопковая футболка плотностью 180 г/м².</p>
+                <div class="demo-status">Сейчас: открыта вкладка <strong id="tabStatus">«Описание»</strong></div>
+              </div>
+              <h3>Табы (вкладки)</h3>
+              <p>Переключатели над блоком: «Описание», «Отзывы», «Доставка». Контент под ними меняется без перезагрузки страницы, активная вкладка всегда подсвечена. Хороши для 2–5 коротких разделов одного уровня; если разделов много, лучше сделать отдельные страницы.</p>
+              <p class="code-note">в коде: <code>role="tablist"</code></p>
+            </article>
+            <article class="card">
+              <div class="demo nav-demo">
+                <span class="demo-label">Навигация</span>
+                <div class="browser-mock">
+                  <div class="browser-bar"><span>● ● ●</span><div id="crumbDomain">lavka.example/catalog/shoes</div></div>
+                  <div class="browser-content">
+                    <nav class="breadcrumbs" aria-label="Хлебные крошки"><button type="button" data-crumb="Главная">Главная</button><span>/</span><button type="button" data-crumb="Каталог">Каталог</button><span>/</span><button type="button" data-crumb="Обувь">Обувь</button><span>/</span></nav>
+                    <strong id="crumbCurrent">Кроссовки бежевые</strong>
+                    <div class="skeleton-line"></div><div class="skeleton-line short"></div><div class="skeleton-block"></div>
+                  </div>
+                </div>
+                <div class="demo-status">Сейчас: вы на странице <strong id="crumbStatus">«Кроссовки бежевые»</strong></div>
+              </div>
+              <h3>Хлебные крошки</h3>
+              <p>Путь от главной до текущей страницы: Главная → Каталог → Обувь. Показывает, где человек находится, и даёт вернуться на любой уровень одним кликом. Особенно нужны в магазинах и больших каталогах с вложенными разделами.</p>
+              <p class="code-note">в коде: <code>&lt;nav aria-label="breadcrumb"&gt;</code></p>
+            </article>
+            <article class="card">
+              <div class="demo nav-demo">
+                <span class="demo-label">Навигация</span>
+                <div class="pagination-widget">
+                  <div class="product-list" id="pageProducts"><div>1 <span>Кроссовки бежевые</span></div><div>2 <span>Футболка базовая</span></div><div>3 <span>Худи oversize</span></div></div>
+                  <div class="pagination-controls"><button type="button" data-page="-1" aria-label="Предыдущая страница">‹</button><button type="button" data-page="1" class="active">1</button><button type="button" data-page="2">2</button><button type="button" data-page="3">3</button><button type="button" data-page="next" aria-label="Следующая страница">›</button></div>
+                </div>
+                <div class="demo-status">Сейчас: страница <strong id="pageStatus">1 из 3</strong>, товары 1–3</div>
+              </div>
+              <h3>Пагинация</h3>
+              <p>Разбивка длинного списка на страницы с номерами и стрелками «назад-вперёд». Текущая страница выделена и не кликается. Альтернатива — кнопка «Показать ещё» или бесконечная прокрутка; выбирают что-то одно.</p>
+              <p class="code-note">в коде: <code>&lt;nav aria-label="pagination"&gt;</code></p>
+            </article>
+            <article class="card">
+              <div class="demo nav-demo">
+                <span class="demo-label">Навигация</span>
+                <div class="stepper-widget">
+                  <div class="stepper-steps"><button type="button" data-step="1">1 · Корзина</button><button type="button" data-step="2" class="active">2 · Доставка</button><button type="button" data-step="3">3 · Оплата</button></div>
+                  <div class="stepper-description" id="stepDescription">Курьером завтра до 18:00 по адресу: ул. Крещатик, 22.</div>
+                  <div class="stepper-actions"><button type="button" id="stepBack">Назад</button><button type="button" id="stepNext">Далее</button></div>
+                </div>
+                <div class="demo-status">Сейчас: шаг <strong id="stepStatus">2 из 3 — доставка</strong></div>
+              </div>
+              <h3>Степпер (шаги)</h3>
+              <p>Индикатор прогресса длинного процесса: корзина → доставка → оплата. Снимает тревогу: человек видит, сколько шагов осталось. Пройденные шаги помечают галочкой, и обычно разрешают вернуться назад, чтобы что-то исправить.</p>
+              <p class="code-note">в коде: <code>stepper</code></p>
+            </article>
+            <article class="card">
+              <div class="demo nav-demo">
+                <span class="demo-label">Навигация</span>
+                <div class="mobile-menu-widget"><div class="mobile-menu-head"><strong>ЛАВКА</strong><button type="button" id="hamburgerToggle" aria-expanded="false" aria-label="Открыть меню">☰</button></div><nav id="hamburgerPanel" hidden><button type="button">Каталог</button><button type="button">О нас</button><button type="button">Контакты</button></nav></div>
+                <div class="demo-status">Сейчас: <strong id="hamburgerStatus">меню закрыто</strong></div>
+              </div>
+              <h3>Меню-гамбургер</h3>
+              <p>Иконка из трёх линий, за которой на телефоне прячут основное меню. По нажатию меню выезжает поверх страницы, иконка превращается в крестик. На компьютере это меню обычно показывают строкой целиком.</p>
+              <p class="code-note">в коде: <code>&lt;button aria-expanded&gt; + &lt;nav&gt;</code></p>
+            </article>
+          </div>
+        </section>
+        <section class="navigation-other">
+          <h3>Остальные части навигации</h3>
+          <div class="cards">
+            <article class="card">
+              <div class="demo nav-demo">
+                <span class="demo-label">Структура</span>
+                <div class="browser-mock small-browser"><div class="browser-bar"><span>● ● ●</span><div>lavka.example</div></div><div class="site-header-demo"><strong>ЛАВКА</strong><nav><button type="button">Каталог</button><button type="button">О нас</button><button type="button">Контакты</button></nav><button class="header-cta" type="button">В каталог</button></div><div class="skeleton-line"></div><div class="skeleton-block"></div></div>
+                <div class="demo-status">Сейчас: <strong>прокрутите страницу — шапка остаётся сверху</strong></div>
+              </div>
+              <h3>Шапка сайта</h3>
+              <p>Верхний блок с логотипом, меню и главной кнопкой — одинаковый на всех страницах. Логотип в шапке всегда ведёт на главную, это ожидают по умолчанию. Часто шапку делают «липкой», чтобы меню не уезжало при прокрутке.</p>
+              <p class="code-note">в коде: <code>&lt;header&gt;</code></p>
+            </article>
+            <article class="card">
+              <div class="demo nav-demo">
+                <span class="demo-label">Структура</span>
+                <div class="browser-mock footer-browser"><div class="browser-bar"><span>● ● ●</span><div>lavka.example</div></div><div class="skeleton-line"></div><div class="skeleton-line short"></div><footer class="footer-demo"><div><b>Покупателям</b><button type="button">Доставка</button><button type="button">Оплата</button><button type="button">Возврат</button></div><div><b>О компании</b><button type="button">О нас</button><button type="button">Контакты</button><button type="button">© 2026</button></div></footer></div>
+                <div class="demo-status">Сейчас: <strong>колонки стоят рядом</strong></div>
+              </div>
+              <h3>Подвал сайта</h3>
+              <p>Нижний блок со вспомогательными ссылками, контактами, соцсетями и реквизитами. Туда уносят всё, что нужно редко, но должно быть: оферта, политика, почта для связи.</p>
+              <p class="code-note">в коде: <code>&lt;footer&gt;</code></p>
+            </article>
+            <article class="card">
+              <div class="demo nav-demo">
+                <span class="demo-label">Структура</span>
+                <div class="phone-footer"><div class="phone-status">9:41 ▰</div><div class="skeleton-line"></div><div class="skeleton-line short"></div><footer><details><summary>Покупателям</summary><button type="button">Доставка</button><button type="button">Оплата</button></details><details><summary>О компании</summary><button type="button">О нас</button><button type="button">Контакты</button></details><details><summary>Связь</summary><button type="button">Написать нам</button></details></footer></div>
+                <div class="demo-status">Сейчас: <strong>колонки сворачиваются в аккордеон</strong></div>
+              </div>
+              <h3>Подвал сайта: на телефоне</h3>
+              <p>Колонки ссылок сворачиваются в аккордеон, иначе подвал занимает пол-экрана.</p>
+              <p class="code-note">в коде: <code>&lt;footer&gt;</code></p>
+            </article>
+            <article class="card">
+              <div class="demo nav-demo">
+                <span class="demo-label">Структура</span>
+                <div class="browser-mock sidebar-browser"><div class="browser-bar"><span>● ● ●</span><div>workspace.example</div></div><div class="sidebar-layout"><nav class="sidebar-demo"><strong>Рабочее пространство</strong><button type="button" class="active">⌂ Главная</button><button type="button">▤ Заказы <small>12</small></button><button type="button">◉ Клиенты</button><button type="button">⚙ Настройки</button></nav><div class="sidebar-main"><strong id="sidebarCurrent">Главная</strong><div class="skeleton-line"></div><div class="skeleton-line short"></div><div class="skeleton-block"></div></div></div></div>
+                <div class="demo-status">Сейчас: открыт раздел <strong id="sidebarStatus">«Главная»</strong></div>
+              </div>
+              <h3>Боковое меню, сайдбар</h3>
+              <p>Вертикальная панель навигации у края экрана. Удобна, когда разделов много и ими пользуются постоянно — личный кабинет, админка. На телефоне её прячут за кнопку-гамбургер.</p>
+              <p class="code-note">в коде: <code>&lt;aside&gt;</code></p>
+            </article>
+            <article class="card">
+              <div class="demo nav-demo">
+                <span class="demo-label">Структура</span>
+                <div class="browser-mock nested-browser"><div class="browser-bar"><span>● ● ●</span><div>workspace.example</div></div><div class="nested-layout"><nav><strong>База знаний</strong><button type="button" data-folder="Курсы">▾ Курсы</button><div class="folder-children"><button type="button" class="active" data-folder-child="Основы">Основы</button><button type="button" data-folder-child="Автоматизация">Автоматизация</button></div><button type="button" data-folder="Шаблоны">▸ Шаблоны</button><button type="button" data-folder="Архив">Архив</button></nav><div class="sidebar-main"><strong id="folderCurrent">Основы</strong><div class="skeleton-line"></div><div class="skeleton-block"></div></div></div></div>
+                <div class="demo-status">Сейчас: <strong id="folderStatus">разделы раскрываются, как папки</strong></div>
+              </div>
+              <h3>Боковое меню, сайдбар: с вложенными разделами</h3>
+              <p>Разделы раскрываются как папки — так устроены боковые меню в базах знаний и рабочих пространствах.</p>
+              <p class="code-note">в коде: <code>&lt;aside&gt;</code></p>
+            </article>
+            <article class="card">
+              <div class="demo nav-demo">
+                <span class="demo-label">Структура</span>
+                <div class="scroll-top-demo"><div class="skeleton-line"></div><div class="skeleton-block"></div><div class="skeleton-line"></div><div class="skeleton-block"></div><button type="button" id="scrollTopDemo">↑</button></div>
+                <div class="demo-status">Сейчас: <strong>прокрутите блок — стрелка появится сама</strong></div>
+              </div>
+              <h3>Кнопка «Наверх»</h3>
+              <p>Плавающая стрелка, которая возвращает к началу длинной страницы. Появляется не сразу, а после того, как человек прокрутил вниз, и не должна перекрывать важное — обычно её ставят в правый нижний угол.</p>
+              <p class="code-note">в коде: <code>back to top</code></p>
+            </article>
+            <article class="card">
+              <div class="demo nav-demo">
+                <span class="demo-label">Структура</span>
+                <div class="toc-widget"><nav><strong>СОДЕРЖАНИЕ</strong><button type="button" class="active" data-toc="С чего начать">С чего начать</button><button type="button" data-toc="Размер рамы">Размер рамы</button><button type="button" data-toc="Колёса">Колёса</button><button type="button" data-toc="Тормоза">Тормоза</button></nav><div class="toc-article"><strong id="tocCurrent">С чего начать</strong><p id="tocCopy">Сначала решите, где будете ездить: по городу, по лесу или по трассе. От этого зависит всё остальное.</p><strong>Размер рамы</strong><p>Выбирайте по росту и посадке.</p></div></div>
+                <div class="demo-status">Сейчас: вы читаете раздел <strong id="tocStatus">«С чего начать»</strong></div>
+              </div>
+              <h3>Оглавление статьи</h3>
+              <p>Список ссылок на разделы длинного текста, часто закреплённый сбоку. Текущий раздел в нём подсвечивается по мере прокрутки, так видно, где вы и сколько осталось.</p>
+              <p class="code-note">в коде: <code>&lt;a href="#section"&gt;</code></p>
+            </article>
+          </div>
+        </section>
+      </div>
+    </details>
+
   </main>
-  <script src="assets/app.js?v=ukraine-examples-1"></script>
+  <script src="assets/app.js?v=navigation-interactions-1"></script>
 </body>
 </html>
