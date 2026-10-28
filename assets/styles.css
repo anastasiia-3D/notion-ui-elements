@@ -187,3 +187,25 @@ button { font: inherit; cursor: pointer; border: 0; border-radius: 6px; padding:
   margin: 0;
   pointer-events: auto;
 }
+
+/* Keep the three-dot menu button at the exact center of the demo panel */
+.menu-demo {
+  position: relative;
+}
+.menu-demo .demo-menu-head {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  pointer-events: none;
+}
+.menu-demo .demo-menu-head .dots {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  pointer-events: auto;
+}
