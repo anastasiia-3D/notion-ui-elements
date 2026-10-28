@@ -1475,7 +1475,24 @@ button:disabled { opacity: .52; cursor: not-allowed; }
 .kanban-board button.dragging { opacity:.4; }
 .comment-frame { position:relative; padding:12px; border:1px solid #E2D8CA; border-radius:12px; background:#fff; }
 .comment-skeleton { display:flex; flex-direction:column; gap:8px; }.comment-skeleton i { height:9px; border-radius:99px; background:#E9E7E4; }.comment-skeleton i:nth-child(2){width:55%;}.comment-skeleton i:nth-child(3){height:45px;}
-#commentPin { position:absolute; top:8px; right:7px; width:24px; height:24px; border:0; border-radius:50%; background:#8C1F1F; color:#fff; font-weight:700; }
+#commentPin {
+  position: absolute;
+  top: 8px;
+  right: 7px;
+  width: 21px;
+  height: 21px;
+  padding: 0;
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: 6px;
+  background: #8C1F1F;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1;
+  box-shadow: 0 1px 2px #49352B18;
+}
 .comment-popover { width:100%; max-width:320px; padding:10px; border:1px solid #E2D8CA; border-radius:10px; background:#fff; font-size:11px; }
 .comment-popover[hidden] { display:none; }.comment-popover p { margin:5px 0; }.comment-popover button { border:0; border-radius:99px; padding:6px 10px; background:#315FB8; color:#fff; font-size:10px; }
 .workshop-timer { display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:8px; }
