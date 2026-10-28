@@ -161,3 +161,14 @@ button { font: inherit; cursor: pointer; border: 0; border-radius: 6px; padding:
 .menu-demo .dots {
   margin-left: 33%;
 }
+
+/* Center the three-dot menu icon within its demo panel */
+.menu-demo .demo-menu-head {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 28px;
+}
+.menu-demo .dots {
+  margin-left: 0;
+}
