@@ -1462,3 +1462,10 @@ button:disabled { opacity: .52; cursor: not-allowed; }
  .cart-product { gap:5px; }.product-emoji { width:30px; height:30px; flex-basis:30px; }
  .quantity-control { gap:2px; }.quantity-control button { width:20px; height:20px; }
 }
+
+/* Splash loading indicator: animated fill during loading, full when ready */
+.splash-phone .splash-progress { width:88px; height:4px; overflow:hidden; border-radius:99px; background:rgba(255,255,255,.3); }
+.splash-phone .splash-progress > i { display:block; width:0; height:100%; border-radius:inherit; background:#FFF078; transition:width .12s linear; }
+.splash-phone.ready .splash-progress > i { width:100%; transition:width .25s ease-out; }
+.splash-phone.loading .splash-progress > i { width:35%; animation:splashLoading 1.1s ease-in-out infinite; }
+@keyframes splashLoading { 0%{transform:translateX(-110%)} 100%{transform:translateX(320%)} }
