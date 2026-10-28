@@ -939,6 +939,209 @@
       </div>
     </details>
 
+
+    <details class="topic-dropdown shop-social-board-dropdown">
+      <summary>Магазин, социальные кнопки и онлайн-доски</summary>
+      <div class="topic-dropdown-content">
+        <div class="section-toc">
+          <strong>Содержание</strong><span> · 3 раздела</span>
+          <ol>
+            <li><a href="#shop-examples">Интернет-магазин</a></li>
+            <li><a href="#social-examples">Социальные кнопки</a></li>
+            <li><a href="#board-examples">Онлайн-доски</a></li>
+          </ol>
+        </div>
+        <p class="section-intro">Отдельные наборы элементов, которые встречаются в конкретных задачах: продажа товаров, реакции людей и совместная работа на доске.</p>
+        <p class="section-callout">☝ Примеры ниже живые — их можно потрогать прямо здесь.</p>
+
+        <section id="shop-examples" class="shop-social-section">
+          <h2><span class="section-number">1</span> Интернет-магазин</h2>
+          <div class="cards">
+            <article class="card">
+              <div class="demo shop-demo">
+                <span class="demo-label">Магазин</span>
+                <label class="shop-select-all"><input type="checkbox" id="cartSelectAll"> Выбрать все</label>
+                <div class="cart-products">
+                  <div class="cart-product" data-price="69" data-name="Кроссовки бежевые"><input type="checkbox" class="cart-check" checked aria-label="Выбрать кроссовки"><span class="product-emoji">👟</span><span class="product-info"><strong>Кроссовки бежевые</strong><b>$69 <del>$86</del></b></span><div class="quantity-control"><button type="button" data-qty="-1" aria-label="Уменьшить количество">−</button><span class="qty">1</span><button type="button" data-qty="1" aria-label="Увеличить количество">+</button></div><button class="remove-product" type="button" aria-label="Убрать товар">×</button></div>
+                  <div class="cart-product" data-price="14" data-name="Носки, 3 пары"><input type="checkbox" class="cart-check" checked aria-label="Выбрать носки"><span class="product-emoji">🧦</span><span class="product-info"><strong>Носки, 3 пары</strong><b>$14</b></span><div class="quantity-control"><button type="button" data-qty="-1" aria-label="Уменьшить количество">−</button><span class="qty">2</span><button type="button" data-qty="1" aria-label="Увеличить количество">+</button></div><button class="remove-product" type="button" aria-label="Убрать товар">×</button></div>
+                  <div class="cart-product unavailable" data-price="9" data-name="Бутылка для воды"><input type="checkbox" class="cart-check" disabled aria-label="Нет в наличии"><span class="product-emoji">🥤</span><span class="product-info"><strong>Бутылка для воды</strong><b>$9</b></span><div class="quantity-control"><button type="button" disabled>−</button><span class="qty">1</span><button type="button" disabled>+</button></div><button class="remove-product" type="button" disabled>×</button></div>
+                </div>
+                <div class="cart-summary"><div class="free-delivery" id="freeDelivery">До бесплатной доставки $3</div><div><span>Товары, <span id="cartCount">3</span> шт.</span><b id="cartSubtotal">$97</b></div><div class="sale-line"><span>Скидка</span><b id="cartDiscount">−$17</b></div><div><span>Доставка</span><b id="cartDelivery">$5</b></div><hr><div class="cart-total"><span>Итого</span><b id="cartTotal">$85</b></div><button type="button" class="brand-primary" id="checkoutButton">Оформить заказ</button><p id="checkoutMessage" role="status" aria-live="polite"></p></div>
+                <div class="demo-status">Сейчас: <strong id="cartStatus">корзина пересчитывается автоматически</strong></div>
+              </div>
+              <h3>Корзина</h3><p>Список выбранных товаров с количеством и итоговой суммой. Главное правило: сумма пересчитывается сразу при изменении количества, без кнопки «Обновить». Рядом обычно пишут стоимость доставки, чтобы итог не стал сюрпризом на последнем шаге.</p><p class="code-note">в коде: <code>cart</code></p>
+            </article>
+            <article class="card">
+              <div class="demo shop-demo">
+                <span class="demo-label">Магазин</span>
+                <div class="filter-box">
+                  <label><input type="checkbox" class="catalog-filter" value="stock" checked> Есть в наличии</label>
+                  <label><input type="checkbox" class="catalog-filter" value="sale"> Со скидкой</label>
+                  <label><input type="checkbox" class="catalog-filter" value="new"> Новинки</label>
+                  <label class="price-label">Цена: до <b id="priceValue">$300</b><input type="range" id="priceRange" min="20" max="500" value="300"></label>
+                  <div class="filter-result" id="filterResult" role="status">Найдено 39 товаров</div>
+                </div>
+              </div>
+              <h3>Фильтры каталога</h3><p>Чекбоксы, списки и ползунки, которые сужают выборку товаров. Хорошие фильтры сразу показывают, сколько товаров найдено, и дают сбросить всё одной кнопкой. На телефоне их прячут в шторку снизу.</p><p class="code-note">в коде: <code>filters</code></p>
+            </article>
+            <article class="card">
+              <div class="demo shop-demo">
+                <span class="demo-label">Магазин</span>
+                <div class="size-selector" id="sizeSelector"><button type="button" data-size="XS">XS</button><button type="button" data-size="S" class="selected">S</button><button type="button" data-size="M">M</button><button type="button" data-size="L">L</button><button type="button" data-size="XL" disabled>XL</button></div>
+                <p class="gesture-hint" id="sizeHint">XL перечёркнут: такого размера нет в наличии</p>
+                <div class="demo-status">Сейчас: выбран размер <strong id="sizeStatus">S</strong></div>
+              </div>
+              <h3>Выбор размера</h3><p>Плашки или радиокнопки с размерами, где недоступные варианты перечёркнуты, а не спрятаны, так человек видит, что размер существует, просто закончился. Рядом обычно живёт ссылка на таблицу размеров.</p><p class="code-note">в коде: <code>size selector</code></p>
+            </article>
+            <article class="card">
+              <div class="demo shop-demo">
+                <span class="demo-label">Магазин</span>
+                <div class="promo-box"><label for="promoCode">Промокод</label><input id="promoCode" type="text" placeholder="SALE25" autocomplete="off"><button type="button" class="brand-primary" id="applyPromo">Применить</button><p>Сумма заказа: <b id="promoTotal">$117</b></p><small id="promoMessage" role="status">Рабочий код в примере: SALE25</small></div>
+              </div>
+              <h3>Поле промокода</h3><p>Поле для кода со скидкой. Важны оба ответа: при верном коде сразу новая сумма и видимая выгода, при неверном — понятное сообщение, а не молчание. Попробуйте в примере код SALE25 и любой другой.</p><p class="code-note">в коде: <code>promo code</code></p>
+            </article>
+            <article class="card">
+              <div class="demo shop-demo">
+                <span class="demo-label">Магазин</span>
+                <div class="discount-card"><div class="discount-price"><b>$69</b><del>$99</del><strong>−30%</strong></div><small>или $23 в месяц на 3 месяца</small><p>Осталось 3 шт. по этой цене</p><button type="button" class="brand-primary" id="discountAdd">В корзину</button></div>
+                <div class="demo-status">Сейчас: <strong id="discountStatus">выгода $30, скидка видна сразу</strong></div>
+              </div>
+              <h3>Цена со скидкой</h3><p>Старая цена зачёркнута, рядом новая и размер выгоды, иногда платёж в рассрочку. Зачёркнутую цену всегда делают меньше и бледнее новой, чтобы взгляд цеплялся за актуальную.</p><p class="code-note">в коде: <code>&lt;del&gt; / &lt;s&gt;</code></p>
+            </article>
+          </div>
+        </section>
+
+        <section id="social-examples" class="shop-social-section">
+          <h2><span class="section-number">2</span> Социальные кнопки</h2>
+          <div class="cards">
+            <article class="card">
+              <div class="demo shop-demo">
+                <span class="demo-label">Соцсети</span>
+                <button type="button" class="like-button" id="likeButton" aria-pressed="false">♡ <span id="likeCount">128</span></button>
+                <p class="gesture-hint">Нажмите: счётчик меняется сразу, без перезагрузки</p>
+                <div class="demo-status">Сейчас: <strong id="likeStatus">ещё не отмечено</strong></div>
+              </div>
+              <h3>Кнопка «Лайк»</h3><p>Отметка одобрения или сохранения со счётчиком. Реагировать должна мгновенно: цифра меняется сразу после нажатия, не дожидаясь ответа сервера. Второе нажатие отменяет лайк.</p><p class="code-note">в коде: <code>button aria-pressed</code></p>
+            </article>
+            <article class="card">
+              <div class="demo shop-demo">
+                <span class="demo-label">Соцсети</span>
+                <div class="rating-stars" id="ratingStars" role="group" aria-label="Оценить от одного до пяти"><button type="button" data-rating="1" aria-label="1 звезда">★</button><button type="button" data-rating="2" aria-label="2 звезды">★</button><button type="button" data-rating="3" aria-label="3 звезды">★</button><button type="button" data-rating="4" aria-label="4 звезды">★</button><button type="button" data-rating="5" aria-label="5 звёзд">★</button></div>
+                <p class="gesture-hint" id="ratingStatus">Средняя оценка 4,8 · 126 отзывов</p>
+                <div class="demo-status">Сейчас: <strong id="ratingChoice">выберите оценку</strong></div>
+              </div>
+              <h3>Рейтинг звёздами</h3><p>Оценка по шкале, чаще пятибалльной. В каталоге звёзды показывают средний балл и число отзывов, а в форме отзыва это уже поле ввода, где звёзды нажимаются. Это два разных элемента, их легко перепутать.</p><p class="code-note">в коде: <code>rating</code></p>
+            </article>
+            <article class="card">
+              <div class="demo shop-demo">
+                <span class="demo-label">Соцсети</span>
+                <button type="button" class="brand-primary" id="shareButton">Поделиться</button>
+                <div class="share-options" id="shareOptions" hidden><button type="button" data-share="copy">Копировать ссылку</button><button type="button" data-share="telegram">Telegram</button><button type="button" data-share="email">Почта</button></div>
+                <div class="demo-status">Сейчас: <strong id="shareStatus">выберите способ поделиться</strong></div>
+              </div>
+              <h3>Кнопка «Поделиться»</h3><p>Отправляет ссылку в соцсети и мессенджеры или просто копирует её. На телефоне открывает системное окно «Поделиться», на компьютере — свой список. Всегда оставляйте вариант «Скопировать ссылку».</p><p class="code-note">в коде: <code>navigator.share()</code></p>
+            </article>
+          </div>
+        </section>
+
+        <section id="board-examples" class="shop-social-section">
+          <h2><span class="section-number">3</span> Онлайн-доски (Miro, FigJam, Figma)</h2>
+          <div class="cards">
+            <article class="card">
+              <div class="demo shop-demo board-demo">
+                <span class="demo-label">Доски</span>
+                <div class="board-canvas" id="boardCanvas"><button type="button" class="sticky-note yellow" draggable="true">Идея</button><button type="button" class="sticky-note yellow" draggable="true">Клиент</button><button type="button" class="sticky-note blue" draggable="true">Сроки</button></div>
+                <p class="gesture-hint">Потяните поле мышкой: холст двигается под содержимым</p><div class="demo-status">Сейчас: <strong id="canvasStatus">доска готова к перемещению</strong></div>
+              </div>
+              <h3>Бесконечный холст</h3><p>Рабочее поле без краёв: его двигают, приближают и отдаляют. Отсюда главная сложность доски — легко потеряться, поэтому важные области подписывают и собирают во фреймы.</p><p class="code-note">в коде: <code>canvas</code></p>
+            </article>
+            <article class="card">
+              <div class="demo shop-demo board-demo">
+                <span class="demo-label">Доски</span>
+                <div class="sticker-board"><button type="button" class="sticky-note yellow" contenteditable="true">Нужен лендинг к пятнице</button><button type="button" class="sticky-note blue" contenteditable="true">Спросить про бюджет</button></div>
+                <p class="gesture-hint">Текст на стикерах можно править прямо здесь</p>
+              </div>
+              <h3>Стикер</h3><p>Липкая заметка с короткой мыслью — основной «кирпичик» мозгового штурма. Правило: одна мысль на один стикер, иначе потом невозможно их группировать.</p><p class="code-note">в коде: <code>sticky note</code></p>
+            </article>
+            <article class="card">
+              <div class="demo shop-demo board-demo">
+                <span class="demo-label">Доски</span>
+                <div class="selection-board"><div class="selection-box" id="selectionBox"><span>Блок с текстом</span><i></i></div></div>
+                <p class="gesture-hint">Рамка и квадратики по углам: объект выбран, размер можно менять</p><div class="demo-status">Сейчас: <strong id="selectionStatus">объект выбран</strong></div>
+              </div>
+              <h3>Выделение и маркеры</h3><p>Рамка вокруг выбранного объекта с квадратиками по углам: за них тянут, чтобы изменить размер. Если выбрать несколько объектов, рамка станет общей и двигать их можно вместе.</p><p class="code-note">в коде: <code>selection box</code></p>
+            </article>
+            <article class="card">
+              <div class="demo shop-demo board-demo">
+                <span class="demo-label">Доски</span>
+                <div class="connector-board"><button type="button" id="connectorStart">Главная</button><span id="connectorArrow">→</span><button type="button" id="connectorEnd">Корзина</button></div>
+                <p class="gesture-hint">Нажмите блоки, чтобы переключить связь</p><div class="demo-status">Сейчас: <strong id="connectorStatus">экраны соединены стрелкой</strong></div>
+              </div>
+              <h3>Связи (коннекторы)</h3><p>Линия или стрелка между объектами, которая тянется за ними при перемещении. Из коннекторов собирают схемы экранов и пользовательские пути — имена обычно просты у ИИ словом «флоу».</p><p class="code-note">в коде: <code>connector</code></p>
+            </article>
+            <article class="card">
+              <div class="demo shop-demo board-demo">
+                <span class="demo-label">Доски</span>
+                <div class="frame-preview"><b>Главная · 1440×900</b><div><i></i><i></i><i></i></div></div>
+                <p class="gesture-hint">Фрейм задаёт границы экрана или слайда</p>
+              </div>
+              <h3>Фрейм</h3><p>Область-контейнер, которая группирует элементы и задаёт размер экрана или слайда. В Figma именно фреймы становятся экранами макета, а на доске — разделами вроде «Исследование», «Идеи».</p><p class="code-note">в коде: <code>frame</code></p>
+            </article>
+            <article class="card">
+              <div class="demo shop-demo board-demo">
+                <span class="demo-label">Доски</span>
+                <div class="tool-palette" role="toolbar" aria-label="Инструменты доски"><button type="button" class="active" data-tool="Курсор">↖</button><button type="button" data-tool="Рука">✋</button><button type="button" data-tool="Стикер">▣</button><button type="button" data-tool="Фигура">◇</button><button type="button" data-tool="Текст">T</button></div>
+                <div class="demo-status">Сейчас: выбран инструмент <strong id="toolStatus">Курсор</strong></div>
+              </div>
+              <h3>Панель инструментов</h3><p>Ряд кнопок у края: курсор, рука, стикер, фигура, текст. Активный инструмент подсвечен — если рисование «не работает», почти всегда просто выбран другой инструмент.</p><p class="code-note">в коде: <code>role="toolbar"</code></p>
+            </article>
+            <article class="card">
+              <div class="demo shop-demo board-demo">
+                <span class="demo-label">Доски</span>
+                <div class="board-minimap"><div class="minimap-content"><span>Идеи</span><span>Клиент</span><span>Сроки</span></div><div class="minimap-viewport" id="minimapViewport"></div></div>
+                <p class="gesture-hint">Перемещайте рамку, чтобы выбрать видимую область</p><div class="demo-status">Сейчас: <strong id="minimapStatus">область просмотра в центре</strong></div>
+              </div>
+              <h3>Мини-карта</h3><p>Уменьшенная копия доски в углу с рамкой видимой области: показывает, где вы сейчас внутри большого полотна, и позволяет переключить вид в другую часть.</p><p class="code-note">в коде: <code>minimap</code></p>
+            </article>
+            <article class="card">
+              <div class="demo shop-demo board-demo">
+                <span class="demo-label">Доски</span>
+                <div class="collab-board"><button type="button" class="collab-cursor cursor-one">Ирина</button><button type="button" class="collab-cursor cursor-two">Максим</button><button type="button" class="sticky-note yellow">Главная страница</button></div>
+                <p class="gesture-hint">Наведите на имя участника, чтобы подсветить его курсор</p><div class="demo-status">Сейчас: <strong id="collabStatus">участники на доске</strong></div>
+              </div>
+              <h3>Курсоры участников</h3><p>Указатели других людей в документе, подписанные именем и цветом. Так видно, кто смотрит ту же область, и не получается править одно и то же вслепую.</p><p class="code-note">в коде: <code>multiplayer cursors</code></p>
+            </article>
+            <article class="card">
+              <div class="demo shop-demo board-demo">
+                <span class="demo-label">Доски</span>
+                <div class="kanban-board"><div><b>Нужно сделать</b><button type="button" draggable="true">Собрать референсы</button><button type="button" draggable="true">Написать текст</button></div><div><b>В работе</b><button type="button" draggable="true">Макет главной</button></div><div><b>Готово</b></div></div>
+                <p class="gesture-hint">Перетащите карточку в другую колонку</p><div class="demo-status">Сейчас: <strong id="kanbanStatus">перемещайте задачи между колонками</strong></div>
+              </div>
+              <h3>Канбан-доска</h3><p>Колонки статусов и карточки задач, которые перетаскивают между ними: «Нужно сделать» → «В работе» → «Готово». Статусов держат мало, три-четыре, иначе доска превращается в таблицу.</p><p class="code-note">в коде: <code>kanban board</code></p>
+            </article>
+            <article class="card">
+              <div class="demo shop-demo board-demo">
+                <span class="demo-label">Доски</span>
+                <div class="comment-frame"><div class="comment-skeleton"><i></i><i></i><i></i></div><button type="button" id="commentPin" aria-label="Открыть комментарий">1</button></div>
+                <div class="comment-popover" id="commentPopover" hidden><strong>Ирина</strong><p>Можно увеличить отступ сверху?</p><button type="button" id="commentReply">Ответить</button></div>
+                <p class="gesture-hint">Нажмите на метку — откроется комментарий к этому месту макета</p>
+              </div>
+              <h3>Метка комментария</h3><p>Маркер, привязанный к точке на холсте: открывает обсуждение именно этого места. Так замечания к макету не теряются в переписке — они остаются там, где их видно.</p><p class="code-note">в коде: <code>comment pin</code></p>
+            </article>
+            <article class="card">
+              <div class="demo shop-demo board-demo">
+                <span class="demo-label">Доски</span>
+                <div class="workshop-timer"><strong id="timerDisplay">05:00</strong><button type="button" class="brand-primary" id="timerStart">Старт</button><button type="button" class="brand-outline" id="timerReset">Сбросить</button></div>
+                <p class="gesture-hint">Такой отсчёт на воркшопе видят все участники сразу</p><div class="demo-status">Сейчас: <strong id="timerStatus">таймер готов</strong></div>
+              </div>
+              <h3>Таймер воркшопа</h3><p>Обратный отсчёт, видимый всем участникам сессии. Нужен, чтобы этап не растягивался: «пять минут на идеи» работает только когда время у всех перед глазами.</p><p class="code-note">в коде: <code>timer</code></p>
+            </article>
+          </div>
+          <p class="section-callout bottom-callout">Эти слова работают и как запрос к ИИ: «сделай карточку товара со старой и новой ценой», «добавь нижнюю навигацию с четырьмя разделами», «собери канбан с тремя колонками».</p>
+        </section>
+      </div>
+    </details>
+
   </main>
   <script src="assets/app.js?v=swipe-cards-throw-1"></script>
 </body>
