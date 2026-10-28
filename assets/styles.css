@@ -172,3 +172,18 @@ button { font: inherit; cursor: pointer; border: 0; border-radius: 6px; padding:
 .menu-demo .dots {
   margin-left: 0;
 }
+
+/* Precisely center the ellipsis button in the menu demo area */
+.menu-demo .demo-menu-head {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  pointer-events: none;
+}
+.menu-demo .demo-menu-head .dots {
+  margin: 0;
+  pointer-events: auto;
+}
