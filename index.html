@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Из чего состоит сайт: словарь элементов</title>
-  <link rel="stylesheet" href="assets/styles.css?v=navigation-dropdown-2">
+  <link rel="stylesheet" href="assets/styles.css?v=structure-dropdown-1">
 </head>
 <body>
   <main class="page">
@@ -562,7 +562,121 @@
       </div>
     </details>
 
+
+    <details class="topic-dropdown page-structure-dropdown">
+      <summary>Структура страницы</summary>
+      <div class="topic-dropdown-content">
+        <section class="forms-intro structure-intro">
+          <p>Блоки, из которых собирают саму страницу.</p>
+          <div class="forms-tip">☝️ <strong>Примеры ниже живые — их можно потогать прямо здесь.</strong></div>
+        </section>
+        <section class="structure-grid-section">
+          <div class="cards">
+            <article class="card">
+              <div class="demo structure-demo">
+                <span class="demo-label">Блоки</span>
+                <div class="product-card-demo">
+                  <div class="product-image"><span class="discount-tag">−20%</span><button type="button" class="favorite-toggle" aria-label="Добавить в избранное">♡</button><span class="headphones">🎧</span></div>
+                  <div class="product-info"><div class="product-price"><strong>$69</strong><del>$86</del></div><b>Беспроводные наушники с шумоподавлением</b><small>★ 4,8 · 1 204 отзыва</small><button type="button" class="brand-primary" id="productAdd">В корзину</button><small id="productCartStatus" aria-live="polite"></small></div>
+                </div>
+                <div class="demo-status">Сейчас: <strong>фото, цена, название, рейтинг и кнопка в одном блоке</strong></div>
+              </div>
+              <h3>Карточка</h3>
+              <p>Прямоугольный блок про один объект: фото, название, цена и кнопка. Из карточек собирают каталоги, блоки услуг и тарифы. Главное правило — одинаковая структура у всех карточек в ряду: одна высота картинки, одинаковый порядок строк, иначе ряд выглядит неряшливо.</p>
+              <p class="code-note">в коде: <code>&lt;article class="card"&gt;</code></p>
+            </article>
+            <article class="card">
+              <div class="demo structure-demo">
+                <span class="demo-label">Блоки</span>
+                <div class="horizontal-order"><div class="order-icon">📦</div><div class="order-copy"><strong>Заказ № 1043</strong><span>2 товара · доставка завтра</span><b>$117</b></div><span class="order-status">В пути</span></div>
+                <div class="demo-status">Сейчас: <strong>такой вид берут для списков — заказов, записей, задач</strong></div>
+              </div>
+              <h3>Карточка: горизонтальная</h3>
+              <p>Фото слева, текст справа — так показывают списки заказов и записей.</p>
+              <p class="code-note">в коде: <code>&lt;article class="card"&gt;</code></p>
+            </article>
+            <article class="card">
+              <div class="demo structure-demo">
+                <span class="demo-label">Блоки</span>
+                <div class="service-card-demo"><strong>Разбор профиля</strong><p>Час в зуме: смотрим упаковку, визуал и тексты, уходите с планом на месяц.</p><div class="product-price"><strong>$90</strong><del>$120</del></div><button type="button" class="brand-primary" id="serviceBook">Записаться</button><small id="serviceBookStatus"></small></div>
+                <div class="demo-status">Сейчас: <strong>карточка без фото — для услуг и тарифов</strong></div>
+              </div>
+              <h3>Карточка: услуга</h3>
+              <p>Без фото: заголовок, описание, цена и кнопка.</p>
+              <p class="code-note">в коде: <code>&lt;article class="card"&gt;</code></p>
+            </article>
+            <article class="card">
+              <div class="demo structure-demo">
+                <span class="demo-label">Блоки</span>
+                <div class="faq-widget"><strong>Частые вопросы</strong>
+                  <details open><summary>Сколько идёт доставка?</summary><p>Курьером — на следующий день, почтой — 3–5 дней.</p></details>
+                  <details><summary>Можно вернуть товар?</summary><p>Да, в течение 14 дней, если товар не использовался и сохранён его вид.</p></details>
+                  <details><summary>Как оплатить частями?</summary><p>Выберите оплату частями при оформлении заказа и следуйте подсказкам банка.</p></details>
+                  <details><summary>Доставляете в другие страны?</summary><p>Доступные страны и стоимость доставки покажем при оформлении заказа.</p></details>
+                </div>
+                <div class="demo-status">Сейчас: открыт вопрос <strong id="faqStatus">«Сколько идёт доставка?»</strong></div>
+              </div>
+              <h3>Аккордеон</h3>
+              <p>Список заголовков, которые раскрываются по клику и показывают текст. Так почти всегда делают блок частых вопросов и длинные описания. Решите заранее: открыт один пункт за раз или можно раскрыть сразу несколько.</p>
+              <p class="code-note">в коде: <code>&lt;details&gt; + &lt;summary&gt;</code></p>
+            </article>
+            <article class="card">
+              <div class="demo structure-demo modal-demo">
+                <span class="demo-label">Блоки</span>
+                <div class="modal-backdrop-demo"><div class="modal-box-demo"><strong>Удалить макет?</strong><p>Действие нельзя отменить.</p><div><button type="button" class="brand-outline" id="cancelDelete">Отмена</button><button type="button" class="brand-primary" id="confirmDelete">Удалить</button></div><small id="deleteStatus"></small></div></div>
+              </div>
+              <h3>Модальное окно</h3>
+              <p>Окно поверх страницы с затемнённым фоном: пока не закроете, с остальным взаимодействовать нельзя. Подходит для подтверждений и коротких форм. Закрываться должно тремя способами: крестиком, клавишей Esc и кликом по фону.</p>
+              <p class="code-note">в коде: <code>&lt;dialog&gt;</code></p>
+            </article>
+            <article class="card">
+              <div class="demo structure-demo modal-demo">
+                <span class="demo-label">Блоки</span>
+                <div class="booking-modal-demo"><strong>Записаться на разбор</strong><form id="bookingForm"><label>Имя<input name="name" placeholder="Анна" required></label><label>Телеграм<input name="telegram" placeholder="@anna" pattern="@?[A-Za-z0-9_]{3,}" required></label><div><button type="button" class="brand-outline" id="closeBooking">Закрыть</button><button type="submit" class="brand-primary">Отправить</button></div><small id="bookingStatus" aria-live="polite"></small></form></div>
+              </div>
+              <h3>Модальное окно: форма записи</h3>
+              <p>В окно помещается короткая форма целиком — без перехода на другую страницу.</p>
+              <p class="code-note">в коде: <code>&lt;dialog&gt;</code></p>
+            </article>
+          </div>
+        </section>
+        <section class="structure-other">
+          <h3>Остальные блоки страницы</h3>
+          <div class="cards">
+            <article class="card">
+              <div class="demo structure-demo"><span class="demo-label">Блоки</span><div class="carousel-demo"><button type="button" id="slidePrev" aria-label="Предыдущий слайд">‹</button><strong id="slideTitle">Работа 1</strong><button type="button" id="slideNext" aria-label="Следующий слайд">›</button></div><div class="slide-dots"><button class="active" data-slide="1" aria-label="Слайд 1"></button><button data-slide="2" aria-label="Слайд 2"></button><button data-slide="3" aria-label="Слайд 3"></button></div><div class="demo-status">Сейчас: слайд <strong id="slideStatus">1 из 3</strong></div></div>
+              <h3>Карусель, слайдер</h3><p>Лента картинок или карточек, которую листают горизонтально стрелками, точками или пальцем. Помните: дальше первого слайда доходят немногие, поэтому самое важное ставят первым, а не прячут внутрь.</p><p class="code-note">в коде: <code>carousel</code></p>
+            </article>
+            <article class="card">
+              <div class="demo structure-demo"><span class="demo-label">Блоки</span><div class="table-widget"><strong>Сравнение тарифов</strong><table><thead><tr><th>Тариф</th><th>Срок</th><th>Цена</th></tr></thead><tbody><tr><td>Базовый</td><td>3 мес.</td><td>$120</td></tr><tr class="chosen"><td>Полный</td><td>6 мес.</td><td>$210</td></tr><tr><td>С куратором</td><td>6 мес.</td><td>$340</td></tr></tbody></table></div><div class="demo-status">Сейчас: выбран тариф <strong id="tableStatus">«Полный»</strong></div></div>
+              <h3>Таблица</h3><p>Данные по строкам и столбцам: заказы, тарифы, сравнение. Нужна только там, где значения действительно сравнивают по двум осям. На телефоне широкая таблица прокручивается вбок, это нормально, главное не ломать вёрстку.</p><p class="code-note">в коде: <code>&lt;table&gt;</code></p>
+            </article>
+            <article class="card">
+              <div class="demo structure-demo"><span class="demo-label">Блоки</span><div class="pricing-cards"><button type="button" data-plan="Базовый"><strong>Базовый</strong><b>$120</b><small>Уроки и база знаний</small></button><button type="button" data-plan="Полный" class="selected"><em>Выбирают чаще</em><strong>Полный</strong><b>$210</b><small>Уроки, проверка ДЗ, чат</small></button></div><div class="demo-status">Сейчас: <strong id="planStatus">один тариф выделен — так проще выбрать</strong></div></div>
+              <h3>Блок тарифов</h3><p>Несколько вариантов стоимости рядом, чтобы их было удобно сравнить. Обычно выделяют один — «выбирают чаще»: без подсказки человек теряется и уходит. Больше трёх вариантов ставить не стоит.</p><p class="code-note">в коде: <code>pricing table</code></p>
+            </article>
+            <article class="card">
+              <div class="demo structure-demo"><span class="demo-label">Блоки</span><div class="billing-toggle"><button type="button" data-billing="month" class="active">Помесячно</button><button type="button" data-billing="year">За год · −2 месяца</button></div><div class="pricing-cards monthly-pricing"><button type="button" data-month-plan="Базовый"><strong>Базовый</strong><b id="basicPrice">$12</b><small>в месяц</small></button><button type="button" data-month-plan="Полный" class="selected"><em>Выбирают чаще</em><strong>Полный</strong><b id="fullPrice">$21</b><small id="billingLabel">в месяц</small></button></div><div class="demo-status">Сейчас: цены <strong id="billingStatus">помесячно</strong></div></div>
+              <h3>Блок тарифов: месяц или год</h3><p>Переключатель периода сразу пересчитывает цены в обоих тарифах.</p><p class="code-note">в коде: <code>pricing table</code></p>
+            </article>
+            <article class="card">
+              <div class="demo structure-demo"><span class="demo-label">Блоки</span><div class="reviews-widget"><div class="reviews-head"><strong>Отзывы</strong><b>★ 4,8 · 2 отзыва</b></div><div id="reviewsList"><div class="review"><span>ОК</span><div><b>Ольга К.</b><strong>★★★★★</strong><p>Собрала сайт за курс и запустила рекламу — заявки пошли на второй неделе.</p><small>12 сентября</small></div></div><div class="review"><span class="yellow-avatar">МС</span><div><b>Марина С.</b><strong>★★★★☆</strong><p>Много практики. Хотелось бы больше примеров по рекламе, но в целом очень довольна.</p><small>4 сентября</small></div></div></div><button type="button" class="brand-outline review-more" id="reviewMore">Показать ещё</button></div><div class="demo-status">Сейчас: показано <strong id="reviewStatus">2 отзыва из 3</strong></div></div>
+              <h3>Отзывы</h3><p>Цитаты клиентов — социальное доказательство. Работают сильнее, когда рядом имя, фото и конкретика: что было до, что стало после. Безымянные «всё супер» доверия не прибавляют.</p><p class="code-note">в коде: <code>&lt;blockquote&gt;</code></p>
+            </article>
+            <article class="card">
+              <div class="demo structure-demo"><span class="demo-label">Блоки</span><div class="lightbox-gallery"><button type="button" data-lightbox="1">1</button><button type="button" data-lightbox="2">2</button><button type="button" data-lightbox="3">3</button></div><div class="demo-status">Нажмите на превью — откроется крупно</div><div class="lightbox-overlay" id="lightboxOverlay" hidden><button type="button" id="lightboxClose" aria-label="Закрыть">×</button><button type="button" id="lightboxPrev" aria-label="Предыдущее">‹</button><strong id="lightboxTitle">Изображение 1</strong><button type="button" id="lightboxNext" aria-label="Следующее">›</button></div></div>
+              <h3>Галерея с увеличением</h3><p>Превью, которое по клику открывается крупно поверх страницы. Обязательны крестик, закрытие по Esc и клику по фону, а в наборе фото — стрелки «вперёд-назад».</p><p class="code-note">в коде: <code>lightbox</code></p>
+            </article>
+            <article class="card">
+              <div class="demo structure-demo"><span class="demo-label">Блоки</span><div class="timeline-widget"><strong>Заказ № 4821</strong><ol id="timelineList"><li class="done"><b>Заказ оформлен</b><small>Оплата картой прошла · 12 сен, 10:12</small></li><li class="done"><b>Собран на складе</b><small>Склад в Подольске · 12 сен, 18:40</small></li><li class="current"><b>Передан в доставку</b><small>Трек-номер UA123456789 · 13 сен, 09:05</small></li><li><b>Прибыл в пункт выдачи</b><small>Ожидается 14 сен</small></li><li><b>Получен</b><small>Ещё в пути</small></li></ol><div><button type="button" class="brand-primary" id="timelineNext">Следующий этап</button><button type="button" class="brand-outline" id="timelineReset">Сначала</button></div></div><div class="demo-status">Сейчас: <strong id="timelineStatus">«Передан в доставку», пройдено этапов 2 из 4</strong></div></div>
+              <h3>Лента событий, таймлайн</h3><p>Хронология вдоль вертикальной оси: оформлен → передан курьеру → доставлен. Прошедшие шаги отмечают, текущий выделяют, так виден и путь, и то, что происходит прямо сейчас.</p><p class="code-note">в коде: <code>timeline</code></p>
+            </article>
+          </div>
+        </section>
+      </div>
+    </details>
+
   </main>
-  <script src="assets/app.js?v=navigation-interactions-2"></script>
+  <script src="assets/app.js?v=structure-interactions-1"></script>
 </body>
 </html>
