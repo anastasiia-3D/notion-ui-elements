@@ -1483,3 +1483,17 @@ button:disabled { opacity: .52; cursor: not-allowed; }
 .board-canvas .sticky-note:nth-of-type(1) { left:18%; top:30%; }
 .board-canvas .sticky-note:nth-of-type(2) { left:39%; top:30%; }
 .board-canvas .sticky-note:nth-of-type(3) { left:61%; top:30%; }
+
+/* Center toolbar symbols precisely inside their hit areas */
+.tool-palette { align-items:center; }
+.tool-palette button {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  flex:0 0 34px;
+  box-sizing:border-box;
+  padding:0;
+  line-height:1;
+  vertical-align:middle;
+  text-align:center;
+}
