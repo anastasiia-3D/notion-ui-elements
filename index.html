@@ -161,11 +161,11 @@
         <article class="card">
           <div class="demo badge-demo">
             <span class="demo-label">Текст</span>
-            <div class="cart"><span class="cart-icon">🛒</span><span>бейдж-счётчик в шапке</span></div>
+            <div class="cart"><span class="cart-icon">🛒</span><span id="cartCount">Корзина: 0 товаров</span></div>
             <div class="products">
-              <div class="product"><span class="badge yellow">Новинка</span><span class="product-name">Футболка</span></div>
-              <div class="product"><span class="badge red">-20%</span><span class="product-name">Худи</span></div>
-              <div class="product"><span class="badge pale">Хит</span><span class="product-name">Кепка</span></div>
+              <div class="product" role="button" tabindex="0" data-product="Футболка" aria-label="Добавить Футболку в корзину"><span class="badge yellow">Новинка</span><span class="product-name">Футболка</span></div>
+              <div class="product" role="button" tabindex="0" data-product="Худи" aria-label="Добавить Худи в корзину"><span class="badge red">-20%</span><span class="product-name">Худи</span></div>
+              <div class="product" role="button" tabindex="0" data-product="Кепка" aria-label="Добавить Кепку в корзину"><span class="badge pale">Хит</span><span class="product-name">Кепка</span></div>
             </div>
             <div class="demo-status">Сейчас: <strong>бейдж выделяет один товар среди похожих</strong></div>
           </div>
@@ -179,14 +179,14 @@
             <div class="avatar-panel">
               <strong class="participants-title">Участники проекта</strong>
               <div class="avatars">
-                <span class="avatar online">АК</span>
-                <span class="avatar yellow">МС</span>
-                <span class="avatar smile">☺</span>
-                <span class="avatar more">+5</span>
+                <span class="avatar online" tabindex="0" data-name="Марина Волкова" data-role="дизайнер · онлайн">МВ</span>
+                <span class="avatar yellow" tabindex="0" data-name="Максим Соколов" data-role="разработчик · онлайн">МС</span>
+                <span class="avatar smile" tabindex="0" data-name="Ева Миронова" data-role="менеджер проекта">ЕМ</span>
+                <span class="avatar more" tabindex="0" data-name="Илья Орлов" data-role="иллюстратор · онлайн">+5</span>
               </div>
               <div class="person-row">
-                <span class="avatar small online">АК</span>
-                <p class="person"><strong>Анна Коваль</strong><span>куратор · онлайн</span></p>
+                <span class="avatar small online" id="selectedAvatar">МВ</span>
+                <p class="person"><strong id="selectedName">Марина Волкова</strong><span id="selectedRole">дизайнер · онлайн</span></p>
               </div>
             </div>
             <div class="demo-status">Сейчас: <strong>наведите на кружок — это и есть аватар</strong></div>
