@@ -409,3 +409,120 @@ document.querySelectorAll('.toc-widget [data-toc]').forEach(btn=>btn.addEventLis
  const name=btn.dataset.toc,cur=document.getElementById('tocCurrent'),copy=document.getElementById('tocCopy'),status=document.getElementById('tocStatus');
  if(cur)cur.textContent=name;if(copy)copy.textContent=tocCopyByTitle[name]||'';if(status)status.textContent='«'+name+'»';
 }));
+
+
+// Page structure examples: realistic local interactions for product cards, pricing, dialogs and content blocks.
+const favoriteToggle=document.querySelector('.favorite-toggle');
+favoriteToggle?.addEventListener('click',()=>{
+ const active=favoriteToggle.classList.toggle('active');
+ favoriteToggle.textContent=active?'♥':'♡';
+ favoriteToggle.setAttribute('aria-label',active?'Убрать из избранного':'Добавить в избранное');
+});
+const productAdd=document.getElementById('productAdd');
+productAdd?.addEventListener('click',()=>{
+ const status=document.getElementById('productCartStatus');
+ if(status){status.textContent='Добавлено в корзину';status.style.color='#31845B';}
+ productAdd.textContent='В корзине ✓';
+ productAdd.style.background='#31845B';
+});
+document.getElementById('serviceBook')?.addEventListener('click',()=>{
+ const status=document.getElementById('serviceBookStatus');
+ if(status) status.textContent='Заявка выбрана. Заполните форму записи справа.';
+ document.getElementById('bookingForm')?.querySelector('input')?.focus();
+});
+const faqItems=Array.from(document.querySelectorAll('.faq-widget details'));
+faqItems.forEach(item=>item.addEventListener('toggle',()=>{
+ if(item.open) faqItems.forEach(other=>{if(other!==item)other.open=false;});
+ const status=document.getElementById('faqStatus');
+ if(status && item.open) status.textContent='«'+item.querySelector('summary').textContent+'»';
+}));
+const deleteStatus=document.getElementById('deleteStatus');
+document.getElementById('cancelDelete')?.addEventListener('click',()=>{if(deleteStatus)deleteStatus.textContent='Действие отменено';});
+document.getElementById('confirmDelete')?.addEventListener('click',()=>{
+ const box=document.querySelector('.modal-box-demo');
+ if(box){box.innerHTML='<strong>Макет удалён</strong><p>Демонстрационное действие выполнено.</p><button type="button" class="brand-outline" id="restoreMock">Восстановить</button>';box.querySelector('#restoreMock')?.addEventListener('click',()=>location.reload());}
+});
+document.getElementById('closeBooking')?.addEventListener('click',()=>{
+ const form=document.getElementById('bookingForm');
+ if(form){form.reset();const status=document.getElementById('bookingStatus');if(status)status.textContent='Форма очищена';}
+});
+document.getElementById('bookingForm')?.addEventListener('submit',event=>{
+ event.preventDefault();
+ const form=event.currentTarget;
+ if(!form.reportValidity()) return;
+ const name=form.elements.name.value.trim();
+ const status=document.getElementById('bookingStatus');
+ if(status) status.textContent='Спасибо, '+name+'! Демозаявка отправлена.';
+ form.querySelector('button[type="submit"]').textContent='Отправлено ✓';
+});
+const slideNames=['Работа 1','Работа 2','Работа 3'];
+let activeSlide=1;
+function renderSlide(){
+ const title=document.getElementById('slideTitle'),status=document.getElementById('slideStatus');
+ if(title)title.textContent=slideNames[activeSlide-1];
+ if(status)status.textContent=activeSlide+' из 3';
+ document.querySelectorAll('.slide-dots [data-slide]').forEach(btn=>btn.classList.toggle('active',Number(btn.dataset.slide)===activeSlide));
+}
+document.getElementById('slidePrev')?.addEventListener('click',()=>{activeSlide=activeSlide===1?3:activeSlide-1;renderSlide();});
+document.getElementById('slideNext')?.addEventListener('click',()=>{activeSlide=activeSlide===3?1:activeSlide+1;renderSlide();});
+document.querySelectorAll('.slide-dots [data-slide]').forEach(btn=>btn.addEventListener('click',()=>{activeSlide=Number(btn.dataset.slide);renderSlide();}));
+document.querySelectorAll('.table-widget tbody tr').forEach(row=>row.addEventListener('click',()=>{
+ document.querySelectorAll('.table-widget tbody tr').forEach(other=>other.classList.toggle('chosen',other===row));
+ const status=document.getElementById('tableStatus');
+ if(status)status.textContent='«'+row.cells[0].textContent+'»';
+}));
+document.querySelectorAll('.pricing-cards [data-plan]').forEach(btn=>btn.addEventListener('click',()=>{
+ document.querySelectorAll('.pricing-cards [data-plan]').forEach(other=>{other.classList.toggle('selected',other===btn);const em=other.querySelector('em');if(em && other!==btn)em.remove();});
+ const status=document.getElementById('planStatus');
+ if(status)status.textContent='выбран тариф «'+btn.dataset.plan+'»';
+ if(!btn.querySelector('em')){const em=document.createElement('em');em.textContent='Выбран';btn.appendChild(em);}
+}));
+let billingMode='month';
+function renderBilling(){
+ const basic=document.getElementById('basicPrice'),full=document.getElementById('fullPrice'),label=document.getElementById('billingLabel'),status=document.getElementById('billingStatus');
+ if(basic)basic.textContent=billingMode==='month'?'$12':'$120';
+ if(full)full.textContent=billingMode==='month'?'$21':'$210';
+ if(label)label.textContent=billingMode==='month'?'в месяц':'в год';
+ if(status)status.textContent=billingMode==='month'?'помесячно':'за год';
+ document.querySelectorAll('[data-billing]').forEach(btn=>btn.classList.toggle('active',btn.dataset.billing===billingMode));
+}
+document.querySelectorAll('[data-billing]').forEach(btn=>btn.addEventListener('click',()=>{billingMode=btn.dataset.billing;renderBilling();}));
+document.querySelectorAll('[data-month-plan]').forEach(btn=>btn.addEventListener('click',()=>{
+ document.querySelectorAll('[data-month-plan]').forEach(other=>other.classList.toggle('selected',other===btn));
+ const status=document.getElementById('billingStatus');if(status)status.textContent=(billingMode==='month'?'помесячно':'за год')+', выбран тариф «'+btn.dataset.monthPlan+'»';
+}));
+const reviewMore=document.getElementById('reviewMore');
+reviewMore?.addEventListener('click',()=>{
+ const list=document.getElementById('reviewsList');
+ if(!list)return;
+ if(!list.querySelector('[data-extra-review]')){
+   const review=document.createElement('div');review.className='review';review.dataset.extraReview='true';
+   review.innerHTML='<span style="background:#31845B">ІП</span><div><b>Ирина П.</b><strong>★★★★★</strong><p>Всё разложено по полочкам, наконец стало понятно, с чего начать.</p><small>28 августа</small></div>';
+   list.appendChild(review);reviewMore.textContent='Скрыть';
+   const status=document.getElementById('reviewStatus');if(status)status.textContent='3 отзыва из 3';
+ } else {
+   list.querySelector('[data-extra-review]').remove();reviewMore.textContent='Показать ещё';
+   const status=document.getElementById('reviewStatus');if(status)status.textContent='2 отзыва из 3';
+ }
+});
+let lightboxIndex=1;
+const lightboxOverlay=document.getElementById('lightboxOverlay');
+function renderLightbox(){const title=document.getElementById('lightboxTitle');if(title)title.textContent='Изображение '+lightboxIndex;}
+function closeLightbox(){if(lightboxOverlay)lightboxOverlay.hidden=true;}
+document.querySelectorAll('[data-lightbox]').forEach(btn=>btn.addEventListener('click',()=>{lightboxIndex=Number(btn.dataset.lightbox);renderLightbox();if(lightboxOverlay)lightboxOverlay.hidden=false;}));
+document.getElementById('lightboxClose')?.addEventListener('click',closeLightbox);
+document.getElementById('lightboxPrev')?.addEventListener('click',()=>{lightboxIndex=lightboxIndex===1?3:lightboxIndex-1;renderLightbox();});
+document.getElementById('lightboxNext')?.addEventListener('click',()=>{lightboxIndex=lightboxIndex===3?1:lightboxIndex+1;renderLightbox();});
+lightboxOverlay?.addEventListener('click',event=>{if(event.target===lightboxOverlay)closeLightbox();});
+document.addEventListener('keydown',event=>{if(event.key==='Escape')closeLightbox();if(lightboxOverlay && !lightboxOverlay.hidden && event.key==='ArrowRight'){lightboxIndex=lightboxIndex===3?1:lightboxIndex+1;renderLightbox();}if(lightboxOverlay && !lightboxOverlay.hidden && event.key==='ArrowLeft'){lightboxIndex=lightboxIndex===1?3:lightboxIndex-1;renderLightbox();}});
+let timelineStep=3;
+const timelineLabels=['Заказ оформлен','Собран на складе','Передан в доставку','Прибыл в пункт выдачи','Получен'];
+const timelineDetails=['Оплата картой прошла · 12 сен, 10:12','Склад собрал заказ · 12 сен, 18:40','Трек-номер UA123456789 · 13 сен, 09:05','Заказ ждёт вас в пункте выдачи','Заказ получен'];
+function renderTimeline(){
+ const list=document.getElementById('timelineList'),status=document.getElementById('timelineStatus');
+ if(list)list.innerHTML=timelineLabels.map((label,index)=>'<li class="'+(index+1<timelineStep?'done':index+1===timelineStep?'current':'')+'"><b>'+label+'</b><small>'+timelineDetails[index]+'</small></li>').join('');
+ if(status)status.textContent='«'+timelineLabels[timelineStep-1]+'», пройдено этапов '+(timelineStep-1)+' из 4';
+ const next=document.getElementById('timelineNext');if(next)next.disabled=timelineStep===timelineLabels.length;
+}
+document.getElementById('timelineNext')?.addEventListener('click',()=>{timelineStep=Math.min(timelineLabels.length,timelineStep+1);renderTimeline();});
+document.getElementById('timelineReset')?.addEventListener('click',()=>{timelineStep=1;renderTimeline();});
