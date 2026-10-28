@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Из чего состоит сайт: словарь элементов</title>
-  <link rel="stylesheet" href="assets/styles.css?v=horizontal-switches-1">
+  <link rel="stylesheet" href="assets/styles.css?v=layout-fix-2">
 </head>
 <body>
   <main class="page">
@@ -61,8 +61,10 @@
         <article class="card">
           <div class="demo choice-demo switch-demo">
             <span class="demo-label">Действия</span>
-            <label class="switch-line"><input type="checkbox" id="notificationsSwitch" checked><span class="switch-ui"></span> Уведомления</label>
-            <label class="switch-line"><input type="checkbox" id="darkSwitch"><span class="switch-ui"></span> Тёмная тема</label>
+            <div class="switch-options">
+              <label class="switch-line"><input type="checkbox" id="notificationsSwitch" checked><span class="switch-ui"></span> Уведомления</label>
+              <label class="switch-line"><input type="checkbox" id="darkSwitch"><span class="switch-ui"></span> Тёмная тема</label>
+            </div>
             <p class="choice-caption">Сейчас: уведомления</p>
             <p class="choice-state" id="switchState">включены, тёмная тема выключена</p>
           </div>
