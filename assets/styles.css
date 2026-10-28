@@ -1273,3 +1273,11 @@ button:disabled { opacity: .52; cursor: not-allowed; }
  .mobile-demo { padding-left:15px; padding-right:15px; }
  .splash-demo { flex-direction:column; }
 }
+
+/* Fix swipe-actions reveal: keep the row frame in place and slide only its content. */
+.swipe-row { transform:none !important; }
+.swipe-row > div { transition:transform .22s ease; will-change:transform; }
+.swipe-row.open { transform:none !important; }
+.swipe-row.open > div { transform:translateX(-90px); }
+.swipe-row .swipe-action { z-index:0; }
+.swipe-row > div { z-index:1; position:relative; }
