@@ -680,7 +680,7 @@ const swipeTitles=['Вариант 1','Вариант 2','Вариант 3','В�
 let swipeCardIndex=0;
 function moveSwipeCard(decision){
  const title=document.getElementById('swipeCardTitle'),status=document.getElementById('swipeCardStatus'),card=document.getElementById('swipeCard');
- if(card){card.style.transform=decision==='like'?'translateX(90px) rotate(8deg)':'translateX(-90px) rotate(-8deg)';card.style.opacity='.25';}
+ if(card){card.style.transform=decision==='like'?'translateX(230px) rotate(18deg)':'translateX(-230px) rotate(-18deg)';card.style.opacity='0';}
  swipeCardIndex++;
  setTimeout(()=>{
   if(card){card.style.transform='';card.style.opacity='1';}
