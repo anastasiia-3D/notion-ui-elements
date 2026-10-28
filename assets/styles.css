@@ -1290,3 +1290,11 @@ button:disabled { opacity: .52; cursor: not-allowed; }
 
 /* Swipe cards should visibly fly out of the stack on decision. */
 .swipe-card { transition: transform .32s cubic-bezier(.2,.75,.25,1), opacity .28s ease; }
+
+/* Center the zoom controls and their labels consistently in the demo. */
+.mobile-demo:has(.pinch-controls) { align-items:center; }
+.pinch-stage { margin-inline:auto; }
+.pinch-controls { width:100%; justify-content:center; flex-wrap:wrap; margin:0 auto; }
+.pinch-controls button { display:inline-flex; align-items:center; justify-content:center; line-height:1; padding:0; box-sizing:border-box; }
+.pinch-controls .brand-outline { padding:8px 12px; }
+.gesture-hint { width:100%; text-align:center; }
