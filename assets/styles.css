@@ -1535,3 +1535,15 @@ button:disabled { opacity: .52; cursor: not-allowed; }
 @media (prefers-reduced-motion: reduce) {
  .collab-board .cursor-one, .collab-board .cursor-two { animation:none; }
 }
+
+/* Keep the share action and its revealed options centered as one compact group. */
+.shop-social-board-dropdown .demo:has(#shareButton) { align-items:center; }
+.shop-social-board-dropdown #shareOptions {
+  width:max-content;
+  max-width:calc(100% - 20px);
+  margin:0 auto;
+  align-self:center;
+  box-sizing:border-box;
+  justify-content:center;
+}
+.shop-social-board-dropdown #shareButton { margin-inline:auto; }
