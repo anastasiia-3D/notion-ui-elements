@@ -1356,16 +1356,16 @@ button:disabled { opacity: .52; cursor: not-allowed; }
 
 
 /* Shop, social buttons and online boards */
-.shop-social-board-dropdown .section-toc { margin:24px 10px 20px; padding:18px 16px; border:1px solid #E2D8CA; border-radius:16px; display:grid; grid-template-columns:1fr; gap:8px; color:#49352B; }
-.shop-social-board-dropdown .section-toc > span { color:#92877D; }
-.shop-social-board-dropdown .section-toc ol { list-style:none; counter-reset:toc; margin:8px 0 0; padding:0; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px 18px; }
-.shop-social-board-dropdown .section-toc li { counter-increment:toc; display:flex; gap:14px; align-items:center; }
-.shop-social-board-dropdown .section-toc li::before { content:counter(toc); color:#8C1F1F; font-weight:700; }
-.shop-social-board-dropdown .section-toc a { color:inherit; text-decoration:none; }
-.shop-social-board-dropdown .section-toc a:hover { color:#315FB8; text-decoration:underline; }
-.shop-social-board-dropdown .section-intro { margin:18px 10px; line-height:1.65; }
-.shop-social-board-dropdown .section-callout { margin:18px 10px 24px; padding:14px 18px; border-radius:14px; background:#FFF078; color:#49352B; font-weight:700; }
-.shop-social-board-dropdown .bottom-callout { max-width:760px; font-weight:400; line-height:1.6; }
+body .section-toc { margin:24px 10px 20px; padding:18px 16px; border:1px solid #E2D8CA; border-radius:16px; display:grid; grid-template-columns:1fr; gap:8px; color:#49352B; }
+body .section-toc > span { color:#92877D; }
+body .section-toc ol { list-style:none; counter-reset:toc; margin:8px 0 0; padding:0; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px 18px; }
+body .section-toc li { counter-increment:toc; display:flex; gap:14px; align-items:center; }
+body .section-toc li::before { content:counter(toc); color:#8C1F1F; font-weight:700; }
+body .section-toc a { color:inherit; text-decoration:none; }
+body .section-toc a:hover { color:#315FB8; text-decoration:underline; }
+body .section-intro { margin:18px 10px; line-height:1.65; }
+body .section-callout { margin:18px 10px 24px; padding:14px 18px; border-radius:14px; background:#FFF078; color:#49352B; font-weight:700; }
+body .bottom-callout { max-width:760px; font-weight:400; line-height:1.6; }
 .shop-social-section { padding:10px 10px 24px; margin-top:12px; border-top:1px solid #E2D8CA; }
 .shop-social-section > h2 { display:flex; align-items:center; gap:10px; margin:18px 0; font-size:20px; }
 .section-number { display:inline-grid; place-items:center; width:28px; height:28px; border-radius:50%; background:#FFF078; color:#49352B; font-size:13px; }
@@ -1499,7 +1499,7 @@ button:disabled { opacity: .52; cursor: not-allowed; }
 .workshop-timer strong { font-size:28px; font-variant-numeric:tabular-nums; margin-right:4px; }
 .workshop-timer .brand-outline { padding:8px 12px; }
 @media(max-width:650px) {
- .shop-social-board-dropdown .section-toc ol { grid-template-columns:1fr; }
+ body .section-toc ol { grid-template-columns:1fr; }
  .shop-social-section { padding-left:0; padding-right:0; }
  .shop-social-section .card > h3,.shop-social-section .card > p { margin-left:16px; margin-right:16px; }
  .shop-demo { padding-left:12px; padding-right:12px; }
@@ -1515,9 +1515,9 @@ button:disabled { opacity: .52; cursor: not-allowed; }
 @keyframes splashLoading { 0%{transform:translateX(-110%)} 100%{transform:translateX(320%)} }
 
 /* Center the Share button in its demo without moving the status row. */
-.shop-social-board-dropdown .demo:has(#shareButton) { display:flex; flex-direction:column; align-items:center; }
-.shop-social-board-dropdown #shareButton { align-self:center; }
-.shop-social-board-dropdown #shareOptions { align-self:center; }
+body .demo:has(#shareButton) { display:flex; flex-direction:column; align-items:center; }
+body #shareButton { align-self:center; }
+body #shareOptions { align-self:center; }
 
 /* Infinite canvas: sticky cards can be grabbed and repositioned directly. */
 .board-canvas { position:relative; display:block; overflow:hidden; cursor:grab; }
@@ -1581,8 +1581,8 @@ button:disabled { opacity: .52; cursor: not-allowed; }
 }
 
 /* Keep the share action and its revealed options centered as one compact group. */
-.shop-social-board-dropdown .demo:has(#shareButton) { align-items:center; }
-.shop-social-board-dropdown #shareOptions {
+body .demo:has(#shareButton) { align-items:center; }
+body #shareOptions {
   width:max-content;
   max-width:calc(100% - 20px);
   margin:0 auto;
@@ -1590,21 +1590,21 @@ button:disabled { opacity: .52; cursor: not-allowed; }
   box-sizing:border-box;
   justify-content:center;
 }
-.shop-social-board-dropdown #shareButton { margin-inline:auto; }
+body #shareButton { margin-inline:auto; }
 
 
 /* Center the Share demo controls and status message consistently. */
-.shop-social-board-dropdown .demo:has(#shareButton) {
+body .demo:has(#shareButton) {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.shop-social-board-dropdown #shareButton {
+body #shareButton {
   display: block;
   margin: 0 auto;
   align-self: center;
 }
-.shop-social-board-dropdown #shareOptions {
+body #shareOptions {
   display: flex;
   width: max-content;
   max-width: calc(100% - 20px);
@@ -1614,13 +1614,13 @@ button:disabled { opacity: .52; cursor: not-allowed; }
   flex-wrap: wrap;
   box-sizing: border-box;
 }
-.shop-social-board-dropdown #shareOptions[hidden] {
+body #shareOptions[hidden] {
   display: none !important;
 }
-.shop-social-board-dropdown #shareStatus {
+body #shareStatus {
   text-align: center;
 }
-.shop-social-board-dropdown .demo:has(#shareButton) .demo-status {
+body .demo:has(#shareButton) .demo-status {
   align-self: center;
   width: max-content;
   max-width: 100%;
@@ -1632,7 +1632,7 @@ button:disabled { opacity: .52; cursor: not-allowed; }
 
 /* Compact minimap demo rebuilt to match the reference: main cards on the canvas,
    with a small overview map tucked into the lower-right corner. */
-.shop-social-board-dropdown .minimap-demo {
+body .minimap-demo {
   position: relative;
   height: 160px;
   min-height: 160px;
@@ -1642,7 +1642,7 @@ button:disabled { opacity: .52; cursor: not-allowed; }
   background-image: radial-gradient(#ddd3c5 0.7px, transparent 0.7px);
   background-size: 8px 8px;
 }
-.shop-social-board-dropdown .minimap-demo .minimap-main {
+body .minimap-demo .minimap-main {
   position: absolute;
   left: 50%;
   top: 52%;
@@ -1653,7 +1653,7 @@ button:disabled { opacity: .52; cursor: not-allowed; }
   gap: 8px;
   max-width: calc(100% - 95px);
 }
-.shop-social-board-dropdown .minimap-main > span {
+body .minimap-main > span {
   display: grid;
   place-items: center;
   min-width: 62px;
@@ -1665,10 +1665,10 @@ button:disabled { opacity: .52; cursor: not-allowed; }
   font-size: 14px;
   white-space: nowrap;
 }
-.shop-social-board-dropdown .minimap-main > span:last-child {
+body .minimap-main > span:last-child {
   background: #d9e9ff;
 }
-.shop-social-board-dropdown .minimap-demo .board-minimap {
+body .minimap-demo .board-minimap {
   position: absolute;
   right: 10px;
   bottom: 10px;
@@ -1682,7 +1682,7 @@ button:disabled { opacity: .52; cursor: not-allowed; }
   box-shadow: 0 2px 7px #49352b14;
   overflow: hidden;
 }
-.shop-social-board-dropdown .minimap-demo .minimap-content {
+body .minimap-demo .minimap-content {
   position: absolute;
   inset: 0;
   display: flex;
@@ -1691,7 +1691,7 @@ button:disabled { opacity: .52; cursor: not-allowed; }
   gap: 3px;
   padding: 0;
 }
-.shop-social-board-dropdown .minimap-demo .minimap-content span {
+body .minimap-demo .minimap-content span {
   display: block;
   padding: 6px 4px;
   border-radius: 2px;
@@ -1700,10 +1700,10 @@ button:disabled { opacity: .52; cursor: not-allowed; }
   line-height: 1;
   white-space: nowrap;
 }
-.shop-social-board-dropdown .minimap-demo .minimap-content span:last-child {
+body .minimap-demo .minimap-content span:last-child {
   background: #d9e9ff;
 }
-.shop-social-board-dropdown .minimap-demo .minimap-viewport {
+body .minimap-demo .minimap-viewport {
   top: 27%;
   left: 34%;
   width: 30%;
@@ -1715,14 +1715,127 @@ button:disabled { opacity: .52; cursor: not-allowed; }
   touch-action: none;
 }
 @media (max-width: 650px) {
-  .shop-social-board-dropdown .minimap-demo .minimap-main {
+  body .minimap-demo .minimap-main {
     max-width: calc(100% - 75px);
     gap: 5px;
   }
-  .shop-social-board-dropdown .minimap-main > span {
+  body .minimap-main > span {
     min-width: 48px;
     height: 48px;
     padding: 0 6px;
     font-size: 12px;
   }
+}
+
+
+
+/* Final layout fixes: center Share, compact minimap, and visible comment badge. */
+.demo:has(#shareButton) {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 255px;
+  padding: 15px;
+}
+.demo:has(#shareButton) #shareButton {
+  align-self: center;
+  display: block;
+  margin: 0 auto;
+}
+.demo:has(#shareButton) #shareOptions {
+  width: max-content;
+  max-width: 100%;
+  margin: 0 auto;
+  align-self: center;
+}
+.demo:has(#shareButton) .demo-status {
+  align-self: center;
+  width: max-content;
+  max-width: 100%;
+  margin: 18px auto 0;
+  text-align: center;
+}
+.minimap-demo {
+  position: relative;
+  height: 160px;
+  min-height: 160px;
+  padding: 15px;
+  overflow: hidden;
+  background-color: #fbf8f3;
+  background-image: radial-gradient(#ddd3c5 0.7px, transparent 0.7px);
+  background-size: 8px 8px;
+}
+.minimap-demo .minimap-main {
+  position: absolute;
+  left: 50%;
+  top: 52%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  gap: 8px;
+  max-width: calc(100% - 95px);
+}
+.minimap-demo .minimap-main > span {
+  display: grid;
+  place-items: center;
+  min-width: 62px;
+  height: 56px;
+  padding: 0 10px;
+  border-radius: 5px;
+  background: #fff078;
+  color: #49352b;
+  font-size: 14px;
+  white-space: nowrap;
+}
+.minimap-demo .minimap-main > span:last-child { background: #d9e9ff; }
+.minimap-demo .board-minimap {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  z-index: 2;
+  width: 80px;
+  height: 47px;
+  padding: 0;
+  border: 1px solid #d8cdbe;
+  border-radius: 9px;
+  background: #fff;
+  box-shadow: 0 2px 7px #49352b14;
+  overflow: hidden;
+}
+.minimap-demo .minimap-content {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  padding: 0;
+}
+.minimap-demo .minimap-content span {
+  display: block;
+  padding: 6px 4px;
+  border-radius: 2px;
+  background: #fff078;
+  font-size: 5px;
+  line-height: 1;
+  white-space: nowrap;
+}
+.minimap-demo .minimap-content span:last-child { background: #d9e9ff; }
+.minimap-demo .minimap-viewport {
+  top: 27%;
+  left: 34%;
+  width: 30%;
+  height: 48%;
+  border: 1px solid #315fb8;
+  background: #315fb822;
+  border-radius: 2px;
+  cursor: move;
+  touch-action: none;
+}
+@media (max-width: 650px) {
+  .minimap-demo .minimap-main { max-width: calc(100% - 75px); gap: 5px; }
+  .minimap-demo .minimap-main > span { min-width: 48px; height: 48px; padding: 0 6px; font-size: 12px; }
 }
